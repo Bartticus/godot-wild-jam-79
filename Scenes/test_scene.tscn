@@ -1,7 +1,8 @@
-[gd_scene load_steps=10 format=3 uid="uid://daa66eayx6fl7"]
+[gd_scene load_steps=11 format=3 uid="uid://daa66eayx6fl7"]
 
 [ext_resource type="Texture2D" uid="uid://cuqfj1h0askfm" path="res://Textures/texture_01.png" id="1_r5l72"]
 [ext_resource type="Script" uid="uid://dviq1c6clt7ui" path="res://Scenes/vine_path.gd" id="2_50ct6"]
+[ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="3_50ct6"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5l72"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -76,7 +77,9 @@ path_joined = false
 [node name="SpawnTimer" type="Timer" parent="VinePath"]
 autostart = true
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.813345, 0.581782, 0, -0.581782, 0.813345, 0, 8.18237, 9.71237)
+[node name="CameraMarker" type="Marker3D" parent="VinePath"]
+
+[node name="ThirdPersonCamera" parent="VinePath/CameraMarker" instance=ExtResource("3_50ct6")]
+follow_target = 2
 
 [connection signal="timeout" from="VinePath/SpawnTimer" to="VinePath" method="_on_spawn_timer_timeout"]

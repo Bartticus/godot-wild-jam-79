@@ -23,6 +23,10 @@ window/size/viewport_height=1080
 window/size/mode=2
 window/stretch/mode="canvas_items"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/third-person-camera/plugin.cfg")
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"
