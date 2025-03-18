@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://ckllqa3h6ybt6"]
+[gd_scene load_steps=6 format=3 uid="uid://ckllqa3h6ybt6"]
 
 [ext_resource type="Script" uid="uid://dviq1c6clt7ui" path="res://Scenes/vine_path.gd" id="1_i67k4"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="2_ihkm3"]
@@ -11,6 +11,10 @@ _data = {
 point_count = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i67k4"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_i67k4"]
+radius = 0.6
+height = 1.2
 
 [node name="VinePath" type="Path3D"]
 curve = SubResource("Curve3D_r5l72")
@@ -30,15 +34,22 @@ path_local = false
 path_continuous_u = true
 path_u_distance = 1.0
 path_joined = false
+smooth_faces = true
 
 [node name="SpawnTimer" type="Timer" parent="."]
 autostart = true
 
 [node name="VineController" type="CharacterBody3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+motion_mode = 1
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VineController"]
 shape = SubResource("SphereShape3D_i67k4")
 debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="VineController"]
+mesh = SubResource("SphereMesh_i67k4")
 
 [node name="ThirdPersonCamera" parent="VineController" instance=ExtResource("2_ihkm3")]
 follow_target = 2
