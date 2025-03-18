@@ -1,8 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://daa66eayx6fl7"]
+[gd_scene load_steps=9 format=3 uid="uid://daa66eayx6fl7"]
 
 [ext_resource type="Texture2D" uid="uid://cuqfj1h0askfm" path="res://Textures/texture_01.png" id="1_r5l72"]
-[ext_resource type="Script" uid="uid://dviq1c6clt7ui" path="res://Scenes/vine_path.gd" id="2_50ct6"]
-[ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="3_50ct6"]
+[ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_r5l72"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5l72"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -28,13 +27,6 @@ uv1_triplanar = true
 material = SubResource("StandardMaterial3D_ak5v8")
 size = Vector3(50, 2, 50)
 
-[sub_resource type="Curve3D" id="Curve3D_r5l72"]
-_data = {
-"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
-"tilts": PackedFloat32Array(0)
-}
-point_count = 1
-
 [node name="TestScene" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -55,31 +47,4 @@ shape = SubResource("BoxShape3D_hb2xm")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/StaticBody3D"]
 mesh = SubResource("BoxMesh_x033f")
 
-[node name="VinePath" type="Path3D" parent="."]
-curve = SubResource("Curve3D_r5l72")
-script = ExtResource("2_50ct6")
-
-[node name="CSGPolygon3D" type="CSGPolygon3D" parent="VinePath"]
-use_collision = true
-polygon = PackedVector2Array(-0.613515, 0.200746, -0.207512, 0.606748, 0.171423, 0.606748, 0.622537, 0.209768, 0.63156, -0.17819, 0.189468, -0.620282, -0.189468, -0.620282, -0.622537, -0.196235)
-mode = 2
-path_node = NodePath("..")
-path_interval_type = 0
-path_interval = 1.0
-path_simplify_angle = 0.0
-path_rotation = 2
-path_rotation_accurate = false
-path_local = false
-path_continuous_u = true
-path_u_distance = 1.0
-path_joined = false
-
-[node name="SpawnTimer" type="Timer" parent="VinePath"]
-autostart = true
-
-[node name="CameraMarker" type="Marker3D" parent="VinePath"]
-
-[node name="ThirdPersonCamera" parent="VinePath/CameraMarker" instance=ExtResource("3_50ct6")]
-follow_target = 2
-
-[connection signal="timeout" from="VinePath/SpawnTimer" to="VinePath" method="_on_spawn_timer_timeout"]
+[node name="VinePath" parent="." instance=ExtResource("2_r5l72")]

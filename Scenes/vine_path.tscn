@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ckllqa3h6ybt6"]
+
+[ext_resource type="Script" uid="uid://dviq1c6clt7ui" path="res://Scenes/vine_path.gd" id="1_i67k4"]
+[ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="2_ihkm3"]
+
+[sub_resource type="Curve3D" id="Curve3D_r5l72"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0)
+}
+point_count = 1
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_i67k4"]
+
+[node name="VinePath" type="Path3D"]
+curve = SubResource("Curve3D_r5l72")
+script = ExtResource("1_i67k4")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+use_collision = true
+polygon = PackedVector2Array(-0.613515, 0.200746, -0.207512, 0.606748, 0.171423, 0.606748, 0.622537, 0.209768, 0.63156, -0.17819, 0.189468, -0.620282, -0.189468, -0.620282, -0.622537, -0.196235)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="SpawnTimer" type="Timer" parent="."]
+autostart = true
+
+[node name="VineController" type="CharacterBody3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="VineController"]
+shape = SubResource("SphereShape3D_i67k4")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="ThirdPersonCamera" parent="VineController" instance=ExtResource("2_ihkm3")]
+follow_target = 2
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
