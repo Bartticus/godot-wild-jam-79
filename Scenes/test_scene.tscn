@@ -1,0 +1,82 @@
+[gd_scene load_steps=10 format=3 uid="uid://daa66eayx6fl7"]
+
+[ext_resource type="Texture2D" uid="uid://cuqfj1h0askfm" path="res://Textures/texture_01.png" id="1_r5l72"]
+[ext_resource type="Script" uid="uid://dviq1c6clt7ui" path="res://Scenes/vine_path.gd" id="2_50ct6"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_r5l72"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_50ct6"]
+sky_material = SubResource("ProceduralSkyMaterial_r5l72")
+
+[sub_resource type="Environment" id="Environment_hb2xm"]
+background_mode = 2
+sky = SubResource("Sky_50ct6")
+tonemap_mode = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hb2xm"]
+size = Vector3(50, 2, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ak5v8"]
+albedo_texture = ExtResource("1_r5l72")
+uv1_scale = Vector3(0.1, 0.1, 0.1)
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_x033f"]
+material = SubResource("StandardMaterial3D_ak5v8")
+size = Vector3(50, 2, 50)
+
+[sub_resource type="Curve3D" id="Curve3D_r5l72"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0),
+"tilts": PackedFloat32Array(0)
+}
+point_count = 1
+
+[node name="TestScene" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hb2xm")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="World" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
+shape = SubResource("BoxShape3D_hb2xm")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/StaticBody3D"]
+mesh = SubResource("BoxMesh_x033f")
+
+[node name="VinePath" type="Path3D" parent="."]
+curve = SubResource("Curve3D_r5l72")
+script = ExtResource("2_50ct6")
+
+[node name="CSGPolygon3D" type="CSGPolygon3D" parent="VinePath"]
+use_collision = true
+polygon = PackedVector2Array(-0.613515, 0.200746, -0.207512, 0.606748, 0.171423, 0.606748, 0.622537, 0.209768, 0.63156, -0.17819, 0.189468, -0.620282, -0.189468, -0.620282, -0.622537, -0.196235)
+mode = 2
+path_node = NodePath("..")
+path_interval_type = 0
+path_interval = 1.0
+path_simplify_angle = 0.0
+path_rotation = 2
+path_rotation_accurate = false
+path_local = false
+path_continuous_u = true
+path_u_distance = 1.0
+path_joined = false
+
+[node name="SpawnTimer" type="Timer" parent="VinePath"]
+autostart = true
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.813345, 0.581782, 0, -0.581782, 0.813345, 0, 8.18237, 9.71237)
+
+[connection signal="timeout" from="VinePath/SpawnTimer" to="VinePath" method="_on_spawn_timer_timeout"]
