@@ -90,12 +90,12 @@ func iterate_directional_influence(input, delta, is_greatest_influence):
 func increase_directional_influence(input, delta):
 	var current_influence = influence_dictionary[input]
 	var new_influence_amount = (current_influence + (delta * turn_speed))
-	influence_dictionary.set(input, [new_influence_amount, 1].min())
+	influence_dictionary.set(input, [new_influence_amount, 0.9].min())
 
 func decrease_directional_influence(input, delta):
 	var current_influence = influence_dictionary[input]
 	var new_influence_amount = (current_influence - (delta * (turn_speed / 2)))
-	influence_dictionary.set(input, [new_influence_amount, 0].max())
+	influence_dictionary.set(input, [new_influence_amount, 0.1].max())
 
 func calculate_x_axis(delta):
 	return (influence_dictionary['move_right'] - influence_dictionary['move_left']) * delta
