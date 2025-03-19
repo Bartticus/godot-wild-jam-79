@@ -8,11 +8,13 @@ extends Path3D
 @export_category("Vine Properties")
 @export var linear_damp: float = 20
 @export var collision_mask: int = 2
+@export var segment_division: int = 10
 
 @onready var vine_controller := $VineController as CharacterBody3D
 @onready var contoller_mesh := $VineController/MeshInstance3D as MeshInstance3D
 
 var vine_in_contact: bool = false
+var segment_points: Array = []
 
 
 func _ready():
@@ -30,8 +32,10 @@ func _physics_process(delta: float) -> void:
 	handle_inputs(delta)
 	add_next_point(delta)
 	handle_collision()
+	#check_vine_length()
+#func check_vine_length():
+	#
 
-var segment_points: Array = []
 func handle_collision():
 	if vine_controller.get_last_slide_collision() != null:
 		var last_collision: CollisionObject3D = vine_controller.get_last_slide_collision().get_collider()
@@ -52,8 +56,11 @@ func handle_collision():
 func replace_segment():
 	var rope: Rope = rope_scene.instantiate()
 	rope.curve.clear_points()
-	for i in segment_points.size():
-		rope.curve.add_point(segment_points[i])
+	
+	for i in segment_points.size() - 1:
+		if i * segment_division < segment_points.size():
+			rope.curve.add_point(segment_points[i * segment_division])
+	rope.curve.add_point(segment_points[-1])
 	
 	rope.linear_damp = linear_damp
 	rope.collision_mask = collision_mask
