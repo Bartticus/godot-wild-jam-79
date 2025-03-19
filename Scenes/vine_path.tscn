@@ -52,6 +52,6 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 mesh = SubResource("SphereMesh_i67k4")
 
 [node name="ThirdPersonCamera" parent="VineController" instance=ExtResource("2_ihkm3")]
-follow_target = 2
+follow_target = 1
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

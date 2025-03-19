@@ -5,6 +5,17 @@ extends Path3D
 
 @onready var vine_controller := $VineController as CharacterBody3D
 
+func _ready():
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
+	
+	if event.is_action_pressed("click"):
+		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
+			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
 func _physics_process(delta: float) -> void:
 	handle_inputs(delta)
 	add_next_point(delta)
@@ -18,8 +29,12 @@ func add_next_point(delta):
 	var x_axis = calculate_x_axis(delta)
 	var z_axis = calculate_z_axis(delta)
 	var y_axis = calculate_y_axis(x_axis, z_axis, delta)
-	var new_point = curve.get_baked_points()[-1] + Vector3(x_axis, y_axis, z_axis)
-
+	
+	var camera = get_viewport().get_camera_3d()
+	var target_pos = Vector3(x_axis, y_axis, z_axis).rotated(Vector3.UP, camera.rotation.y)
+	var new_point = curve.get_baked_points()[-1] + target_pos
+	
+	
 	vine_controller.velocity = vine_controller.global_position.direction_to(new_point)
 	vine_controller.move_and_slide()
 	curve.add_point(vine_controller.global_position)
