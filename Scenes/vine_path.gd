@@ -44,12 +44,12 @@ func handle_bend_down():
 
 func iterate_directional_influence(input, delta):
 	var current_influence = influence_dictionary[input]
-	var delta_multiplier = 1
+	var delta_multiplier = 1.0
 	if Input.is_action_pressed(input):
 		var new_influence_amount = (current_influence + (delta * delta_multiplier))
 		influence_dictionary.set(input, [new_influence_amount, 1].min())
 	else:
-		var new_influence_amount = (current_influence - (delta * delta_multiplier))
+		var new_influence_amount = (current_influence - (delta * (delta_multiplier / 2)))
 		influence_dictionary.set(input, [new_influence_amount, 0].max())
 
 func calculate_x_axis(delta):

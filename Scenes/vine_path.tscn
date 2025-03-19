@@ -11,10 +11,11 @@ _data = {
 point_count = 1
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i67k4"]
+radius = 0.15
 
 [sub_resource type="SphereMesh" id="SphereMesh_i67k4"]
-radius = 0.6
-height = 1.2
+radius = 0.15
+height = 0.3
 
 [node name="VinePath" type="Path3D"]
 curve = SubResource("Curve3D_r5l72")
@@ -22,11 +23,11 @@ script = ExtResource("1_i67k4")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 use_collision = true
-polygon = PackedVector2Array(-0.613515, 0.200746, -0.207512, 0.606748, 0.171423, 0.606748, 0.622537, 0.209768, 0.63156, -0.17819, 0.189468, -0.620282, -0.189468, -0.620282, -0.622537, -0.196235)
+polygon = PackedVector2Array(-0.137531, 0.0508929, -0.0694265, 0.134122, 0.0711122, 0.134593, 0.132261, 0.0569297, 0.122923, -0.0827187, 0.0537749, -0.141041, -0.0669762, -0.137534, -0.13089, -0.0813054)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
-path_interval = 1.0
+path_interval = 0.9
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
