@@ -3,14 +3,15 @@ extends Path3D
 @export var bend_down = false as bool
 @export var influence_dictionary = {'move_forward': 0.0, 'move_backward': 0.0, 'move_left': 0.0, 'move_right': 0.0} as Dictionary
 
+@export_category("Vine Properties")
+@export var linear_damp: float = 20
+@export var collision_mask: int = 2
+
 @onready var vine_controller := $VineController as CharacterBody3D
 @onready var contoller_mesh := $VineController/MeshInstance3D as MeshInstance3D
 
 var vine_in_contact: bool = false
-var anchor: Dictionary[String, Vector3] = {
-	"start": Vector3.ZERO,
-	"end": Vector3.ZERO
-}
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -28,25 +29,37 @@ func _physics_process(delta: float) -> void:
 	add_next_point(delta)
 	handle_collision()
 
+var segment_points: Array = []
 func handle_collision():
 	if vine_controller.get_last_slide_collision() != null:
 		var last_collision: CollisionObject3D = vine_controller.get_last_slide_collision().get_collider()
 		if last_collision.collision_layer == 2:
-			if not vine_in_contact: anchor_end() #Anchor ends on first contact
+			if not vine_in_contact: replace_segment() #Anchor ends on first contact
 			vine_in_contact = true
 			
 			contoller_mesh.mesh.material.albedo_color = Color.GREEN
 	else:
-		if vine_in_contact: anchor_begin() #Anchor starts when not contacting
+		if vine_in_contact: replace_segment() #Anchor starts when not contacting
 		vine_in_contact = false
 		
 		contoller_mesh.mesh.material.albedo_color = Color.WHITE
+	
+	segment_points.append(vine_controller.global_position)
 
-func anchor_begin():
-	anchor["start"] = vine_controller.global_position
-
-func anchor_end():
-	anchor["end"] = vine_controller.global_position
+@onready var rope_scene: PackedScene = preload("res://Rope/path_3d_rope.tscn")
+func replace_segment():
+	var rope: Rope = rope_scene.instantiate()
+	rope.curve.clear_points()
+	for i in segment_points.size():
+		rope.curve.add_point(segment_points[i])
+	
+	rope.linear_damp = linear_damp
+	rope.collision_mask = collision_mask
+	add_child(rope)
+	
+	curve.clear_points()
+	segment_points.clear()
+	
 
 func handle_inputs(delta):
 	handle_bend_down()
@@ -54,6 +67,8 @@ func handle_inputs(delta):
 		iterate_directional_influence(input, delta)
 
 func add_next_point(delta):
+	if curve.point_count == 0: curve.add_point(vine_controller.global_position)
+	
 	var x_axis = calculate_x_axis(delta)
 	var z_axis = calculate_z_axis(delta)
 	var y_axis = calculate_y_axis(x_axis, z_axis, delta)
