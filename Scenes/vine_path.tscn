@@ -25,11 +25,11 @@ curve = SubResource("Curve3D_r5l72")
 script = ExtResource("1_i67k4")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-polygon = PackedVector2Array(-0.00301002, 0.151506, 0.129396, 0.0872677, 0.0953864, -0.119483, -0.0894327, -0.125608, -0.133557, 0.0813381)
+polygon = PackedVector2Array(-0.00301002, 0.151506, 0.137278, 0.0598402, 0.0953864, -0.119483, -0.0894327, -0.125608, -0.137412, 0.0598965)
 mode = 2
 path_node = NodePath("..")
 path_interval_type = 0
-path_interval = 0.6
+path_interval = 0.9
 path_simplify_angle = 0.0
 path_rotation = 2
 path_rotation_accurate = false
