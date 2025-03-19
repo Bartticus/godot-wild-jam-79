@@ -4,6 +4,13 @@ extends Path3D
 @export var influence_dictionary = {'move_forward': 0.0, 'move_backward': 0.0, 'move_left': 0.0, 'move_right': 0.0} as Dictionary
 
 @onready var vine_controller := $VineController as CharacterBody3D
+@onready var contoller_mesh := $VineController/MeshInstance3D as MeshInstance3D
+
+var vine_in_contact: bool = false
+var anchor: Dictionary[String, Vector3] = {
+	"start": Vector3.ZERO,
+	"end": Vector3.ZERO
+}
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -19,6 +26,27 @@ func _input(event):
 func _physics_process(delta: float) -> void:
 	handle_inputs(delta)
 	add_next_point(delta)
+	handle_collision()
+
+func handle_collision():
+	if vine_controller.get_last_slide_collision() != null:
+		var last_collision: CollisionObject3D = vine_controller.get_last_slide_collision().get_collider()
+		if last_collision.collision_layer == 2:
+			if not vine_in_contact: anchor_end() #Anchor ends on first contact
+			vine_in_contact = true
+			
+			contoller_mesh.mesh.material.albedo_color = Color.GREEN
+	else:
+		if vine_in_contact: anchor_begin() #Anchor starts when not contacting
+		vine_in_contact = false
+		
+		contoller_mesh.mesh.material.albedo_color = Color.WHITE
+
+func anchor_begin():
+	anchor["start"] = vine_controller.global_position
+
+func anchor_end():
+	anchor["end"] = vine_controller.global_position
 
 func handle_inputs(delta):
 	handle_bend_down()

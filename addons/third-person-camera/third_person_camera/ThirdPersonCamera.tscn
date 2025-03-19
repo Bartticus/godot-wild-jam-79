@@ -26,11 +26,11 @@ script = ExtResource("1_telmq")
 shake_presets = Array[ExtResource("2_436kf")]([ExtResource("2_idc07"), ExtResource("3_iflr8")])
 
 [node name="RotationPivot" type="Node3D" parent="."]
-transform = Transform3D(0.999983, 0, 0, 0, 0.939713, 0.341948, 0, -0.341957, 0.939687, 0, 0, 0)
+transform = Transform3D(0.999983, 0, 0, 0, 0.939717, 0.341938, 0, -0.341947, 0.939691, 0, 0, 0)
 top_level = true
 
 [node name="OffsetPivot" type="Node3D" parent="RotationPivot"]
-transform = Transform3D(1.00002, 1.43461e-07, 2.92412e-07, -7.83755e-07, 1.00017, 6.00815e-05, -5.18135e-06, -7.34329e-05, 1.00009, 0, 0, 0)
+transform = Transform3D(1, 1.43469e-07, 2.92376e-07, -7.89989e-07, 1.00291, 0.000251889, -5.19911e-06, -0.000304163, 1.0026, 0, 0, 0)
 
 [node name="CameraSpringArm" type="SpringArm3D" parent="RotationPivot/OffsetPivot"]
 process_priority = 11
@@ -38,7 +38,7 @@ shape = SubResource("SeparationRayShape3D_84uqy")
 spring_length = 10.0
 
 [node name="CameraMarker" type="Marker3D" parent="RotationPivot/OffsetPivot/CameraSpringArm"]
-transform = Transform3D(0.99995, -2.36468e-06, -7.01279e-06, 1.45106e-06, 1.00042, 0.000264138, 3.92144e-06, 8.49366e-06, 1.00147, -2.92379e-06, -0.0006001, 9.99936)
+transform = Transform3D(0.998448, -2.36549e-06, -7.0269e-06, 1.45101e-06, 1.00095, 0.000282258, 3.91413e-06, -8.56221e-05, 1.00198, -2.91603e-06, -0.00174022, 9.97441)
 
 [node name="PivotDebug" type="MeshInstance3D" parent="RotationPivot/OffsetPivot"]
 visible = false
@@ -49,7 +49,7 @@ script = ExtResource("2_y3uk4")
 camera = NodePath("../Camera")
 
 [node name="Camera" type="Camera3D" parent="."]
-transform = Transform3D(1, -5.59292e-16, 1.53664e-15, 0, 0.939693, 0.34202, -1.63526e-15, -0.34202, 0.939693, 1.53664e-14, 3.4202, 9.39692)
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 5.60519e-45, 3.4202, 9.39692)
 top_level = true
 
 [node name="CameraDebug" type="MeshInstance3D" parent="Camera"]
