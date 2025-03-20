@@ -12,9 +12,6 @@ extends Path3D
 @onready var contoller_mesh := $VineController/MeshInstance3D as MeshInstance3D
 @onready var rope_scene: PackedScene = preload("res://Rope/path_3d_rope.tscn")
 
-<<<<<<< Updated upstream
-var vine_in_contact: bool = false
-=======
 var segment_points: Array = []
 var last_contact_pos: Vector3
 var vine_length: float
@@ -24,7 +21,6 @@ var in_freefall: bool = false:
 		if in_freefall and not value:
 			end_freefall.emit()
 		in_freefall = value
->>>>>>> Stashed changes
 
 signal end_freefall
 
@@ -43,8 +39,6 @@ func _physics_process(delta: float) -> void:
 	handle_inputs(delta)
 	add_next_point(delta)
 	handle_collision()
-<<<<<<< Updated upstream
-=======
 	limit_vine_length()
 
 func limit_vine_length():
@@ -54,7 +48,6 @@ func limit_vine_length():
 	if vine_length > max_length:
 		in_freefall = true
 		replace_segment()
->>>>>>> Stashed changes
 
 var segment_points: Array = []
 func handle_collision():
