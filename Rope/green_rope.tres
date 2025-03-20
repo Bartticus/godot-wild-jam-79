@@ -1,5 +1,0 @@
-[gd_resource type="StandardMaterial3D" format=3 uid="uid://esbif4ec2kcc"]
-
-[resource]
-uv1_scale = Vector3(2, 2, 2)
-uv1_triplanar_sharpness = 150.0
