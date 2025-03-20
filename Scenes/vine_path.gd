@@ -50,7 +50,8 @@ func handle_collision():
 		
 		contoller_mesh.mesh.material.albedo_color = Color.WHITE
 	
-	segment_points.append(vine_controller.global_position)
+	if not segment_points.has(vine_controller.global_position):
+		segment_points.append(vine_controller.global_position)
 
 @onready var rope_scene: PackedScene = preload("res://Rope/path_3d_rope.tscn")
 func replace_segment():
@@ -95,7 +96,9 @@ func add_next_point(delta):
 	
 	vine_controller.velocity = vine_controller.global_position.direction_to(new_point)
 	vine_controller.move_and_slide()
-	curve.add_point(vine_controller.global_position)
+	
+	if not curve.get_baked_points().has(vine_controller.global_position):
+		curve.add_point(vine_controller.global_position)
 
 func handle_bend_down(delta):
 	bend_down = Input.is_action_pressed('bend_down')
