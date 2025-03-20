@@ -146,13 +146,12 @@ func add_next_point(delta):
 			curve.add_point(vine_controller.global_position)
 
 func handle_freefall(delta):
-	var weight: float = 100
+	var gravity: float = 100
+	var magnitude: float = vine_length * vine_length / 10
 	vine_length = vine_controller.global_position.distance_to(last_contact_pos)
-	if abs(vine_length - max_length) > 1 or vine_controller.global_position.y > last_contact_pos.y:
-		vine_controller.velocity.y -= weight * delta #Pulls end of vine down until it's near max length
+	vine_controller.velocity += vine_controller.global_position.direction_to(last_contact_pos) * magnitude
+	vine_controller.velocity.y -= gravity * delta #Pulls end of vine downward
 	
-	#var speed_factor = max_length - clampf(vine_length, 0, max_length)
-	#vine_controller.velocity = vine_controller.velocity.lerp(vine_controller.velocity.normalized() * speed_factor, weight * delta)
 	vine_controller.move_and_slide()
 
 func handle_bend_down(delta):
