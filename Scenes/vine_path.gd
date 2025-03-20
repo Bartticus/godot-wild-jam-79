@@ -49,7 +49,6 @@ func limit_vine_length():
 		in_freefall = true
 		replace_segment()
 
-var segment_points: Array = []
 func handle_collision():
 	if vine_controller.get_last_slide_collision() != null:
 		var last_collision: CollisionObject3D = vine_controller.get_last_slide_collision().get_collider()

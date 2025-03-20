@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://x4xnc85khpl5"]
+[gd_scene load_steps=5 format=3 uid="uid://x4xnc85khpl5"]
 
 [ext_resource type="Script" uid="uid://dpa64cyucj7it" path="res://Rope/path_3d_rope.gd" id="1_fykgp"]
-[ext_resource type="Material" uid="uid://csc37oys022vf" path="res://Rope/orange_rope.tres" id="2_f0htr"]
 
 [sub_resource type="Curve3D" id="Curve3D_rsokh"]
 resource_local_to_scene = true
@@ -12,10 +11,18 @@ _data = {
 }
 point_count = 2
 
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_fs55n"]
+load_path = "res://.godot/imported/texture_09.png-85e962b6d008910c4aed05d6324a3ce4.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0hb6"]
+albedo_texture = SubResource("CompressedTexture2D_fs55n")
+uv1_scale = Vector3(2, 2, 2)
+uv1_triplanar_sharpness = 150.0
+
 [node name="Path3DRope" type="Path3D"]
 curve = SubResource("Curve3D_rsokh")
 script = ExtResource("1_fykgp")
-material = ExtResource("2_f0htr")
+material = SubResource("StandardMaterial3D_j0hb6")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 calculate_tangents = false
