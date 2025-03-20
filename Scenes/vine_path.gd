@@ -13,7 +13,7 @@ extends Path3D
 
 @onready var vine_controller := $VineController as CharacterBody3D
 @onready var contoller_mesh := $VineController/MeshInstance3D as MeshInstance3D
-@onready var rope_scene: PackedScene = preload("res://Rope/path_3d_rope.tscn")
+@onready var rope_scene: PackedScene = preload("res://Scenes/Rope/path_3d_rope.tscn")
 
 var segment_points: Array = []
 var last_contact_pos: Vector3
