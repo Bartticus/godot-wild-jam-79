@@ -1,7 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://x4xnc85khpl5"]
 
 [ext_resource type="Script" uid="uid://dpa64cyucj7it" path="res://Rope/path_3d_rope.gd" id="1_fykgp"]
-[ext_resource type="Texture2D" uid="uid://xfyxt738cmnq" path="res://Rope/texture_09.png" id="2_eukyl"]
 
 [sub_resource type="Curve3D" id="Curve3D_rsokh"]
 resource_local_to_scene = true

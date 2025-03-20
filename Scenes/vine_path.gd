@@ -139,9 +139,8 @@ func add_next_point(delta):
 		handle_freefall(delta)
 	else:
 		vine_controller.move_and_slide()
-		
-	if not curve.get_baked_points().has(vine_controller.global_position):
-		curve.add_point(vine_controller.global_position)
+		if not curve.get_baked_points().has(vine_controller.global_position):
+			curve.add_point(vine_controller.global_position)
 
 func handle_freefall(delta):
 	var weight: float = 100
