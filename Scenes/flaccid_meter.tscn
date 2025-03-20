@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://h0uc72pefjuh"]
+
+[ext_resource type="Script" uid="uid://bi3ofkde5f8vu" path="res://Scenes/flaccid_meter.gd" id="1_xkp6c"]
+
+[sub_resource type="Gradient" id="Gradient_xkp6c"]
+colors = PackedColorArray(0, 0, 0, 0.196078, 0, 0, 0, 0.196078)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rt2dj"]
+gradient = SubResource("Gradient_xkp6c")
+width = 1900
+height = 40
+repeat = 2
+
+[sub_resource type="Gradient" id="Gradient_rt2dj"]
+offsets = PackedFloat32Array(0, 0.996169)
+colors = PackedColorArray(0.482156, 0.355629, 9.62615e-08, 1, 0, 0.739715, 1.92523e-07, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_vx8to"]
+gradient = SubResource("Gradient_rt2dj")
+width = 1900
+height = 40
+
+[node name="FlaccidMeter" type="TextureProgressBar"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -950.0
+offset_top = -20.0
+offset_right = 950.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+step = 0.01
+texture_under = SubResource("GradientTexture2D_rt2dj")
+texture_progress = SubResource("GradientTexture2D_vx8to")
+script = ExtResource("1_xkp6c")
