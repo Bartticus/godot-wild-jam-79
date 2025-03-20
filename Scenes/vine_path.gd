@@ -21,8 +21,12 @@ var vine_length: float
 var vine_in_contact: bool = false
 var in_freefall: bool = false:
 	set(value):
-		if in_freefall and not value:
-			end_freefall.emit()
+		if in_freefall:
+			if !value:
+				end_freefall.emit()
+			bend_down = true
+		else:
+			bend_down = false
 		in_freefall = value
 
 signal end_freefall
