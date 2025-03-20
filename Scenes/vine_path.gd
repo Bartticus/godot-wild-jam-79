@@ -1,6 +1,6 @@
 extends Path3D
 
-@export var bend_down = false as bool
+@export var bend_down: bool = false
 @export var influence_y = 1.0
 @export var influence_dictionary = {'move_forward': 0.0, 'move_backward': 0.0, 'move_left': 0.0, 'move_right': 0.0} as Dictionary
 @export var turn_speed = 0.75
@@ -29,6 +29,7 @@ signal end_freefall
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	Global.update_max_length(max_length)
 
 func _input(event):
 	if event.is_action_pressed("ui_cancel"):
@@ -48,6 +49,7 @@ func limit_vine_length():
 	if in_freefall: return
 	
 	vine_length = vine_controller.global_position.distance_to(last_contact_pos)
+	Global.update_length(vine_length)
 	if vine_length > max_length:
 		in_freefall = true
 		replace_segment()
@@ -59,6 +61,7 @@ func handle_collision():
 			if not vine_in_contact and not in_freefall: replace_segment() #Anchor ends on first contact
 			vine_in_contact = true
 			in_freefall = false
+			last_contact_pos = vine_controller.global_position
 			contoller_mesh.mesh.material.albedo_color = Color.GREEN
 	else:
 		if vine_in_contact:
