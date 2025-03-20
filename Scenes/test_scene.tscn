@@ -95,3 +95,4 @@ mesh = SubResource("CylinderMesh_50ct6")
 skeleton = NodePath("../CollisionShape3D")
 
 [node name="VinePath" parent="." instance=ExtResource("2_r5l72")]
+max_length = 3.0

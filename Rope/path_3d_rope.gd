@@ -7,7 +7,7 @@ extends Path3D
 @export var fixed_start_point = true
 @export var fixed_end_point = true
 @export var rigidbody_attached_to_start : RigidBody3D
-@export var rigidbody_attached_to_end : RigidBody3D
+@export var rigidbody_attached_to_end : CollisionObject3D
 @export var material : Material
 @onready var mesh := $CSGPolygon3D
 @onready var distance = curve.get_baked_length()
