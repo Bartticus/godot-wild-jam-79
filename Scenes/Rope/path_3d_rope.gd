@@ -17,6 +17,7 @@ var joints : Array
 var curve_points : Array
 var linear_damp: float
 var collision_mask: int
+var vine_controller: Node3D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -116,10 +117,29 @@ func _ready() -> void:
 			joints[-1].node_a = segments[-1].get_path()
 		joints[-1].node_b = rigidbody_attached_to_end.get_path()
 
+func freeze_shape():
+	for segment: Node3D in segments:
+		if segment.global_position.distance_to(vine_controller.global_position) > 10:
+			segment.freeze = true
+		else:
+			segment.freeze = false
+
+var frame: int = 0
+func skip_physics_frames(frame_count: int) -> bool:
+	frame += 1
+	if frame == frame_count:
+		frame = 0
+		return true
+	return false
 
 func _physics_process(_delta: float) -> void:
+	if skip_physics_frames(10): return
+	freeze_shape()
+	
 	# update curve positions
 	for p in (curve.point_count):
+		if curve.get_baked_points()[p].distance_to(vine_controller.global_position) > 10:
+			return
 		if  p < (number_of_segments):
 			# get the first segment and subtract it's basis * distance to point at the endpoint 
 			curve.set_point_position(p, segments[p].position + segments[p].transform.basis.y * segments[p].get_child(0).shape.height/2)

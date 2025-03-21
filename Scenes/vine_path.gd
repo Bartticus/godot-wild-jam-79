@@ -75,7 +75,7 @@ func add_next_point(delta):
 
 func handle_freefall(delta):
 	var start_end_distance: float = vine_controller.global_position.distance_to(last_contact_pos)
-	var magnitude: float = 10 * start_end_distance * start_end_distance * delta
+	var magnitude: float = 10 * start_end_distance * start_end_distance * delta / max_length
 	var gravity: float = 100 * delta
 	
 	#Applies force towards last contact, then applies gravity, then reduces velocity based on distance
@@ -169,15 +169,23 @@ func replace_segment():
 	rope.curve.clear_points()
 	
 	for i in segment_points.size() - 1:
-		if i * segment_division < segment_points.size():
+		if i * segment_division < segment_points.size(): #Divide segment points to include less
 			rope.curve.add_point(segment_points[i * segment_division])
-	rope.curve.add_point(segment_points[-1])
+	
+	if not rope.curve.get_baked_points().has(segment_points[-1]):
+		rope.curve.add_point(segment_points[-1]) #Be sure to add the last point
+	
+	rope.number_of_segments = ceilf(curve.get_baked_length())
+	if rope.number_of_segments < 2: #Dont create very short segments
+		return
 	
 	rope.linear_damp = linear_damp
 	rope.collision_mask = collision_mask
+	rope.vine_controller = vine_controller
 	if in_freefall:
 		rope.rigidbody_attached_to_end = vine_controller
 		rope.fixed_end_point = false
+		print("f")
 		free_attachment(rope)
 	
 	add_child(rope)
@@ -187,15 +195,18 @@ func replace_segment():
 
 func free_attachment(existing_rope: Rope): #Replaces the rope from freefall with a copy
 	await end_freefall #Called when setting in_freefall
+	
 	var rope: Rope = rope_scene.instantiate()
 	rope.curve.clear_points()
-	
+	#Not exactly duplicated from replace_segment func, couldn't make it work in a single func
 	for i in existing_rope.curve.get_baked_points().size() - 1:
 		rope.curve.add_point(existing_rope.curve.get_baked_points()[i])
-	rope.curve.add_point(vine_controller.global_position) #Final point where controller is
+	if not rope.curve.get_baked_points().has(vine_controller.global_position):
+		rope.curve.add_point(vine_controller.global_position) #Final point where controller is
 	
 	rope.linear_damp = existing_rope.linear_damp
 	rope.collision_mask = existing_rope.collision_mask
+	rope.vine_controller = existing_rope.vine_controller
 	
 	existing_rope.queue_free()
 	add_child(rope)
