@@ -23,7 +23,7 @@ var in_freefall: bool = false:
 	set(value):
 		if in_freefall:
 			if !value:
-				end_freefall.emit()
+				end_freefall.emit() #Emits when freefall changes from true to false
 			bend_down = true
 		else:
 			bend_down = false
@@ -35,88 +35,11 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.update_max_length(max_length)
 
-func _input(event):
-	if event.is_action_pressed("ui_cancel"):
-		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
-	
-	if event.is_action_pressed("click"):
-		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
-			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-
 func _physics_process(delta: float) -> void:
 	handle_inputs(delta)
 	add_next_point(delta)
-	handle_collision()
 	limit_vine_length()
-
-func limit_vine_length():
-	if in_freefall: return
-	
-	vine_length = vine_controller.global_position.distance_to(last_contact_pos)
-	Global.update_length(vine_length)
-	if vine_length > max_length:
-		in_freefall = true
-		replace_segment()
-
-func handle_collision():
-	if vine_controller.get_last_slide_collision() != null:
-		var last_collision: CollisionObject3D = vine_controller.get_last_slide_collision().get_collider()
-		if last_collision.collision_layer == 2:
-			if not vine_in_contact and not in_freefall: replace_segment() #Anchor ends on first contact
-			vine_in_contact = true
-			in_freefall = false
-			last_contact_pos = vine_controller.global_position
-			contoller_mesh.mesh.material.albedo_color = Color.GREEN
-	else:
-		if vine_in_contact:
-			last_contact_pos = vine_controller.global_position
-			replace_segment() #Anchor starts when not contacting
-		vine_in_contact = false
-		
-		contoller_mesh.mesh.material.albedo_color = Color.WHITE
-	
-	if not segment_points.has(vine_controller.global_position):
-		segment_points.append(vine_controller.global_position)
-
-func replace_segment():
-	if segment_points.is_empty(): return
-	
-	var rope: Rope = rope_scene.instantiate()
-	rope.curve.clear_points()
-	
-	for i in segment_points.size() - 1:
-		if i * segment_division < segment_points.size():
-			rope.curve.add_point(segment_points[i * segment_division])
-	rope.curve.add_point(segment_points[-1])
-	
-	rope.linear_damp = linear_damp
-	rope.collision_mask = collision_mask
-	if in_freefall:
-		rope.rigidbody_attached_to_end = vine_controller
-		rope.fixed_end_point = false
-		free_attachment(rope)
-	
-	add_child(rope)
-	
-	curve.clear_points()
-	segment_points.clear()
-
-func free_attachment(_rope: Rope): #Replaces the rope from freefall with a copy
-	await end_freefall
-	var rope: Rope = rope_scene.instantiate()
-	rope.curve.clear_points()
-	
-	for i in _rope.curve.get_baked_points().size() - 1:
-		rope.curve.add_point(_rope.curve.get_baked_points()[i])
-	
-	rope.linear_damp = linear_damp
-	rope.collision_mask = collision_mask
-	
-	_rope.queue_free()
-	add_child(rope)
-	
-	curve.clear_points()
-	segment_points.clear()
+	handle_collision()
 
 func handle_inputs(delta):
 	handle_bend_down(delta)
@@ -150,11 +73,14 @@ func add_next_point(delta):
 			curve.add_point(vine_controller.global_position)
 
 func handle_freefall(delta):
-	var gravity: float = 100
-	var magnitude: float = vine_length * vine_length / 10
-	vine_length = vine_controller.global_position.distance_to(last_contact_pos)
+	var start_end_distance: float = vine_controller.global_position.distance_to(last_contact_pos)
+	var magnitude: float = 10 * start_end_distance * start_end_distance * delta
+	var gravity: float = 100 * delta
+	
+	#Applies force towards last contact, then applies gravity, then reduces velocity based on distance
 	vine_controller.velocity += vine_controller.global_position.direction_to(last_contact_pos) * magnitude
-	vine_controller.velocity.y -= gravity * delta #Pulls end of vine downward
+	vine_controller.velocity.y -= gravity
+	vine_controller.velocity = lerp(vine_controller.velocity, Vector3.ZERO, start_end_distance * delta)
 	
 	vine_controller.move_and_slide()
 
@@ -203,3 +129,75 @@ func calculate_influence_y(delta):
 		influence_y = [[(influence_y - (delta * turn_speed)), existing_influence].min(), -1].max()
 	else:
 		influence_y = [[(influence_y + (delta * turn_speed)), existing_influence].max(), 1].min()
+
+func limit_vine_length():
+	vine_length = curve.get_baked_length()
+	
+	if vine_length > max_length and not in_freefall:
+		in_freefall = true
+		replace_segment()
+
+func handle_collision():
+	if vine_controller.get_last_slide_collision() != null:
+		var last_collision: CollisionObject3D = vine_controller.get_last_slide_collision().get_collider()
+		if last_collision.collision_layer == 2:
+			if not vine_in_contact and not in_freefall:
+				replace_segment() #Anchor ends on first contact
+				Global.update_length(0)
+			vine_in_contact = true
+			in_freefall = false
+			
+			last_contact_pos = vine_controller.global_position
+			contoller_mesh.mesh.material.albedo_color = Color.GREEN
+	else:
+		if vine_in_contact:
+			last_contact_pos = vine_controller.global_position
+			replace_segment() #Anchor starts when not contacting
+		vine_in_contact = false
+		
+		Global.update_length(vine_length)
+		contoller_mesh.mesh.material.albedo_color = Color.WHITE
+	
+	if not segment_points.has(vine_controller.global_position):
+		segment_points.append(vine_controller.global_position)
+
+func replace_segment():
+	if segment_points.is_empty(): return
+	
+	var rope: Rope = rope_scene.instantiate()
+	rope.curve.clear_points()
+	
+	for i in segment_points.size() - 1:
+		if i * segment_division < segment_points.size():
+			rope.curve.add_point(segment_points[i * segment_division])
+	rope.curve.add_point(segment_points[-1])
+	
+	rope.linear_damp = linear_damp
+	rope.collision_mask = collision_mask
+	if in_freefall:
+		rope.rigidbody_attached_to_end = vine_controller
+		rope.fixed_end_point = false
+		free_attachment(rope)
+	
+	add_child(rope)
+	
+	curve.clear_points() #Reset points before next curve starts
+	segment_points.clear()
+
+func free_attachment(existing_rope: Rope): #Replaces the rope from freefall with a copy
+	await end_freefall #Called when setting in_freefall
+	var rope: Rope = rope_scene.instantiate()
+	rope.curve.clear_points()
+	
+	for i in existing_rope.curve.get_baked_points().size() - 1:
+		rope.curve.add_point(existing_rope.curve.get_baked_points()[i])
+	rope.curve.add_point(vine_controller.global_position) #Final point where controller is
+	
+	rope.linear_damp = existing_rope.linear_damp
+	rope.collision_mask = existing_rope.collision_mask
+	
+	existing_rope.queue_free()
+	add_child(rope)
+	
+	curve.clear_points()
+	segment_points.clear()

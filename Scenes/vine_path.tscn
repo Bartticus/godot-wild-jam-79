@@ -43,9 +43,6 @@ path_u_distance = 1.0
 path_joined = false
 smooth_faces = true
 
-[node name="SpawnTimer" type="Timer" parent="."]
-autostart = true
-
 [node name="VineController" type="CharacterBody3D" parent="."]
 collision_layer = 2
 collision_mask = 2
@@ -58,6 +55,10 @@ debug_color = Color(0, 0.6, 0.701961, 1)
 mesh = SubResource("SphereMesh_i67k4")
 
 [node name="ThirdPersonCamera" parent="VineController" instance=ExtResource("2_ihkm3")]
+distance_from_pivot = 8.0
+initial_dive_angle_deg = 0.0
+tilt_upper_limit_deg = 30.0
+tilt_lower_limit_deg = -30.0
 follow_target = 1
-
-[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]
+spring_arm_collision_mask = 3
+far = 200.0

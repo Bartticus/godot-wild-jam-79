@@ -203,6 +203,16 @@ func _input(event):
 	if event.is_action_pressed("click"):
 		if Input.mouse_mode == Input.MOUSE_MODE_VISIBLE:
 			Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+	
+	if event.is_action_pressed("zoom_in"):
+		var min_distance: float = 4
+		if distance_from_pivot > min_distance:
+			distance_from_pivot -= 1
+	
+	if event.is_action_pressed("zoom_out"):
+		var max_distance: float = 15
+		if distance_from_pivot < max_distance:
+			distance_from_pivot += 1
 
 
 func _unhandled_input(event):
