@@ -20,8 +20,8 @@ radius = 0.15
 
 [sub_resource type="SphereMesh" id="SphereMesh_i67k4"]
 material = SubResource("StandardMaterial3D_i67k4")
-radius = 0.15
-height = 0.3
+radius = 0.2
+height = 0.4
 
 [node name="VinePath" type="Path3D"]
 curve = SubResource("Curve3D_r5l72")

@@ -7,31 +7,31 @@
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
 
-[sub_resource type="Sky" id="Sky_50ct6"]
+[sub_resource type="Sky" id="Sky_r5l72"]
 sky_material = SubResource("ProceduralSkyMaterial_r5l72")
 
 [sub_resource type="Environment" id="Environment_hb2xm"]
 background_mode = 2
-sky = SubResource("Sky_50ct6")
+sky = SubResource("Sky_r5l72")
 tonemap_mode = 2
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hb2xm"]
 size = Vector3(100, 2, 100)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ak5v8"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_50ct6"]
 albedo_texture = ExtResource("1_r5l72")
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_x033f"]
-material = SubResource("StandardMaterial3D_ak5v8")
+material = SubResource("StandardMaterial3D_50ct6")
 size = Vector3(100, 2, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r5l72"]
 size = Vector3(200, 2, 200)
 
 [sub_resource type="BoxMesh" id="BoxMesh_r5l72"]
-material = SubResource("StandardMaterial3D_ak5v8")
+material = SubResource("StandardMaterial3D_50ct6")
 size = Vector3(200, 2, 200)
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_r5l72"]

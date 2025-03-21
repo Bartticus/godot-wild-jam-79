@@ -13,7 +13,7 @@ repeat = 2
 
 [sub_resource type="Gradient" id="Gradient_rt2dj"]
 offsets = PackedFloat32Array(0, 0.996169)
-colors = PackedColorArray(0.482156, 0.355629, 9.62615e-08, 1, 0, 0.739715, 1.92523e-07, 1)
+colors = PackedColorArray(0.223238, 0.157699, 0, 1, 0, 0.739715, 1.92523e-07, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_vx8to"]
 gradient = SubResource("Gradient_rt2dj")
