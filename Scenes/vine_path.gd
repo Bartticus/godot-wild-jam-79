@@ -4,6 +4,7 @@ extends Path3D
 @export var influence_y = 1.0
 @export var influence_dictionary = {'move_forward': 0.0, 'move_backward': 0.0, 'move_left': 0.0, 'move_right': 0.0} as Dictionary
 @export var turn_speed = 0.75
+@export var add_point_interator = 0
 
 @export_category("Vine Properties")
 @export var max_length: float = 10
@@ -54,23 +55,23 @@ func get_greatest_influence():
 
 func add_next_point(delta):
 	if curve.point_count == 0: curve.add_point(vine_controller.global_position)
-	
+
+	add_point_interator += 1
 	var x_axis = calculate_x_axis(delta)
 	var z_axis = calculate_z_axis(delta)
 	var y_axis = calculate_y_axis(x_axis, z_axis, delta)
-	
 	var camera = get_viewport().get_camera_3d()
 	var target_pos = Vector3(x_axis, y_axis, z_axis).rotated(Vector3.UP, camera.rotation.y)
 	var new_point = vine_controller.global_position + target_pos
-	
 	vine_controller.velocity = vine_controller.global_position.direction_to(new_point)
-	
 	if in_freefall:
 		handle_freefall(delta)
 	else:
 		vine_controller.move_and_slide()
-		if not curve.get_baked_points().has(vine_controller.global_position):
-			curve.add_point(vine_controller.global_position)
+		if add_point_interator >= 10:
+			add_point_interator = 0
+			if not curve.get_baked_points().has(vine_controller.global_position):
+				curve.add_point(vine_controller.global_position)
 
 func handle_freefall(delta):
 	var start_end_distance: float = vine_controller.global_position.distance_to(last_contact_pos)
