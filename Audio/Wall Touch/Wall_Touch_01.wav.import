@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://blcuxqmwkhyun"
+path="res://.godot/imported/Wall_Touch_01.wav-9671d75ae4b1138cdceb2d35017e6cad.sample"
+
+[deps]
+
+source_file="res://Audio/Wall Touch/Wall_Touch_01.wav"
+dest_files=["res://.godot/imported/Wall_Touch_01.wav-9671d75ae4b1138cdceb2d35017e6cad.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

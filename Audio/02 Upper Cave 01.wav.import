@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://n22nmwsrxyyc"
+path="res://.godot/imported/02 Upper Cave 01.wav-e54cd039f6ec7a9bd08561fdb9931f0e.sample"
+
+[deps]
+
+source_file="res://Audio/02 Upper Cave 01.wav"
+dest_files=["res://.godot/imported/02 Upper Cave 01.wav-e54cd039f6ec7a9bd08561fdb9931f0e.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2
