@@ -1,8 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://ckllqa3h6ybt6"]
+[gd_scene load_steps=15 format=3 uid="uid://ckllqa3h6ybt6"]
 
 [ext_resource type="Script" uid="uid://dviq1c6clt7ui" path="res://Scenes/vine_path.gd" id="1_i67k4"]
+[ext_resource type="Texture2D" uid="uid://b2pc81tmpfhyw" path="res://Textures/Green_Texture_03.jpeg" id="2_0s387"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="2_ihkm3"]
 [ext_resource type="PackedScene" uid="uid://jo7qawmclont" path="res://Scenes/vine_tip.tscn" id="3_ihkm3"]
+[ext_resource type="Texture2D" uid="uid://cb2ng0u1odaeu" path="res://Assets/Length Meter Overlay Decreasing/Length Meter Overlay Decreasing_00000.png" id="4_0s387"]
 
 [sub_resource type="Curve3D" id="Curve3D_r5l72"]
 _data = {
@@ -11,22 +13,10 @@ _data = {
 }
 point_count = 1
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_ihkm3"]
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0s387"]
-seamless = true
-as_normal_map = true
-bump_strength = 6.2
-noise = SubResource("FastNoiseLite_ihkm3")
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihkm3"]
-albedo_color = Color(0, 0.392157, 0, 1)
-roughness = 0.63
-roughness_texture_channel = 1
-normal_enabled = true
-normal_texture = SubResource("NoiseTexture2D_0s387")
-grow = true
-grow_amount = -0.05
+albedo_color = Color(6.73831e-07, 0.78852, 0, 1)
+albedo_texture = ExtResource("2_0s387")
+uv1_triplanar = true
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i67k4"]
 resource_local_to_scene = true
@@ -38,6 +28,16 @@ radius = 0.15
 material = SubResource("StandardMaterial3D_i67k4")
 radius = 0.2
 height = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhnt0"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("4_0s387")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_ng5d8"]
+material = SubResource("StandardMaterial3D_dhnt0")
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i67k4"]
 friction = 0.2
@@ -91,6 +91,11 @@ far = 200.0
 strength = 20.0
 attenuation = 2.0
 radius = 5.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="VineController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.753033, 0.682224, 0)
+mesh = SubResource("QuadMesh_ng5d8")
+skeleton = NodePath("../..")
 
 [node name="TransformToPendulum" type="RemoteTransform3D" parent="VineController"]
 unique_name_in_owner = true
