@@ -180,16 +180,12 @@ func replace_segment():
 		if i * segment_division < segment_points.size(): #Divide segment points to include less
 			rope.curve.add_point(segment_points[i * segment_division])
 	
-	
-	
 	if not rope.curve.get_baked_points().has(segment_points[-1]):
 		rope.curve.add_point(segment_points[-1]) #Be sure to add the last point
 	
 	rope.number_of_segments = ceilf(curve.get_baked_length())
 	if rope.number_of_segments < 2: #Dont create very short segments
 		return
-	
-	spawn_leaves()
 	
 	rope.linear_damp = linear_damp
 	rope.collision_mask = collision_mask
@@ -200,27 +196,10 @@ func replace_segment():
 		free_attachment(rope)
 	
 	add_child(rope)
+	spawn_leaves()
 	
 	curve.clear_points() #Reset points before next curve starts
 	segment_points.clear()
-
-func spawn_leaves():
-	var last_collision: KinematicCollision3D
-	if vine_controller.get_last_slide_collision():
-		last_collision = vine_controller.get_last_slide_collision()
-	
-	if last_collision:
-		var leaves: Node3D = leaves_scene.instantiate()
-		add_child(leaves)
-		
-		leaves.global_position = segment_points[-1]
-		leaves.scale = Vector3.ZERO
-		leaves.look_at(vine_controller.global_position\
-			 + vine_controller.get_last_slide_collision().get_normal(), Vector3.BACK)
-		leaves.rotation.y += deg_to_rad(90)
-		
-		var tween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property(leaves, "scale", Vector3.ONE * 0.5, 2)
 
 func free_attachment(existing_rope: Rope): #Replaces the rope from freefall with a copy
 	await end_freefall #Called when setting in_freefall
@@ -239,10 +218,32 @@ func free_attachment(existing_rope: Rope): #Replaces the rope from freefall with
 	
 	existing_rope.queue_free()
 	add_child(rope)
+	spawn_leaves()
 	
 	curve.clear_points()
 	segment_points.clear()
 
+func spawn_leaves():
+	var last_collision: KinematicCollision3D
+	if vine_controller.get_last_slide_collision():
+		last_collision = vine_controller.get_last_slide_collision()
+	
+	if last_collision:
+		var leaves: Node3D = leaves_scene.instantiate()
+		add_child(leaves)
+		
+		var normal_pos = vine_controller.get_last_slide_collision().get_normal()
+		leaves.global_position = segment_points[-1] + normal_pos * 0.1
+		var target: Vector3 = vine_controller.global_position + normal_pos
+		leaves.look_at(target, Vector3.FORWARD)
+		leaves.rotation_degrees.x += randf_range(-90,90)
+		leaves.rotation_degrees.y += 270 + randf_range(-10,10)
+		leaves.rotation_degrees.z = abs(leaves.rotation_degrees.z) + randf_range(-10,10)
+		
+		leaves.scale = Vector3.ZERO
+		var leaves_scale: float = 0.3
+		var tween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(leaves, "scale", Vector3.ONE * leaves_scale, 2)
 
 func can_create_vine():
 	return contact_timer_ran_out
