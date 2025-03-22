@@ -1,0 +1,142 @@
+[gd_scene load_steps=23 format=3 uid="uid://b2lyoy2sx0twh"]
+
+[ext_resource type="Script" uid="uid://bppifww4xp8wd" path="res://Scenes/sunlight.gd" id="1_pdpge"]
+[ext_resource type="Texture2D" uid="uid://ur0afbc4cvwi" path="res://Textures/trace_07.png" id="2_e5njc"]
+[ext_resource type="Texture2D" uid="uid://d2djvlstgl40e" path="res://Textures/star_06.png" id="3_8oi8y"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_pdpge"]
+size = Vector3(2, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e5njc"]
+transparency = 1
+blend_mode = 1
+cull_mode = 1
+albedo_color = Color(1, 1, 0.694118, 0.309804)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8oi8y"]
+material = SubResource("StandardMaterial3D_e5njc")
+size = Vector3(2, 2, 2)
+
+[sub_resource type="Gradient" id="Gradient_e5njc"]
+offsets = PackedFloat32Array(0, 0.509091, 0.963636)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_8oi8y"]
+gradient = SubResource("Gradient_e5njc")
+
+[sub_resource type="Curve" id="Curve_futs1"]
+_data = [Vector2(0.551471, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_moknc"]
+curve_y = SubResource("Curve_futs1")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fkpql"]
+lifetime_randomness = 0.2
+emission_shape_offset = Vector3(0, 5, 0)
+emission_shape = 3
+emission_box_extents = Vector3(1, 0, 1)
+initial_velocity_max = 0.01
+directional_velocity_min = -2.00002
+directional_velocity_max = -1.60933e-05
+directional_velocity_curve = SubResource("CurveXYZTexture_moknc")
+radial_velocity_min = -0.100022
+radial_velocity_max = 0.0999776
+gravity = Vector3(0, 0, 0)
+attractor_interaction_enabled = false
+scale_max = 3.0
+color_ramp = SubResource("GradientTexture1D_8oi8y")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8oi8y"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(1, 0.741498, 0.390763, 1)
+albedo_texture = ExtResource("2_e5njc")
+billboard_mode = 2
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_futs1"]
+material = SubResource("StandardMaterial3D_8oi8y")
+size = Vector2(3, 20)
+
+[sub_resource type="Gradient" id="Gradient_futs1"]
+offsets = PackedFloat32Array(0, 0.272727, 0.472727, 0.690909, 1)
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0.396078, 1, 1, 1, 1, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_moknc"]
+gradient = SubResource("Gradient_futs1")
+
+[sub_resource type="Curve" id="Curve_fkpql"]
+_data = [Vector2(0, 0), 0.0, 1.11509, 0, 0, Vector2(0.477941, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_87e2d"]
+curve = SubResource("Curve_fkpql")
+
+[sub_resource type="Curve" id="Curve_8oi8y"]
+_data = [Vector2(0, 0.494382), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_futs1"]
+curve = SubResource("Curve_8oi8y")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_o532f"]
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 1)
+direction = Vector3(1, 1, 1)
+initial_velocity_min = -0.1
+initial_velocity_max = 0.1
+gravity = Vector3(0, 0, 0)
+tangential_accel_min = 0.0999978
+tangential_accel_max = 0.199998
+tangential_accel_curve = SubResource("CurveTexture_futs1")
+attractor_interaction_enabled = false
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_87e2d")
+color_ramp = SubResource("GradientTexture1D_moknc")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+turbulence_influence_min = 0.297
+turbulence_influence_max = 0.297
+turbulence_initial_displacement_min = 45.1
+turbulence_initial_displacement_max = 45.1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ld7pc"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("3_8oi8y")
+emission_energy_multiplier = 16.0
+backlight = Color(1, 1, 1, 1)
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_hxsl8"]
+material = SubResource("StandardMaterial3D_ld7pc")
+size = Vector2(0.5, 0.5)
+
+[node name="Sunlight" type="Area3D"]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_pdpge")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_pdpge")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_8oi8y")
+
+[node name="SunRays" type="GPUParticles3D" parent="."]
+amount = 4
+lifetime = 6.0
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_fkpql")
+draw_pass_1 = SubResource("QuadMesh_futs1")
+
+[node name="Shinies" type="GPUParticles3D" parent="."]
+amount = 32
+lifetime = 4.0
+process_material = SubResource("ParticleProcessMaterial_o532f")
+draw_pass_1 = SubResource("QuadMesh_hxsl8")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

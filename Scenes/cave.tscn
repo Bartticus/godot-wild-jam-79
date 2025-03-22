@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=17 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://ddc4xulsj2koy" path="res://Scenes/CaveModels/rock_flat_long_2.tscn" id="6_yxobr"]
 [ext_resource type="PackedScene" uid="uid://bjcbdiscv1qjh" path="res://Scenes/CaveModels/stalagmite_short_1.tscn" id="7_nchf3"]
 [ext_resource type="PackedScene" uid="uid://b3nyecty5inwy" path="res://Scenes/CaveModels/stalagtite_short_1.tscn" id="8_h3csq"]
+[ext_resource type="PackedScene" uid="uid://b2lyoy2sx0twh" path="res://sunlight.tscn" id="10_rfl45"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfbkh"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -118,6 +119,10 @@ transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.34553, 6.11602, 1.70
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.73678, 23.5645, 1.70822)
 
 [node name="StalagtiteShort2" parent="World" groups=["Climbable"] instance=ExtResource("8_h3csq")]
-transform = Transform3D(-0.588371, 0, -0.117557, 0, 0.6, 0, 0.117557, 0, -0.588371, -4.73678, 28.6903, -7.51566)
+transform = Transform3D(-0.588371, 0, -0.117557, 0, 0.6, 0, 0.117557, 0, -0.588371, -4.73678, 28.6903, -15.4899)
 
 [node name="VinePath" parent="." instance=ExtResource("2_3usej")]
+max_length = 5.0
+
+[node name="Sunlight" parent="." instance=ExtResource("10_rfl45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87974, 4.53988, -0.945084)

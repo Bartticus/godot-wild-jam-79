@@ -1,3 +1,4 @@
+class_name Vine
 extends Path3D
 
 @export var bend_down: bool = false

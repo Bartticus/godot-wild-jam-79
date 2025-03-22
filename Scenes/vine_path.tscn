@@ -26,6 +26,7 @@ height = 0.4
 [node name="VinePath" type="Path3D"]
 curve = SubResource("Curve3D_r5l72")
 script = ExtResource("1_i67k4")
+max_length = 3.0
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 material_override = SubResource("StandardMaterial3D_ihkm3")
@@ -62,6 +63,11 @@ tilt_lower_limit_deg = -30.0
 follow_target = 1
 spring_arm_collision_mask = 3
 far = 200.0
+
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="VineController"]
+strength = 20.0
+attenuation = 2.0
+radius = 5.0
 
 [node name="ContactTimer" type="Timer" parent="."]
 wait_time = 0.25
