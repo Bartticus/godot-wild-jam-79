@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cmkwnteofsmkt"]
+[gd_scene load_steps=24 format=3 uid="uid://bem2ix6vkddgi"]
 
 [ext_resource type="Script" uid="uid://bppifww4xp8wd" path="res://Scenes/sunlight.gd" id="1_pdpge"]
 [ext_resource type="Texture2D" uid="uid://ur0afbc4cvwi" path="res://Textures/trace_07.png" id="2_e5njc"]
