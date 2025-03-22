@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=39 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
@@ -11,18 +11,17 @@
 [ext_resource type="PackedScene" uid="uid://bedi7m2g77svs" path="res://Scenes/CaveModels/rock_flat_long_1.tscn" id="5_mp6fm"]
 [ext_resource type="PackedScene" uid="uid://ddc4xulsj2koy" path="res://Scenes/CaveModels/rock_flat_long_2.tscn" id="6_yxobr"]
 [ext_resource type="PackedScene" uid="uid://bjcbdiscv1qjh" path="res://Scenes/CaveModels/stalag_short_1.tscn" id="7_nchf3"]
+[ext_resource type="PackedScene" uid="uid://btu8soe4ii7qe" path="res://Scenes/CaveModels/cave_walls_3.tscn" id="7_wuac0"]
 [ext_resource type="PackedScene" uid="uid://b3nyecty5inwy" path="res://Scenes/CaveModels/stalag_short_2.tscn" id="8_h3csq"]
-[ext_resource type="PackedScene" path="res://Scenes/sunlight.tscn" id="10_rfl45"]
+[ext_resource type="PackedScene" uid="uid://cmkwnteofsmkt" path="res://Scenes/sunlight.tscn" id="10_rfl45"]
+[ext_resource type="AudioStream" uid="uid://cu85wp0n2myjx" path="res://Audio/01 Lower Cave 01.wav" id="11_t82ut"]
 [ext_resource type="PackedScene" uid="uid://073e74duya5i" path="res://Scenes/standing_water.tscn" id="12_826tw"]
+[ext_resource type="AudioStream" uid="uid://blfe78ikqp8dr" path="res://Audio/Ambience_03_Cave-Wind-Water.wav" id="12_i8nqp"]
+[ext_resource type="Texture2D" uid="uid://clwljwbodeigm" path="res://Textures/star_05.png" id="13_826tw"]
 [ext_resource type="PackedScene" uid="uid://cnntxl1s6mb4n" path="res://Scenes/CaveModels/cave_walls_2.tscn" id="13_ehcl6"]
 [ext_resource type="PackedScene" uid="uid://jigbrgch1yyg" path="res://Scenes/CaveModels/stalag_medium_1.tscn" id="14_k6l6x"]
 [ext_resource type="PackedScene" uid="uid://c41bkif30usa2" path="res://Scenes/CaveModels/cave_obelisk_7.tscn" id="15_mceht"]
-[ext_resource type="PackedScene" path="res://Scenes/sunlight.tscn" id="10_rfl45"]
-[ext_resource type="AudioStream" uid="uid://cu85wp0n2myjx" path="res://Audio/01 Lower Cave 01.wav" id="11_t82ut"]
-[ext_resource type="AudioStream" uid="uid://blfe78ikqp8dr" path="res://Audio/Ambience_03_Cave-Wind-Water.wav" id="12_i8nqp"]
-[ext_resource type="Texture2D" uid="uid://clwljwbodeigm" path="res://Textures/star_05.png" id="13_826tw"]
-
-
+[ext_resource type="PackedScene" uid="uid://cx2jwyq3aqoqa" path="res://Scenes/CaveModels/stalag_short_3.tscn" id="16_s2jap"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfbkh"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -147,20 +146,23 @@ shape = SubResource("BoxShape3D_mp6fm")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="World/FloorCeiling/StaticBody3D"]
 mesh = SubResource("BoxMesh_yxobr")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="World/FloorCeiling"]
-transform = Transform3D(-0.169436, 0, 0.985541, 0, 1, 0, -0.985541, 0, -0.169436, 21.6962, 30.7143, 66.0221)
-collision_layer = 2
-collision_mask = 2
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/FloorCeiling/StaticBody3D2"]
-shape = SubResource("BoxShape3D_mp6fm")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/FloorCeiling/StaticBody3D2"]
-transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 27.9513, 0, 4.80544)
-mesh = SubResource("BoxMesh_yxobr")
-
 [node name="CaveWallsTall5" parent="World/FloorCeiling" instance=ExtResource("4_g4geh")]
 transform = Transform3D(-0.986957, -0.160237, 0.0155243, -0.000788361, -0.0916199, -0.995794, 0.160985, -0.982817, 0.0902986, 15.7167, 37.1983, -48.4561)
+
+[node name="CaveWallsTall6" parent="World/FloorCeiling" instance=ExtResource("4_g4geh")]
+transform = Transform3D(-0.986957, -0.160237, 0.0155243, -0.0254297, 0.0599533, -0.997877, 0.158966, -0.985256, -0.0632461, 15.7167, 37.1983, -19.5698)
+
+[node name="CaveWallsTall7" parent="World/FloorCeiling" instance=ExtResource("4_g4geh")]
+transform = Transform3D(-0.995381, 0.0959324, 0.00364869, -0.0012692, 0.0248528, -0.999691, -0.0959939, -0.995077, -0.0246161, 5.44687, 34.9261, 16.3029)
+
+[node name="CaveWalls3" parent="World/FloorCeiling" instance=ExtResource("7_wuac0")]
+transform = Transform3D(0.957715, -0.262629, 0.117508, 0.222149, 0.934519, 0.278074, -0.182843, -0.240211, 0.953345, 35.5368, 41.3059, -3.20374)
+
+[node name="CaveWalls4" parent="World/FloorCeiling" instance=ExtResource("7_wuac0")]
+transform = Transform3D(0.96257, 0.020679, 0.270242, -0.0848792, 0.969929, 0.22811, -0.257398, -0.24251, 0.93538, -10.7187, 39.2143, 3.20108)
+
+[node name="CaveObelisk7" parent="World/FloorCeiling" instance=ExtResource("15_mceht")]
+transform = Transform3D(0.357729, 0.929702, 0.0876598, 0.005678, -0.0960355, 0.995362, 0.933808, -0.355572, -0.0396336, 9.10289, 34.6622, -0.934232)
 
 [node name="Walls" type="Node3D" parent="World"]
 
@@ -208,28 +210,42 @@ transform = Transform3D(-0.462901, 0, 0.381736, 0, 0.6, 0, -0.381736, 0, -0.4629
 [node name="RockFlatLong3" parent="World/Rocks" instance=ExtResource("6_yxobr")]
 transform = Transform3D(-0.99789, 0, 0.064933, 0, 1, 0, -0.064933, 0, -0.99789, 11.1283, 6.07097, -16.4579)
 
+[node name="RockFlatLong1" parent="World/Rocks" instance=ExtResource("5_mp6fm")]
+transform = Transform3D(-0.825301, -0.564694, 2.46836e-08, -1.86623e-16, -4.37114e-08, -1, 0.564693, -0.825301, 3.6075e-08, 13.0925, 17.7739, 11.0089)
+
 [node name="Climbable" type="Node3D" parent="World"]
 
 [node name="StalagmiteShort1" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("7_nchf3")]
 transform = Transform3D(-0.579256, 0, 0.156404, 0, 0.6, 0, -0.156404, 0, -0.579256, -4.67064, 5.20753, 1.70822)
 
 [node name="StalagtiteShort2" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("8_h3csq")]
-transform = Transform3D(-0.59154, 0, 0.100402, 0, 0.6, 0, -0.100402, 0, -0.59154, -4.73678, 26.0563, -7.42806)
+transform = Transform3D(-0.0192966, 0, -0.59969, 0, 0.6, 0, 0.59969, 0, -0.0192966, -4.68111, 24.1405, -11.9084)
 
 [node name="StalagMedium1" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("14_k6l6x")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.81917, 26.8082, 1.6546)
 
-[node name="RockFlatLong1" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("5_mp6fm")]
-transform = Transform3D(-0.759169, -0.650894, 2.84515e-08, -1.86623e-16, -4.37114e-08, -1, 0.650893, -0.759169, 3.31843e-08, 15.3445, 17.7739, 13.4663)
-
 [node name="CaveObelisk7" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("15_mceht")]
-transform = Transform3D(-0.416565, -0.710787, 0.566794, -0.888371, 0.185867, -0.419822, 0.193056, -0.678406, -0.708868, 6.95451, 24.3781, 10.6227)
+transform = Transform3D(-0.377918, -0.0384784, 0.925039, -0.620586, 0.751981, -0.222256, -0.68706, -0.65806, -0.308066, 5.58343, 19.1235, 7.54119)
+
+[node name="CaveObelisk8" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("15_mceht")]
+transform = Transform3D(-0.0877523, -0.781812, 0.617308, -0.439314, 0.586553, 0.680411, -0.894038, -0.211484, -0.394932, 12.0889, 19.4862, 2.92301)
+
+[node name="StalagShort3" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("16_s2jap")]
+transform = Transform3D(0.6, 0, 0, 0, -0.0876912, 0.593557, 0, -0.593557, -0.0876912, 12.8208, 19.0803, 1.27689)
+
+[node name="StalagShort4" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("16_s2jap")]
+transform = Transform3D(0.0973838, -0.515055, 0.463934, -0.685784, -0.00327012, 0.140321, -0.10108, -0.474034, -0.505049, 3.65381, 18.1431, 9.01886)
+
+[node name="Powerups" type="Node3D" parent="World"]
+
+[node name="Sunlight" parent="World/Powerups" instance=ExtResource("10_rfl45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.24763, 3.71621, -2.17871)
+
+[node name="Sunlight2" parent="World/Powerups" instance=ExtResource("10_rfl45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7338, 22.1658, -1.3219)
 
 [node name="VinePath" parent="." instance=ExtResource("2_3usej")]
 max_length = 10.0
-
-[node name="Sunlight" parent="." instance=ExtResource("10_rfl45")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87974, 4.53988, -0.945084)
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_t82ut")

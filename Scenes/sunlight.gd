@@ -4,9 +4,7 @@ extends Area3D
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.get_parent() is Vine:
-		var vine: Vine = body.get_parent()
-		vine.max_length += max_length_boost
-		Global.update_max_plant_power(vine.max_length)
+		Global.vine_path.increase_max_length(max_length_boost)
 		
 		$Shinies.process_material.attractor_interaction_enabled = true
 		$Shinies.emitting = false
