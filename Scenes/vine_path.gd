@@ -6,7 +6,7 @@ extends Path3D
 @export var turn_speed = 0.75
 
 @export_category("Vine Properties")
-@export var max_length: float = 10
+@export var max_length: float = 5
 @export var linear_damp: float = 20
 @export var collision_mask: int = 2
 @export var segment_division: int = 3
@@ -143,16 +143,18 @@ func limit_vine_length():
 		replace_segment()
 
 func handle_collision():
-	if vine_controller.get_last_slide_collision() != null:
-		var last_collision: CollisionObject3D = vine_controller.get_last_slide_collision().get_collider()
-		if last_collision.is_in_group('Climbable'):
-			if vine_in_contact && can_create_vine() && !in_freefall:
-				create_vine()
-			vine_in_contact = true
-			contoller_mesh.mesh.material.albedo_color = Color.GREEN
-
-			if contact_timer.is_stopped() && !contact_timer_ran_out:
-				contact_timer.start()
+	var last_collision = vine_controller.get_last_slide_collision()
+	if last_collision && last_collision.get_collider().is_in_group('Climbable'):
+		if vine_in_contact && can_create_vine() && !in_freefall:
+			create_vine()
+		if in_freefall:
+			in_freefall = false
+			Global.recharge_meter(0.2)
+		vine_in_contact = true
+		contoller_mesh.mesh.material.albedo_color = Color.GREEN
+		
+		if contact_timer.is_stopped() && !contact_timer_ran_out:
+			contact_timer.start()
 	else:
 		if vine_in_contact:
 			if can_create_vine():
@@ -248,15 +250,10 @@ func can_create_vine():
 func create_vine():
 	if !in_freefall:
 		replace_segment() #Anchor ends on first contact
-	else:
-		Global.recharge_meter(0.1)
 	last_contact_pos = vine_controller.global_position
 
 func _on_contact_timer_timeout() -> void:
 	contact_timer_ran_out = true
-	if in_freefall:
-		in_freefall = false
-		Global.recharge_meter(0.1)
 	Global.update_contact_meter(contact_timer.wait_time)
 
 func set_vine_length():

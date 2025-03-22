@@ -112,10 +112,10 @@ transform = Transform3D(-0.759169, -0.650894, 2.84515e-08, -1.86623e-16, -4.3711
 transform = Transform3D(0.52795, 0, 0.849276, 0, 1, 0, -0.849276, 0, 0.52795, -20.952, 5.94574, -10.3393)
 
 [node name="StalagmiteShort1" parent="World" groups=["Climbable"] instance=ExtResource("7_nchf3")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -2.98542, 3.89138, 1.70822)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.34553, 6.11602, 1.70822)
 
 [node name="StalagtiteShort1" parent="World" groups=["Climbable"] instance=ExtResource("8_h3csq")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.73678, 23.4838, 1.70822)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.73678, 23.5645, 1.70822)
 
 [node name="StalagtiteShort2" parent="World" groups=["Climbable"] instance=ExtResource("8_h3csq")]
 transform = Transform3D(-0.588371, 0, -0.117557, 0, 0.6, 0, 0.117557, 0, -0.588371, -4.73678, 28.6903, -7.51566)
