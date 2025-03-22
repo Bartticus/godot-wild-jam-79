@@ -46,7 +46,7 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.update_max_plant_power(max_length)
 	Global.set_contact_timer(contact_timer)
-	Global.pendulum = pendulum
+	Global.vine_path = self
 	vine_tip.vine_path = self
 
 func _physics_process(delta: float) -> void:
@@ -302,5 +302,12 @@ func deactivate_freefall():
 	transform_to_controller.update_rotation = false
 
 
-func _on_area_3d_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
+func _on_area_3d_body_shape_entered(_body_rid: RID, body: Node3D, _body_shape_index: int, _local_shape_index: int) -> void:
 	last_collision_object = body
+
+func increase_max_length(increase_amount):
+	update_max_length(max_length + increase_amount)
+
+func update_max_length(new_max):
+	max_length = new_max
+	Global.update_max_plant_power(new_max)

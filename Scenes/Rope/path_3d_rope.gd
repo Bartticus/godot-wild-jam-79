@@ -136,7 +136,7 @@ func freeze_shape(dist: int): #Freezes far shapes to reduce collision count
 			segment.freeze = false
 
 func _on_freeze_timer_timeout() -> void:
-	if rigidbody_attached_to_end != Global.pendulum:
+	if rigidbody_attached_to_end != Global.vine_path.pendulum:
 		for segment: Node3D in segments:
 			segment.freeze = true
 	else:

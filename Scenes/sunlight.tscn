@@ -15,6 +15,7 @@ cull_mode = 1
 albedo_color = Color(1, 1, 0.694118, 0.309804)
 
 [sub_resource type="BoxMesh" id="BoxMesh_8oi8y"]
+resource_local_to_scene = true
 material = SubResource("StandardMaterial3D_e5njc")
 size = Vector3(2, 2, 2)
 
