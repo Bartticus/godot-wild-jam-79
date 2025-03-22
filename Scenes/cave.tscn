@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=22 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://ddc4xulsj2koy" path="res://Scenes/CaveModels/rock_flat_long_2.tscn" id="6_yxobr"]
 [ext_resource type="PackedScene" uid="uid://bjcbdiscv1qjh" path="res://Scenes/CaveModels/stalagmite_short_1.tscn" id="7_nchf3"]
 [ext_resource type="PackedScene" uid="uid://b3nyecty5inwy" path="res://Scenes/CaveModels/stalagtite_short_1.tscn" id="8_h3csq"]
-[ext_resource type="PackedScene" uid="uid://b2lyoy2sx0twh" path="res://sunlight.tscn" id="10_rfl45"]
+[ext_resource type="PackedScene" path="res://sunlight.tscn" id="10_rfl45"]
 [ext_resource type="PackedScene" uid="uid://073e74duya5i" path="res://Scenes/standing_water.tscn" id="12_826tw"]
 [ext_resource type="PackedScene" uid="uid://cnntxl1s6mb4n" path="res://Scenes/CaveModels/cave_walls_2.tscn" id="13_ehcl6"]
 

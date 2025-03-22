@@ -90,6 +90,7 @@ far = 200.0
 strength = 20.0
 attenuation = 2.0
 radius = 5.0
+
 [node name="TransformToPendulum" type="RemoteTransform3D" parent="VineController"]
 unique_name_in_owner = true
 remote_path = NodePath("../../Pendulum")
