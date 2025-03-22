@@ -4,7 +4,6 @@ extends Path3D
 @export var influence_y = 1.0
 @export var influence_dictionary = {'move_forward': 0.0, 'move_backward': 0.0, 'move_left': 0.0, 'move_right': 0.0} as Dictionary
 @export var turn_speed = 0.75
-@export var add_point_interator = 0
 
 @export_category("Vine Properties")
 @export var max_length: float = 10
@@ -16,8 +15,11 @@ extends Path3D
 @onready var contoller_mesh := $VineController/MeshInstance3D as MeshInstance3D
 @onready var rope_scene: PackedScene = preload("res://Scenes/Rope/path_3d_rope.tscn")
 @onready var leaves_scene: PackedScene = preload("res://Scenes/vine_leaves.tscn")
+@onready var contact_timer := $ContactTimer as Timer
 
 var segment_points: Array = []
+var add_point_interator = 0
+var contact_timer_ran_out = false
 var last_contact_pos: Vector3
 var vine_length: float
 var vine_in_contact: bool = false
@@ -35,7 +37,8 @@ signal end_freefall
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
-	Global.update_max_length(max_length)
+	Global.update_max_plant_power(max_length)
+	Global.set_contact_timer(contact_timer)
 
 func _physics_process(delta: float) -> void:
 	handle_inputs(delta)
@@ -133,31 +136,33 @@ func calculate_influence_y(delta):
 		influence_y = [[(influence_y + (delta * turn_speed)), existing_influence].max(), 1].min()
 
 func limit_vine_length():
-	vine_length = curve.get_baked_length()
+	set_vine_length()
 	
-	if vine_length > max_length and not in_freefall:
+	if Global.current_plant_power <= 0 and not in_freefall:
 		in_freefall = true
 		replace_segment()
 
 func handle_collision():
 	if vine_controller.get_last_slide_collision() != null:
 		var last_collision: CollisionObject3D = vine_controller.get_last_slide_collision().get_collider()
-		if last_collision.collision_layer == 2:
-			if not vine_in_contact and not in_freefall:
-				replace_segment() #Anchor ends on first contact
-				Global.update_length(0)
+		if last_collision.is_in_group('Climbable'):
+			if vine_in_contact && can_create_vine() && !in_freefall:
+				create_vine()
 			vine_in_contact = true
-			in_freefall = false
-			
-			last_contact_pos = vine_controller.global_position
 			contoller_mesh.mesh.material.albedo_color = Color.GREEN
+
+			if contact_timer.is_stopped() && !contact_timer_ran_out:
+				contact_timer.start()
 	else:
 		if vine_in_contact:
-			last_contact_pos = vine_controller.global_position
-			replace_segment() #Anchor starts when not contacting
+			if can_create_vine():
+				create_vine()
+		if !contact_timer.is_stopped():
+			contact_timer.stop()
+		contact_timer_ran_out = false
+		Global.reset_contact_meter()
+
 		vine_in_contact = false
-		
-		Global.update_length(vine_length)
 		contoller_mesh.mesh.material.albedo_color = Color.WHITE
 	
 	if not segment_points.has(vine_controller.global_position):
@@ -235,3 +240,27 @@ func free_attachment(existing_rope: Rope): #Replaces the rope from freefall with
 	
 	curve.clear_points()
 	segment_points.clear()
+
+
+func can_create_vine():
+	return contact_timer_ran_out
+
+func create_vine():
+	if !in_freefall:
+		replace_segment() #Anchor ends on first contact
+	in_freefall = false
+	last_contact_pos = vine_controller.global_position
+
+func _on_contact_timer_timeout() -> void:
+	print('timer out')
+	contact_timer_ran_out = true
+	Global.update_contact_meter(contact_timer.wait_time)
+
+func set_vine_length():
+	var old_length = vine_length
+	vine_length = curve.get_baked_length()
+	if vine_length >= old_length:
+		if !vine_in_contact:
+			Global.iterate_length(vine_length - old_length)
+		else:
+			Global.recharge_meter(vine_length - old_length)

@@ -7,4 +7,4 @@ func update_max_value(new_max_value):
 	max_value = new_max_value
 
 func update_value(new_value):
-	value = max_value - new_value
+	value = new_value

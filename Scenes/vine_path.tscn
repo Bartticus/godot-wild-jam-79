@@ -62,3 +62,9 @@ tilt_lower_limit_deg = -30.0
 follow_target = 1
 spring_arm_collision_mask = 3
 far = 200.0
+
+[node name="ContactTimer" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true
+
+[connection signal="timeout" from="ContactTimer" to="." method="_on_contact_timer_timeout"]
