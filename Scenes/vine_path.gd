@@ -262,5 +262,5 @@ func set_vine_length():
 	if vine_length >= old_length:
 		if !vine_in_contact:
 			Global.iterate_length(vine_length - old_length)
-		else:
+		elif !in_freefall:
 			Global.recharge_meter(vine_length - old_length)
