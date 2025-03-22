@@ -173,22 +173,6 @@ func replace_segment():
 		if i * segment_division < segment_points.size(): #Divide segment points to include less
 			rope.curve.add_point(segment_points[i * segment_division])
 	
-	var last_collision: KinematicCollision3D
-	if vine_controller.get_last_slide_collision():
-		last_collision = vine_controller.get_last_slide_collision()
-	
-	if last_collision:
-		var leaves: Node3D = leaves_scene.instantiate()
-		add_child(leaves)
-		
-		leaves.global_position = segment_points[-1]
-		leaves.scale = Vector3.ZERO
-		leaves.look_at(vine_controller.global_position\
-			 + vine_controller.get_last_slide_collision().get_normal(), Vector3.BACK)
-		#leaves.rotate_y(90)
-		
-		var tween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
-		tween.tween_property(leaves, "scale", Vector3.ONE * 0.5, 2)
 	
 	
 	if not rope.curve.get_baked_points().has(segment_points[-1]):
@@ -197,6 +181,8 @@ func replace_segment():
 	rope.number_of_segments = ceilf(curve.get_baked_length())
 	if rope.number_of_segments < 2: #Dont create very short segments
 		return
+	
+	spawn_leaves()
 	
 	rope.linear_damp = linear_damp
 	rope.collision_mask = collision_mask
@@ -210,6 +196,24 @@ func replace_segment():
 	
 	curve.clear_points() #Reset points before next curve starts
 	segment_points.clear()
+
+func spawn_leaves():
+	var last_collision: KinematicCollision3D
+	if vine_controller.get_last_slide_collision():
+		last_collision = vine_controller.get_last_slide_collision()
+	
+	if last_collision:
+		var leaves: Node3D = leaves_scene.instantiate()
+		add_child(leaves)
+		
+		leaves.global_position = segment_points[-1]
+		leaves.scale = Vector3.ZERO
+		leaves.look_at(vine_controller.global_position\
+			 + vine_controller.get_last_slide_collision().get_normal(), Vector3.BACK)
+		leaves.rotation.y += deg_to_rad(90)
+		
+		var tween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(leaves, "scale", Vector3.ONE * 0.5, 2)
 
 func free_attachment(existing_rope: Rope): #Replaces the rope from freefall with a copy
 	await end_freefall #Called when setting in_freefall
