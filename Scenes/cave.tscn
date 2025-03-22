@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=24 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
@@ -10,11 +10,13 @@
 [ext_resource type="PackedScene" uid="uid://df00vyu3leo40" path="res://Scenes/CaveModels/cave_walls_tall.tscn" id="4_g4geh"]
 [ext_resource type="PackedScene" uid="uid://bedi7m2g77svs" path="res://Scenes/CaveModels/rock_flat_long_1.tscn" id="5_mp6fm"]
 [ext_resource type="PackedScene" uid="uid://ddc4xulsj2koy" path="res://Scenes/CaveModels/rock_flat_long_2.tscn" id="6_yxobr"]
-[ext_resource type="PackedScene" uid="uid://bjcbdiscv1qjh" path="res://Scenes/CaveModels/stalagmite_short_1.tscn" id="7_nchf3"]
-[ext_resource type="PackedScene" uid="uid://b3nyecty5inwy" path="res://Scenes/CaveModels/stalagtite_short_1.tscn" id="8_h3csq"]
+[ext_resource type="PackedScene" uid="uid://bjcbdiscv1qjh" path="res://Scenes/CaveModels/stalag_short_1.tscn" id="7_nchf3"]
+[ext_resource type="PackedScene" uid="uid://b3nyecty5inwy" path="res://Scenes/CaveModels/stalag_short_2.tscn" id="8_h3csq"]
 [ext_resource type="PackedScene" uid="uid://b2lyoy2sx0twh" path="res://sunlight.tscn" id="10_rfl45"]
 [ext_resource type="PackedScene" uid="uid://073e74duya5i" path="res://Scenes/standing_water.tscn" id="12_826tw"]
 [ext_resource type="PackedScene" uid="uid://cnntxl1s6mb4n" path="res://Scenes/CaveModels/cave_walls_2.tscn" id="13_ehcl6"]
+[ext_resource type="PackedScene" uid="uid://jigbrgch1yyg" path="res://Scenes/CaveModels/stalag_medium_1.tscn" id="14_k6l6x"]
+[ext_resource type="PackedScene" uid="uid://c41bkif30usa2" path="res://Scenes/CaveModels/cave_obelisk_7.tscn" id="15_mceht"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfbkh"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -61,88 +63,99 @@ directional_shadow_max_distance = 255.6
 [node name="World" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="World"]
+[node name="StandingWater" parent="World" instance=ExtResource("12_826tw")]
+transform = Transform3D(90, 0, 0, 0, 1, 0, 0, 0, 90, 13.9037, 0.520246, -35.9502)
+
+[node name="FloorCeiling" type="Node3D" parent="World"]
+
+[node name="StaticBody3D" type="StaticBody3D" parent="World/FloorCeiling"]
 transform = Transform3D(-0.169436, -2.5252e-10, 0.985541, -0.0293233, 0.999557, -0.00504131, -0.985105, -0.0297535, -0.169361, 5.50741, -0.176151, -28.1418)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/FloorCeiling/StaticBody3D"]
 shape = SubResource("BoxShape3D_mp6fm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/StaticBody3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/FloorCeiling/StaticBody3D"]
 mesh = SubResource("BoxMesh_yxobr")
 
-[node name="StaticBody3D2" type="StaticBody3D" parent="World"]
+[node name="StaticBody3D2" type="StaticBody3D" parent="World/FloorCeiling"]
 transform = Transform3D(-0.169436, 0, 0.985541, 0, 1, 0, -0.985541, 0, -0.169436, 21.6962, 30.7143, 66.0221)
 collision_layer = 2
 collision_mask = 2
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="World/StaticBody3D2"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="World/FloorCeiling/StaticBody3D2"]
 shape = SubResource("BoxShape3D_mp6fm")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="World/StaticBody3D2"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World/FloorCeiling/StaticBody3D2"]
 transform = Transform3D(1, 0, 1.49012e-08, 0, 1, 0, -1.49012e-08, 0, 1, 27.9513, 0, 4.80544)
 mesh = SubResource("BoxMesh_yxobr")
 
-[node name="LargeCaveRockTower" parent="World" instance=ExtResource("2_yfbkh")]
-transform = Transform3D(0.865029, 0, 0.501722, 0, 1, 0, -0.501722, 0, 0.865029, 33.8306, 41.5779, -90.5881)
-
-[node name="CaveWalls1" parent="World" instance=ExtResource("3_yfbkh")]
-transform = Transform3D(-0.790946, 0, 0.611886, 0, 1, 0, -0.611886, 0, -0.790946, -30.7966, 0.496494, 18.1039)
-
-[node name="CaveWalls3" parent="World" instance=ExtResource("3_yfbkh")]
-transform = Transform3D(-0.320349, 0, -0.9473, 0, 1, 0, 0.9473, 0, -0.320349, -23.4294, -3.42537, -55.9897)
-
-[node name="CaveWalls4" parent="World" instance=ExtResource("3_yfbkh")]
-transform = Transform3D(-0.0313759, 0, -0.999508, 0, 1, 0, 0.999508, 0, -0.0313759, -34.6622, -2.76031, -8.43247)
-
-[node name="CaveWalls6" parent="World" instance=ExtResource("3_yfbkh")]
-transform = Transform3D(-0.919828, 0, -0.392321, 0, 1, 0, 0.392321, 0, -0.919828, 18.6038, -1.40986, 13.7165)
-
-[node name="CaveWalls5" parent="World" instance=ExtResource("3_yfbkh")]
-transform = Transform3D(0.274312, 0, 0.961641, 0, 1, 0, -0.961641, 0, 0.274312, 54.1371, 5.19874, -39.388)
-
-[node name="CaveWalls8" parent="World" instance=ExtResource("3_yfbkh")]
-transform = Transform3D(0.422481, 0.169361, 0.890408, 0.900861, 0.0297011, -0.433091, -0.0997947, 0.985107, -0.140022, 67.2398, 19.7434, -75.3224)
-
-[node name="CaveWalls7" parent="World" instance=ExtResource("3_yfbkh")]
-transform = Transform3D(-0.448216, 0.00238805, 0.893922, -0.235964, 0.964213, -0.120888, -0.86222, -0.265117, -0.431613, -24.4533, 30.1272, -43.4609)
-
-[node name="CaveWallsTall" parent="World" instance=ExtResource("4_g4geh")]
-transform = Transform3D(0.221514, 0, 0.975157, 0, 1, 0, -0.975157, 0, 0.221514, -34.8611, 15.647, -34.1821)
-
-[node name="CaveWallsTall5" parent="World" instance=ExtResource("4_g4geh")]
+[node name="CaveWallsTall5" parent="World/FloorCeiling" instance=ExtResource("4_g4geh")]
 transform = Transform3D(-0.986957, -0.160237, 0.0155243, -0.000788361, -0.0916199, -0.995794, 0.160985, -0.982817, 0.0902986, 15.7167, 37.1983, -48.4561)
 
-[node name="CaveWallsTall4" parent="World" instance=ExtResource("4_g4geh")]
+[node name="Walls" type="Node3D" parent="World"]
+
+[node name="CaveWallsTall" parent="World/Walls" instance=ExtResource("4_g4geh")]
+transform = Transform3D(0.221514, 0, 0.975157, 0, 1, 0, -0.975157, 0, 0.221514, -34.8611, 15.647, -34.1821)
+
+[node name="CaveWallsTall4" parent="World/Walls" instance=ExtResource("4_g4geh")]
 transform = Transform3D(0.469995, 0, 0.882669, 0, 1, 0, -0.882669, 0, 0.469995, 61.4826, 15.647, -45.248)
 
-[node name="CaveWallsTall2" parent="World" instance=ExtResource("4_g4geh")]
+[node name="CaveWallsTall2" parent="World/Walls" instance=ExtResource("4_g4geh")]
 transform = Transform3D(-0.977556, 0, -0.210677, 0, 1, 0, 0.210677, 0, -0.977556, 13.8618, 12.7784, 20.4526)
 
-[node name="RockFlatLong1" parent="World" instance=ExtResource("5_mp6fm")]
-transform = Transform3D(-0.759169, -0.650894, 2.84515e-08, -1.86623e-16, -4.37114e-08, -1, 0.650893, -0.759169, 3.31843e-08, 15.3445, 17.7739, 13.4663)
+[node name="LargeCaveRockTower" parent="World/Walls" instance=ExtResource("2_yfbkh")]
+transform = Transform3D(0.865029, 0, 0.501722, 0, 1, 0, -0.501722, 0, 0.865029, 33.8306, 41.5779, -90.5881)
 
-[node name="RockFlatLong2" parent="World" instance=ExtResource("6_yxobr")]
+[node name="Rocks" type="Node3D" parent="World"]
+
+[node name="CaveWalls1" parent="World/Rocks" instance=ExtResource("3_yfbkh")]
+transform = Transform3D(-0.790946, 0, 0.611886, 0, 1, 0, -0.611886, 0, -0.790946, -30.7966, 0.496494, 18.1039)
+
+[node name="CaveWalls3" parent="World/Rocks" instance=ExtResource("3_yfbkh")]
+transform = Transform3D(-0.320349, 0, -0.9473, 0, 1, 0, 0.9473, 0, -0.320349, -23.4294, -3.42537, -55.9897)
+
+[node name="CaveWalls4" parent="World/Rocks" instance=ExtResource("3_yfbkh")]
+transform = Transform3D(-0.0313759, 0, -0.999508, 0, 1, 0, 0.999508, 0, -0.0313759, -34.6622, -2.76031, -8.43247)
+
+[node name="CaveWalls6" parent="World/Rocks" instance=ExtResource("3_yfbkh")]
+transform = Transform3D(-0.919828, 0, -0.392321, 0, 1, 0, 0.392321, 0, -0.919828, 18.6038, -1.40986, 13.7165)
+
+[node name="CaveWalls5" parent="World/Rocks" instance=ExtResource("3_yfbkh")]
+transform = Transform3D(0.274312, 0, 0.961641, 0, 1, 0, -0.961641, 0, 0.274312, 54.1371, 5.19874, -39.388)
+
+[node name="CaveWalls8" parent="World/Rocks" instance=ExtResource("3_yfbkh")]
+transform = Transform3D(0.422481, 0.169361, 0.890408, 0.900861, 0.0297011, -0.433091, -0.0997947, 0.985107, -0.140022, 67.2398, 19.7434, -75.3224)
+
+[node name="CaveWalls7" parent="World/Rocks" instance=ExtResource("3_yfbkh")]
+transform = Transform3D(-0.448216, 0.00238805, 0.893922, -0.235964, 0.964213, -0.120888, -0.86222, -0.265117, -0.431613, -24.4533, 30.1272, -43.4609)
+
+[node name="RockFlatLong2" parent="World/Rocks" instance=ExtResource("6_yxobr")]
 transform = Transform3D(0.52795, 0, 0.849276, 0, 1, 0, -0.849276, 0, 0.52795, -20.952, 5.94574, -10.3393)
 
-[node name="StalagmiteShort1" parent="World" groups=["Climbable"] instance=ExtResource("7_nchf3")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.34553, 6.67944, 1.70822)
-
-[node name="StalagtiteShort1" parent="World" groups=["Climbable"] instance=ExtResource("8_h3csq")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.73678, 23.2476, 1.70822)
-
-[node name="StalagtiteShort2" parent="World" groups=["Climbable"] instance=ExtResource("8_h3csq")]
-transform = Transform3D(-0.588371, 0, -0.117557, 0, 0.6, 0, 0.117557, 0, -0.588371, -4.73678, 28.6903, -6.94629)
-
-[node name="StandingWater" parent="World" instance=ExtResource("12_826tw")]
-transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 9.664, -38.927, -22.55)
-
-[node name="CaveWalls2" parent="World" instance=ExtResource("13_ehcl6")]
+[node name="CaveWalls2" parent="World/Rocks" instance=ExtResource("13_ehcl6")]
 transform = Transform3D(-0.462901, 0, 0.381736, 0, 0.6, 0, -0.381736, 0, -0.462901, 33.4719, -2.92532, -42.0157)
 
-[node name="RockFlatLong3" parent="World" instance=ExtResource("6_yxobr")]
+[node name="RockFlatLong3" parent="World/Rocks" instance=ExtResource("6_yxobr")]
 transform = Transform3D(-0.99789, 0, 0.064933, 0, 1, 0, -0.064933, 0, -0.99789, 11.1283, 6.07097, -16.4579)
+
+[node name="Climbable" type="Node3D" parent="World"]
+
+[node name="StalagmiteShort1" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("7_nchf3")]
+transform = Transform3D(-0.579256, 0, 0.156404, 0, 0.6, 0, -0.156404, 0, -0.579256, -4.67064, 5.20753, 1.70822)
+
+[node name="StalagtiteShort2" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("8_h3csq")]
+transform = Transform3D(-0.59154, 0, 0.100402, 0, 0.6, 0, -0.100402, 0, -0.59154, -4.73678, 26.0563, -7.42806)
+
+[node name="StalagMedium1" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("14_k6l6x")]
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.81917, 26.8082, 1.6546)
+
+[node name="RockFlatLong1" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("5_mp6fm")]
+transform = Transform3D(-0.759169, -0.650894, 2.84515e-08, -1.86623e-16, -4.37114e-08, -1, 0.650893, -0.759169, 3.31843e-08, 15.3445, 17.7739, 13.4663)
+
+[node name="CaveObelisk7" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("15_mceht")]
+transform = Transform3D(-0.416565, -0.710787, 0.566794, -0.888371, 0.185867, -0.419822, 0.193056, -0.678406, -0.708868, 6.95451, 24.3781, 10.6227)
 
 [node name="VinePath" parent="." instance=ExtResource("2_3usej")]
 max_length = 5.0

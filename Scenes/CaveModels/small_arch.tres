@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://clyksjjjaejug"]
+
+[ext_resource type="Texture2D" uid="uid://x2bnogeds0k5" path="res://Assets/CaveAssets/SmallArch/ArchSmall_Base-Diffuse.png" id="1_2wukv"]
+[ext_resource type="Texture2D" uid="uid://bviosoi8xyt51" path="res://Assets/CaveAssets/SmallArch/ArchSmall_Base-Specular.png" id="2_k8jrn"]
+
+[resource]
+resource_name = "Arch_Small___Base"
+cull_mode = 2
+albedo_texture = ExtResource("1_2wukv")
+metallic = 1.0
+metallic_texture = ExtResource("2_k8jrn")
+roughness = 0.8
