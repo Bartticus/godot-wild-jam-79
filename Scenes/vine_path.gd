@@ -9,7 +9,7 @@ extends Path3D
 @export var max_length: float = 10
 @export var linear_damp: float = 20
 @export var collision_mask: int = 2
-@export var segment_division: int = 10
+@export var segment_division: int = 3
 
 @onready var vine_controller := $VineController as CharacterBody3D
 @onready var contoller_mesh := $VineController/MeshInstance3D as MeshInstance3D
@@ -19,6 +19,7 @@ extends Path3D
 
 var segment_points: Array = []
 var add_point_interator = 0
+var add_point_limit = 3
 var contact_timer_ran_out = false
 var last_contact_pos: Vector3
 var vine_length: float
@@ -72,7 +73,7 @@ func add_next_point(delta):
 		handle_freefall(delta)
 	else:
 		vine_controller.move_and_slide()
-		if add_point_interator >= 10:
+		if add_point_interator >= add_point_limit:
 			add_point_interator = 0
 			if not curve.get_baked_points().has(vine_controller.global_position):
 				curve.add_point(vine_controller.global_position)
@@ -137,7 +138,6 @@ func calculate_influence_y(delta):
 
 func limit_vine_length():
 	set_vine_length()
-	
 	if Global.current_plant_power <= 0 and not in_freefall:
 		in_freefall = true
 		replace_segment()
@@ -248,12 +248,15 @@ func can_create_vine():
 func create_vine():
 	if !in_freefall:
 		replace_segment() #Anchor ends on first contact
-	in_freefall = false
+	else:
+		Global.recharge_meter(0.1)
 	last_contact_pos = vine_controller.global_position
 
 func _on_contact_timer_timeout() -> void:
-	print('timer out')
 	contact_timer_ran_out = true
+	if in_freefall:
+		in_freefall = false
+		Global.recharge_meter(0.1)
 	Global.update_contact_meter(contact_timer.wait_time)
 
 func set_vine_length():
