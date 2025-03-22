@@ -14,25 +14,30 @@ extends Path3D
 
 @onready var vine_controller := $VineController as CharacterBody3D
 @onready var contoller_mesh := $VineController/MeshInstance3D as MeshInstance3D
+@onready var vine_tip := %VineTip as MeshInstance3D
 @onready var rope_scene: PackedScene = preload("res://Scenes/Rope/path_3d_rope.tscn")
 @onready var leaves_scene: PackedScene = preload("res://Scenes/vine_leaves.tscn")
 @onready var contact_timer := $ContactTimer as Timer
+@onready var pendulum := $Pendulum as RigidBody3D
+@onready var transform_to_pendulum := %TransformToPendulum as RemoteTransform3D
+@onready var transform_to_controller := %TransformToController as RemoteTransform3D
 
 var segment_points: Array = []
 var add_point_interator = 0
 var add_point_limit = 3
 var contact_timer_ran_out = false
 var last_contact_pos: Vector3
+var last_collision_object
 var vine_length: float
 var vine_in_contact: bool = false
 var in_freefall: bool = false:
 	set(value):
 		if in_freefall:
 			if !value:
-				end_freefall.emit() #Emits when freefall changes from true to false
-			bend_down = true
+				deactivate_freefall()
 		else:
-			bend_down = false
+			if value:
+				activate_freefall()
 		in_freefall = value
 
 signal end_freefall
@@ -41,12 +46,17 @@ func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 	Global.update_max_plant_power(max_length)
 	Global.set_contact_timer(contact_timer)
+	Global.pendulum = pendulum
+	vine_tip.vine_path = self
 
 func _physics_process(delta: float) -> void:
 	handle_inputs(delta)
 	add_next_point(delta)
 	limit_vine_length()
-	handle_collision()
+	if !last_collision_object:
+		var last_collision = vine_controller.get_last_slide_collision()
+		last_collision_object = last_collision.get_collider() if last_collision else Node3D.new()
+	handle_collision(last_collision_object)
 
 func handle_inputs(delta):
 	handle_bend_down(delta)
@@ -62,7 +72,7 @@ func get_greatest_influence():
 func add_next_point(delta):
 	if curve.point_count == 0: curve.add_point(vine_controller.global_position)
 
-	add_point_interator += 1
+
 	var x_axis = calculate_x_axis(delta)
 	var z_axis = calculate_z_axis(delta)
 	var y_axis = calculate_y_axis(x_axis, z_axis, delta)
@@ -71,28 +81,34 @@ func add_next_point(delta):
 	var new_point = vine_controller.global_position + target_pos
 	vine_controller.velocity = vine_controller.global_position.direction_to(new_point)
 	if in_freefall:
-		handle_freefall(delta)
+		handle_freefall(target_pos, delta)
 	else:
+		add_point_interator += 1
 		vine_controller.move_and_slide()
 		if add_point_interator >= add_point_limit:
 			add_point_interator = 0
 			if not curve.get_baked_points().has(vine_controller.global_position):
 				curve.add_point(vine_controller.global_position)
 
-func handle_freefall(delta):
-	var start_end_distance: float = vine_controller.global_position.distance_to(last_contact_pos)
-	var magnitude: float = 10 * start_end_distance * start_end_distance * delta / max_length
-	var gravity: float = 100 * delta
+
+func handle_freefall(target_pos, delta):
+	target_pos.y = 0.0
+	pendulum.apply_impulse(target_pos * 125)
+
+	# var start_end_distance: float = vine_controller.global_position.distance_to(last_contact_pos)
+	# var magnitude: float = 10 * start_end_distance * start_end_distance * delta / max_length
+	# var gravity: float = 100 * delta
 	
 	#Applies force towards last contact, then applies gravity, then reduces velocity based on distance
-	vine_controller.velocity += vine_controller.global_position.direction_to(last_contact_pos) * magnitude
-	vine_controller.velocity.y -= gravity
-	vine_controller.velocity = lerp(vine_controller.velocity, Vector3.ZERO, start_end_distance * delta)
+	# vine_controller.velocity += vine_controller.global_position.direction_to(last_contact_pos) * magnitude
+	# vine_controller.velocity.y -= gravity
+	# vine_controller.velocity = lerp(vine_controller.velocity, Vector3.ZERO, start_end_distance * delta)
 	
-	vine_controller.move_and_slide()
+	# vine_controller.move_and_slide()
 
 func handle_bend_down(delta):
-	bend_down = Input.is_action_pressed('bend_down')
+	if !in_freefall:
+		bend_down = Input.is_action_pressed('bend_down')
 	# If we are pointing straight up, begin to tilt the vine slightly forward
 	if (get_greatest_influence() == 0 && (bend_down || influence_y <= 0.0)):
 		increase_directional_influence('move_forward', delta)
@@ -111,7 +127,7 @@ func increase_directional_influence(input, delta):
 func decrease_directional_influence(input, delta):
 	var current_influence = influence_dictionary[input]
 	var new_influence_amount = (current_influence - (delta * (turn_speed / 2)))
-	influence_dictionary.set(input, [new_influence_amount, 0.1].max())
+	influence_dictionary.set(input, [new_influence_amount, 0.0].max())
 
 func calculate_x_axis(delta):
 	return (influence_dictionary['move_right'] - influence_dictionary['move_left']) * delta
@@ -143,21 +159,22 @@ func limit_vine_length():
 		in_freefall = true
 		replace_segment()
 
-func handle_collision():
-	var last_collision = vine_controller.get_last_slide_collision()
-	if last_collision && last_collision.get_collider().is_in_group('Climbable'):
+func handle_collision(collision_object):
+	if collision_object.is_in_group('Climbable'):
 		if vine_in_contact && can_create_vine() && !in_freefall:
 			create_vine()
 		if in_freefall:
 			in_freefall = false
-			Global.recharge_meter(0.2)
+			contact_timer_ran_out = true
+			Global.recharge_meter(1.0)
 		vine_in_contact = true
-		contoller_mesh.mesh.material.albedo_color = Color.GREEN
 		
 		if contact_timer.is_stopped() && !contact_timer_ran_out:
 			contact_timer.start()
+			vine_tip.activate_light()
 	else:
 		if vine_in_contact:
+			vine_tip.deactivate_light()
 			if can_create_vine():
 				create_vine()
 		if !contact_timer.is_stopped():
@@ -166,10 +183,11 @@ func handle_collision():
 		Global.reset_contact_meter()
 
 		vine_in_contact = false
-		contoller_mesh.mesh.material.albedo_color = Color.WHITE
+		# vine_tip.material_override.albedo_color = Color.SADDLE_BROWN
 	
 	if not segment_points.has(vine_controller.global_position):
 		segment_points.append(vine_controller.global_position)
+	last_collision_object = null
 
 func replace_segment():
 	if segment_points.is_empty(): return
@@ -192,7 +210,7 @@ func replace_segment():
 	rope.collision_mask = collision_mask
 	rope.vine_controller = vine_controller
 	if in_freefall:
-		rope.rigidbody_attached_to_end = vine_controller
+		rope.rigidbody_attached_to_end = pendulum
 		rope.fixed_end_point = false
 		free_attachment(rope)
 	
@@ -266,3 +284,22 @@ func set_vine_length():
 			Global.iterate_length(vine_length - old_length)
 		elif !in_freefall:
 			Global.recharge_meter(vine_length - old_length)
+
+func activate_freefall():
+	pendulum.freeze = false
+	transform_to_pendulum.update_position = false
+	transform_to_pendulum.update_rotation = false
+	transform_to_controller.update_position = true
+	transform_to_controller.update_rotation = true
+
+func deactivate_freefall():
+	end_freefall.emit() #Emits when freefall changes from true to false
+	pendulum.freeze = true
+	transform_to_pendulum.update_position = true
+	transform_to_pendulum.update_rotation = true
+	transform_to_controller.update_position = false
+	transform_to_controller.update_rotation = false
+
+
+func _on_area_3d_body_shape_entered(body_rid: RID, body: Node3D, body_shape_index: int, local_shape_index: int) -> void:
+	last_collision_object = body

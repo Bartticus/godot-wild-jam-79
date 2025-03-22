@@ -1,15 +1,19 @@
-[gd_scene load_steps=7 format=4 uid="uid://b3nyecty5inwy"]
+[gd_scene load_steps=9 format=4 uid="uid://b3nyecty5inwy"]
 
 [ext_resource type="Texture2D" uid="uid://bi0jio1ptjssf" path="res://Assets/CaveAssets/Stalagmites/StalagmitesBase1_Diffuse.png" id="1_hk5it"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yh6gg"]
-albedo_texture = ExtResource("1_hk5it")
+[ext_resource type="Texture2D" uid="uid://ccui5exohb0x" path="res://Assets/CaveAssets/Stalagmites/StalagmitesBase1_Height.png" id="2_so0o5"]
+[ext_resource type="Texture2D" uid="uid://c1ym43a3tggr8" path="res://Assets/CaveAssets/Stalagmites/StalagmitesBase1_Specular.png" id="3_bn7eh"]
+[ext_resource type="Texture2D" uid="uid://bintcngx1icua" path="res://Assets/CaveAssets/Stalagmites/StalagmitesBase1_Normal.png" id="4_mqdqd"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afhi0"]
 resource_name = "Stalagmite_Base_1"
 cull_mode = 2
-albedo_color = Color(0.484529, 0.484529, 0.484529, 1)
-roughness = 0.5
+albedo_texture = ExtResource("1_hk5it")
+metallic = 1.0
+metallic_texture = ExtResource("3_bn7eh")
+normal_texture = ExtResource("4_mqdqd")
+heightmap_scale = -6.055
+heightmap_texture = ExtResource("2_so0o5")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_5nkb5"]
 _surfaces = [{
@@ -54,7 +58,6 @@ collision_mask = 2
 
 [node name="Stalagtite - Short0" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -3.57628e-07, -1, 0, 1, -3.57628e-07, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_yh6gg")
 mesh = SubResource("ArrayMesh_k8lrs")
 skeleton = NodePath("")
 

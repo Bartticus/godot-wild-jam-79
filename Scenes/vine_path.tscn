@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckllqa3h6ybt6"]
+[gd_scene load_steps=13 format=3 uid="uid://ckllqa3h6ybt6"]
 
 [ext_resource type="Script" uid="uid://dviq1c6clt7ui" path="res://Scenes/vine_path.gd" id="1_i67k4"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="2_ihkm3"]
+[ext_resource type="PackedScene" uid="uid://jo7qawmclont" path="res://Scenes/vine_tip.tscn" id="3_ihkm3"]
 
 [sub_resource type="Curve3D" id="Curve3D_r5l72"]
 _data = {
@@ -10,10 +11,25 @@ _data = {
 }
 point_count = 1
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_ihkm3"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0s387"]
+seamless = true
+as_normal_map = true
+bump_strength = 6.2
+noise = SubResource("FastNoiseLite_ihkm3")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihkm3"]
 albedo_color = Color(0, 0.392157, 0, 1)
+roughness = 0.63
+roughness_texture_channel = 1
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_0s387")
+grow = true
+grow_amount = -0.05
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i67k4"]
+resource_local_to_scene = true
 radius = 0.15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i67k4"]
@@ -22,6 +38,12 @@ radius = 0.15
 material = SubResource("StandardMaterial3D_i67k4")
 radius = 0.2
 height = 0.4
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i67k4"]
+friction = 0.2
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ihkm3"]
+radius = 0.17
 
 [node name="VinePath" type="Path3D"]
 curve = SubResource("Curve3D_r5l72")
@@ -45,7 +67,6 @@ path_joined = false
 smooth_faces = true
 
 [node name="VineController" type="CharacterBody3D" parent="."]
-collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VineController"]
@@ -53,6 +74,7 @@ shape = SubResource("SphereShape3D_i67k4")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VineController"]
+visible = false
 mesh = SubResource("SphereMesh_i67k4")
 
 [node name="ThirdPersonCamera" parent="VineController" instance=ExtResource("2_ihkm3")]
@@ -68,9 +90,43 @@ far = 200.0
 strength = 20.0
 attenuation = 2.0
 radius = 5.0
+[node name="TransformToPendulum" type="RemoteTransform3D" parent="VineController"]
+unique_name_in_owner = true
+remote_path = NodePath("../../Pendulum")
+update_scale = false
+
+[node name="VineTip" parent="VineController" instance=ExtResource("3_ihkm3")]
+unique_name_in_owner = true
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
 
 [node name="ContactTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
 
+[node name="Pendulum" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 2
+mass = 11.0
+physics_material_override = SubResource("PhysicsMaterial_i67k4")
+can_sleep = false
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pendulum"]
+shape = SubResource("SphereShape3D_i67k4")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="TransformToController" type="RemoteTransform3D" parent="Pendulum"]
+unique_name_in_owner = true
+remote_path = NodePath("../../VineController")
+update_position = false
+update_rotation = false
+update_scale = false
+
+[node name="Area3D" type="Area3D" parent="Pendulum"]
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pendulum/Area3D"]
+shape = SubResource("SphereShape3D_ihkm3")
+
 [connection signal="timeout" from="ContactTimer" to="." method="_on_contact_timer_timeout"]
+[connection signal="body_shape_entered" from="Pendulum/Area3D" to="." method="_on_area_3d_body_shape_entered"]

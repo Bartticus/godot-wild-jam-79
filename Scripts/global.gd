@@ -8,6 +8,7 @@ var recharge_rate: float = 2.0
 var flaccid_meter: TextureProgressBar
 var contact_timer: Timer
 var contact_meter: TextureProgressBar
+var pendulum: RigidBody3D
 
 func _physics_process(_delta: float) -> void:
 	if power_is_charged():

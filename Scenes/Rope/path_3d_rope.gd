@@ -11,6 +11,7 @@ extends Path3D
 @export var material : Material
 @onready var mesh := $CSGPolygon3D
 @onready var distance = curve.get_baked_length()
+@onready var freeze_timer = $FreezeTimer
 # instances
 var segments : Array
 var joints : Array
@@ -126,7 +127,7 @@ func skip_physics_frames(frame_count: int) -> bool: #Skips n out of n+1 physics 
 	return false
 
 func freeze_shape(dist: int): #Freezes far shapes to reduce collision count
-	if $FreezeTimer.is_stopped(): return
+	if freeze_timer.is_stopped(): return
 	
 	for segment: Node3D in segments:
 		if segment.global_position.distance_to(vine_controller.global_position) > dist:
@@ -135,8 +136,11 @@ func freeze_shape(dist: int): #Freezes far shapes to reduce collision count
 			segment.freeze = false
 
 func _on_freeze_timer_timeout() -> void:
-	for segment: Node3D in segments:
-		segment.freeze = true
+	if rigidbody_attached_to_end != Global.pendulum:
+		for segment: Node3D in segments:
+			segment.freeze = true
+	else:
+		freeze_timer.start()
 
 func _physics_process(_delta: float) -> void:
 	var max_dist_to_player: int = 10

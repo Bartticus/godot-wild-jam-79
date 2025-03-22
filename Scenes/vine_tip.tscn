@@ -1,0 +1,52 @@
+[gd_scene load_steps=7 format=3 uid="uid://jo7qawmclont"]
+
+[ext_resource type="ArrayMesh" uid="uid://bqf22pbj01nre" path="res://Assets/11,2.obj" id="1_cwqi7"]
+[ext_resource type="Script" uid="uid://wnommubu5o4v" path="res://Scenes/vine_tip.gd" id="2_wpupr"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cwqi7"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cwqi7"]
+seamless = true
+as_normal_map = true
+bump_strength = 18.0
+noise = SubResource("FastNoiseLite_cwqi7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpupr"]
+albedo_color = Color(0.391176, 0.25909, 1.44392e-07, 1)
+metallic = 0.5
+roughness = 0.8
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_cwqi7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wpupr"]
+
+[node name="VineTip" type="MeshInstance3D"]
+material_override = SubResource("StandardMaterial3D_wpupr")
+material_overlay = SubResource("ShaderMaterial_wpupr")
+script = ExtResource("2_wpupr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wpupr")
+mesh = ExtResource("1_cwqi7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-08, -1, 0, -4.37114e-08, 1.91069e-15, -1, 1, -4.37114e-08, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wpupr")
+mesh = ExtResource("1_cwqi7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, 0.707107, -3.09086e-08, 0, -4.37114e-08, -1, -0.707107, 0.707107, -3.09086e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wpupr")
+mesh = ExtResource("1_cwqi7")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.707107, -0.707107, 3.09086e-08, 0, -4.37114e-08, -1, 0.707107, 0.707107, -3.09086e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_wpupr")
+mesh = ExtResource("1_cwqi7")
+
+[node name="VineTipLight" type="OmniLight3D" parent="."]
+light_color = Color(1.74474e-07, 0.294954, 4.33177e-07, 1)
+light_energy = 0.0
+light_size = 0.3
+omni_range = 1.0
