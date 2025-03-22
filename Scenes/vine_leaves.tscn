@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://c43u8hsggdpvs"]
+
+[ext_resource type="PackedScene" uid="uid://des26a4wki47g" path="res://Assets/vine_leaves.blend" id="1_efjr8"]
+
+[node name="vine_leaves" instance=ExtResource("1_efjr8")]

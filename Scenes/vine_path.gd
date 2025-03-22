@@ -15,6 +15,7 @@ extends Path3D
 @onready var vine_controller := $VineController as CharacterBody3D
 @onready var contoller_mesh := $VineController/MeshInstance3D as MeshInstance3D
 @onready var rope_scene: PackedScene = preload("res://Scenes/Rope/path_3d_rope.tscn")
+@onready var leaves_scene: PackedScene = preload("res://Scenes/vine_leaves.tscn")
 
 var segment_points: Array = []
 var last_contact_pos: Vector3
@@ -172,6 +173,24 @@ func replace_segment():
 		if i * segment_division < segment_points.size(): #Divide segment points to include less
 			rope.curve.add_point(segment_points[i * segment_division])
 	
+	var last_collision: KinematicCollision3D
+	if vine_controller.get_last_slide_collision():
+		last_collision = vine_controller.get_last_slide_collision()
+	
+	if last_collision:
+		var leaves: Node3D = leaves_scene.instantiate()
+		add_child(leaves)
+		
+		leaves.global_position = segment_points[-1]
+		leaves.scale = Vector3.ZERO
+		leaves.look_at(vine_controller.global_position\
+			 + vine_controller.get_last_slide_collision().get_normal(), Vector3.BACK)
+		#leaves.rotate_y(90)
+		
+		var tween: Tween = create_tween().set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_CUBIC)
+		tween.tween_property(leaves, "scale", Vector3.ONE * 0.5, 2)
+	
+	
 	if not rope.curve.get_baked_points().has(segment_points[-1]):
 		rope.curve.add_point(segment_points[-1]) #Be sure to add the last point
 	
@@ -185,7 +204,6 @@ func replace_segment():
 	if in_freefall:
 		rope.rigidbody_attached_to_end = vine_controller
 		rope.fixed_end_point = false
-		print("f")
 		free_attachment(rope)
 	
 	add_child(rope)
