@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=30 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
@@ -12,11 +12,16 @@
 [ext_resource type="PackedScene" uid="uid://ddc4xulsj2koy" path="res://Scenes/CaveModels/rock_flat_long_2.tscn" id="6_yxobr"]
 [ext_resource type="PackedScene" uid="uid://bjcbdiscv1qjh" path="res://Scenes/CaveModels/stalag_short_1.tscn" id="7_nchf3"]
 [ext_resource type="PackedScene" uid="uid://b3nyecty5inwy" path="res://Scenes/CaveModels/stalag_short_2.tscn" id="8_h3csq"]
-[ext_resource type="PackedScene" path="res://sunlight.tscn" id="10_rfl45"]
+[ext_resource type="PackedScene" path="res://Scenes/sunlight.tscn" id="10_rfl45"]
 [ext_resource type="PackedScene" uid="uid://073e74duya5i" path="res://Scenes/standing_water.tscn" id="12_826tw"]
 [ext_resource type="PackedScene" uid="uid://cnntxl1s6mb4n" path="res://Scenes/CaveModels/cave_walls_2.tscn" id="13_ehcl6"]
 [ext_resource type="PackedScene" uid="uid://jigbrgch1yyg" path="res://Scenes/CaveModels/stalag_medium_1.tscn" id="14_k6l6x"]
 [ext_resource type="PackedScene" uid="uid://c41bkif30usa2" path="res://Scenes/CaveModels/cave_obelisk_7.tscn" id="15_mceht"]
+[ext_resource type="PackedScene" path="res://Scenes/sunlight.tscn" id="10_rfl45"]
+[ext_resource type="AudioStream" uid="uid://cu85wp0n2myjx" path="res://Audio/01 Lower Cave 01.wav" id="11_t82ut"]
+[ext_resource type="AudioStream" uid="uid://blfe78ikqp8dr" path="res://Audio/Ambience_03_Cave-Wind-Water.wav" id="12_i8nqp"]
+[ext_resource type="Texture2D" uid="uid://clwljwbodeigm" path="res://Textures/star_05.png" id="13_826tw"]
+
 
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfbkh"]
@@ -48,6 +53,68 @@ uv1_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_yxobr"]
 material = SubResource("StandardMaterial3D_ak5v8")
 size = Vector3(200, 2, 200)
+
+[sub_resource type="Curve" id="Curve_ehcl6"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.492647, 0.674157), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gcsno"]
+curve = SubResource("Curve_ehcl6")
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ehcl6"]
+
+[sub_resource type="Curve" id="Curve_826tw"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ehcl6"]
+curve = SubResource("Curve_826tw")
+
+[sub_resource type="Curve" id="Curve_gcsno"]
+_data = [Vector2(0, 0.494382), 0.0, 0.0, 0, 0, Vector2(0.492647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.494382), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_k6l6x"]
+curve = SubResource("Curve_gcsno")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mceht"]
+lifetime_randomness = 0.5
+emission_shape = 3
+emission_box_extents = Vector3(50, 50, 50)
+directional_velocity_min = -1.00002
+directional_velocity_max = 0.999984
+directional_velocity_curve = SubResource("CurveXYZTexture_ehcl6")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.0
+radial_accel_max = 0.999998
+damping_min = 1.0
+damping_max = 2.0
+scale_max = 2.0
+scale_curve = SubResource("CurveTexture_k6l6x")
+alpha_curve = SubResource("CurveTexture_gcsno")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+hue_variation_curve = SubResource("CurveTexture_ehcl6")
+turbulence_enabled = true
+turbulence_noise_scale = 2.933
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_influence_min = 0.0
+turbulence_influence_max = 1.0
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2jap"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+albedo_texture = ExtResource("13_826tw")
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_wuac0"]
+material = SubResource("StandardMaterial3D_s2jap")
 
 [node name="Cave" type="Node3D"]
 
@@ -159,7 +226,27 @@ transform = Transform3D(-0.759169, -0.650894, 2.84515e-08, -1.86623e-16, -4.3711
 transform = Transform3D(-0.416565, -0.710787, 0.566794, -0.888371, 0.185867, -0.419822, 0.193056, -0.678406, -0.708868, 6.95451, 24.3781, 10.6227)
 
 [node name="VinePath" parent="." instance=ExtResource("2_3usej")]
-max_length = 5.0
+max_length = 10.0
 
 [node name="Sunlight" parent="." instance=ExtResource("10_rfl45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.87974, 4.53988, -0.945084)
+
+[node name="BGMusic" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_t82ut")
+volume_db = -20.0
+autoplay = true
+
+[node name="BGSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("12_i8nqp")
+volume_db = -5.0
+autoplay = true
+bus = &"SFX"
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.63351, -20.5232)
+amount = 500
+lifetime = 5.0
+speed_scale = 0.4
+visibility_aabb = AABB(-40, -40, -40, 80, 80, 80)
+process_material = SubResource("ParticleProcessMaterial_mceht")
+draw_pass_1 = SubResource("QuadMesh_wuac0")

@@ -16,3 +16,5 @@ func _on_body_entered(body: Node3D) -> void:
 		tween.tween_property($MeshInstance3D, "mesh:material:albedo_color:a", 0 ,1)
 		
 		$CollisionShape3D.set_deferred("disabled", true)
+		
+		$AudioStreamPlayer3D.play()

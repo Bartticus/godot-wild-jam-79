@@ -11,7 +11,7 @@ var contact_meter: TextureProgressBar
 var pendulum: RigidBody3D
 
 func _physics_process(_delta: float) -> void:
-	if power_is_charged():
+	if power_is_charged() && flaccid_meter:
 		reset_plant_power()
 
 func update_max_plant_power(new_max_plant_power):
