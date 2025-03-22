@@ -8,13 +8,13 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cwqi7"]
 seamless = true
 as_normal_map = true
-bump_strength = 18.0
+bump_strength = 100.0
 noise = SubResource("FastNoiseLite_cwqi7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpupr"]
 albedo_color = Color(0.391176, 0.25909, 1.44392e-07, 1)
 metallic = 0.5
-roughness = 0.8
+roughness = 0.7
 normal_enabled = true
 normal_texture = SubResource("NoiseTexture2D_cwqi7")
 
@@ -46,7 +46,7 @@ material_override = SubResource("StandardMaterial3D_wpupr")
 mesh = ExtResource("1_cwqi7")
 
 [node name="VineTipLight" type="OmniLight3D" parent="."]
-light_color = Color(1.74474e-07, 0.294954, 4.33177e-07, 1)
+light_color = Color(0, 0.596512, 3.85046e-07, 1)
 light_energy = 0.0
 light_size = 0.3
 omni_range = 1.0

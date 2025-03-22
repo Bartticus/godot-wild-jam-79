@@ -167,6 +167,7 @@ func handle_collision(collision_object):
 			in_freefall = false
 			contact_timer_ran_out = true
 			Global.recharge_meter(1.0)
+			vine_tip.activate_light()
 		vine_in_contact = true
 		
 		if contact_timer.is_stopped() && !contact_timer_ran_out:

@@ -117,7 +117,7 @@ size = Vector2(0.5, 0.5)
 
 [node name="Sunlight" type="Area3D"]
 collision_layer = 0
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("1_pdpge")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]

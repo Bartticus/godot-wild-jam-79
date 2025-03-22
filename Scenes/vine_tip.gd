@@ -5,7 +5,7 @@ extends MeshInstance3D
 var vine_path : Path3D
 
 func activate_light():
-	vine_tip_light.set_param(OmniLight3D.PARAM_ENERGY, 2.0)
+	vine_tip_light.set_param(OmniLight3D.PARAM_ENERGY, 1.0)
 
 func deactivate_light():
 	vine_tip_light.set_param(OmniLight3D.PARAM_ENERGY, 0)
