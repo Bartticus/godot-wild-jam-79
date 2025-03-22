@@ -9,7 +9,7 @@ var flaccid_meter: TextureProgressBar
 var contact_timer: Timer
 var contact_meter: TextureProgressBar
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if power_is_charged():
 		reset_plant_power()
 

@@ -126,11 +126,17 @@ func skip_physics_frames(frame_count: int) -> bool: #Skips n out of n+1 physics 
 	return false
 
 func freeze_shape(dist: int): #Freezes far shapes to reduce collision count
+	if $FreezeTimer.is_stopped(): return
+	
 	for segment: Node3D in segments:
 		if segment.global_position.distance_to(vine_controller.global_position) > dist:
 			segment.freeze = true
 		else:
 			segment.freeze = false
+
+func _on_freeze_timer_timeout() -> void:
+	for segment: Node3D in segments:
+		segment.freeze = true
 
 func _physics_process(_delta: float) -> void:
 	var max_dist_to_player: int = 10
