@@ -2,7 +2,7 @@ class_name Rope
 extends Path3D
 # Script by Elijah Martin/Palin_drome
 @export_range(3,200,1) var number_of_segments = 10
-@export_range(3,50,1) var mesh_sides = 6
+@export_range(3,50,1) var mesh_sides = 5
 @export var cable_thickness = 0.1
 @export var fixed_start_point = true
 @export var fixed_end_point = true
@@ -11,6 +11,7 @@ extends Path3D
 @export var material : Material
 @onready var mesh := $CSGPolygon3D
 @onready var distance = curve.get_baked_length()
+@onready var freeze_timer = $FreezeTimer
 # instances
 var segments : Array
 var joints : Array
@@ -25,7 +26,7 @@ func _ready() -> void:
 	var rotation_buffer = rotation
 	rotation = Vector3(0,0,0)
 	var position_buffer = position
-	position = Vector3(0,0,0)
+	position -= global_position
 	
 	# Duplicate the curve to ensure its unique and resets properly on reloads, avoiding drift due to re-adding the position_buffer
 	var cloned_curve = curve.duplicate()  # Duplicate curve
@@ -126,7 +127,7 @@ func skip_physics_frames(frame_count: int) -> bool: #Skips n out of n+1 physics 
 	return false
 
 func freeze_shape(dist: int): #Freezes far shapes to reduce collision count
-	if $FreezeTimer.is_stopped(): return
+	if freeze_timer.is_stopped(): return
 	
 	for segment: Node3D in segments:
 		if segment.global_position.distance_to(vine_controller.global_position) > dist:
@@ -135,17 +136,21 @@ func freeze_shape(dist: int): #Freezes far shapes to reduce collision count
 			segment.freeze = false
 
 func _on_freeze_timer_timeout() -> void:
-	for segment: Node3D in segments:
-		segment.freeze = true
+	if rigidbody_attached_to_end != Global.vine_path.pendulum:
+		for segment: Node3D in segments:
+			segment.freeze = true
+	else:
+		freeze_timer.start()
 
 func _physics_process(_delta: float) -> void:
 	var max_dist_to_player: int = 10
-	freeze_shape(max_dist_to_player)
+	if rigidbody_attached_to_end != Global.vine_path.pendulum:
+		freeze_shape(max_dist_to_player)
 	if skip_physics_frames(2): return
 	
 	# update curve positions
 	for p in (curve.point_count):
-		if curve.get_baked_points()[p].distance_to(vine_controller.global_position) > max_dist_to_player:
+		if curve.get_baked_points()[p].distance_to(vine_controller.global_position) > max_dist_to_player && rigidbody_attached_to_end != Global.vine_path.pendulum:
 			return #Don't do this if it's far from player
 		
 		if  p < (number_of_segments):

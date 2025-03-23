@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bqclenbhh3ao7"
+path="res://.godot/imported/Vine_Length_Limit_02.wav-9f934c46ebbd324848aa38cc5a6c7f99.sample"
+
+[deps]
+
+source_file="res://Audio/Vine Length Limit/Vine_Length_Limit_02.wav"
+dest_files=["res://.godot/imported/Vine_Length_Limit_02.wav-9f934c46ebbd324848aa38cc5a6c7f99.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=2

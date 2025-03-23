@@ -1,0 +1,12 @@
+[gd_resource type="StandardMaterial3D" load_steps=3 format=3 uid="uid://bxo3t511y5nnf"]
+
+[ext_resource type="Texture2D" uid="uid://dajgyah3qqn72" path="res://Assets/CaveAssets/RockFlatLong/RocksFlatLong_Base-Diffuse.png" id="1_hyyd0"]
+[ext_resource type="Texture2D" uid="uid://c4qfk57w1ybu2" path="res://Assets/CaveAssets/RockFlatLong/RocksFlatLong_Base-Specular.png" id="2_8yndr"]
+
+[resource]
+resource_name = "Flat_Rock___Base"
+cull_mode = 2
+albedo_texture = ExtResource("1_hyyd0")
+metallic = 1.0
+metallic_texture = ExtResource("2_8yndr")
+roughness = 0.8

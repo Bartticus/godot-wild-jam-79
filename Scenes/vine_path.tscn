@@ -1,7 +1,293 @@
-[gd_scene load_steps=8 format=3 uid="uid://ckllqa3h6ybt6"]
+[gd_scene load_steps=299 format=3 uid="uid://ckllqa3h6ybt6"]
 
 [ext_resource type="Script" uid="uid://dviq1c6clt7ui" path="res://Scenes/vine_path.gd" id="1_i67k4"]
+[ext_resource type="Material" uid="uid://dn7xi6lb6pnmf" path="res://Scenes/vine.tres" id="2_dhnt0"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="2_ihkm3"]
+[ext_resource type="PackedScene" uid="uid://jo7qawmclont" path="res://Scenes/vine_tip.tscn" id="3_ihkm3"]
+[ext_resource type="Texture2D" uid="uid://cb2ng0u1odaeu" path="res://Assets/Length Meter Overlay Decreasing/Length Meter Overlay Decreasing_00000.png" id="4_0s387"]
+[ext_resource type="Texture2D" uid="uid://bowu7lv7452rf" path="res://Assets/02 Meter/Length Meter Overlay Steady_00000.png" id="6_pikyq"]
+[ext_resource type="Texture2D" uid="uid://8ea5atqkpli3" path="res://Assets/02 Meter/Length Meter Overlay Steady_00001.png" id="7_ge7dj"]
+[ext_resource type="Texture2D" uid="uid://lxjatbqsymrr" path="res://Assets/02 Meter/Length Meter Overlay Steady_00002.png" id="8_vxtaq"]
+[ext_resource type="Texture2D" uid="uid://byd4o0e48jl6q" path="res://Assets/02 Meter/Length Meter Overlay Steady_00003.png" id="9_iar52"]
+[ext_resource type="Texture2D" uid="uid://c2sxc474hb6jo" path="res://Assets/02 Meter/Length Meter Overlay Steady_00004.png" id="10_ulaiv"]
+[ext_resource type="Texture2D" uid="uid://31kn4d8kdauv" path="res://Assets/02 Meter/Length Meter Overlay Steady_00005.png" id="11_guh1y"]
+[ext_resource type="Texture2D" uid="uid://rjtlfsq4nqeb" path="res://Assets/02 Meter/Length Meter Overlay Steady_00006.png" id="12_0hohb"]
+[ext_resource type="Texture2D" uid="uid://x75fueqv3ugr" path="res://Assets/02 Meter/Length Meter Overlay Steady_00007.png" id="13_660ud"]
+[ext_resource type="Texture2D" uid="uid://bjajqp4agp5ux" path="res://Assets/02 Meter/Length Meter Overlay Steady_00008.png" id="14_pifao"]
+[ext_resource type="Texture2D" uid="uid://b7irgr73tjq4v" path="res://Assets/02 Meter/Length Meter Overlay Steady_00009.png" id="15_7oqa3"]
+[ext_resource type="Texture2D" uid="uid://d0dvxyjx0de1o" path="res://Assets/02 Meter/Length Meter Overlay Steady_00010.png" id="16_nhype"]
+[ext_resource type="Texture2D" uid="uid://csh7m15ir2igi" path="res://Assets/02 Meter/Length Meter Overlay Steady_00011.png" id="17_apa68"]
+[ext_resource type="Texture2D" uid="uid://bhgh6hjfc8fs5" path="res://Assets/02 Meter/Length Meter Overlay Steady_00012.png" id="18_vmvq0"]
+[ext_resource type="Texture2D" uid="uid://dlo54kd8la250" path="res://Assets/02 Meter/Length Meter Overlay Steady_00013.png" id="19_rg2uw"]
+[ext_resource type="Texture2D" uid="uid://xc05g0r78kkh" path="res://Assets/02 Meter/Length Meter Overlay Steady_00014.png" id="20_4ps51"]
+[ext_resource type="Texture2D" uid="uid://xgev8d1rx1xe" path="res://Assets/02 Meter/Length Meter Overlay Steady_00015.png" id="21_hysrc"]
+[ext_resource type="Texture2D" uid="uid://caow7ptyxdj8g" path="res://Assets/02 Meter/Length Meter Overlay Steady_00016.png" id="22_1jvtw"]
+[ext_resource type="Texture2D" uid="uid://c0oswj1bel0cx" path="res://Assets/02 Meter/Length Meter Overlay Steady_00017.png" id="23_tfpo2"]
+[ext_resource type="Texture2D" uid="uid://cx2lq6ujfkr5p" path="res://Assets/02 Meter/Length Meter Overlay Steady_00018.png" id="24_hnrlj"]
+[ext_resource type="Texture2D" uid="uid://dhbjhqwla7xri" path="res://Assets/02 Meter/Length Meter Overlay Steady_00019.png" id="25_qftl0"]
+[ext_resource type="Texture2D" uid="uid://dpby7xv01d04d" path="res://Assets/02 Meter/Length Meter Overlay Steady_00020.png" id="26_k316v"]
+[ext_resource type="Texture2D" uid="uid://cj3ritmnwq868" path="res://Assets/02 Meter/Length Meter Overlay Steady_00021.png" id="27_mlrb5"]
+[ext_resource type="Texture2D" uid="uid://cg5b5ehw2h72j" path="res://Assets/02 Meter/Length Meter Overlay Steady_00022.png" id="28_wneoq"]
+[ext_resource type="Texture2D" uid="uid://bvmblcrx2n2km" path="res://Assets/02 Meter/Length Meter Overlay Steady_00023.png" id="29_0ufb7"]
+[ext_resource type="Texture2D" uid="uid://rvosja2tvibq" path="res://Assets/02 Meter/Length Meter Overlay Steady_00024.png" id="30_hxtyq"]
+[ext_resource type="Texture2D" uid="uid://0pdy1ih68ud7" path="res://Assets/02 Meter/Length Meter Overlay Steady_00025.png" id="31_hqus0"]
+[ext_resource type="Texture2D" uid="uid://dff62wmrt3774" path="res://Assets/02 Meter/Length Meter Overlay Steady_00026.png" id="32_8yvar"]
+[ext_resource type="Texture2D" uid="uid://b7rxwuiogcjs0" path="res://Assets/02 Meter/Length Meter Overlay Steady_00027.png" id="33_ryrtn"]
+[ext_resource type="Texture2D" uid="uid://bmllaqwxgir3p" path="res://Assets/02 Meter/Length Meter Overlay Steady_00028.png" id="34_36w1k"]
+[ext_resource type="Texture2D" uid="uid://c38egfkkphfvo" path="res://Assets/02 Meter/Length Meter Overlay Steady_00029.png" id="35_n8qs0"]
+[ext_resource type="Texture2D" uid="uid://bl7pujbjosuel" path="res://Assets/02 Meter/Length Meter Overlay Steady_00030.png" id="36_80ypv"]
+[ext_resource type="Texture2D" uid="uid://dwks40w1071vi" path="res://Assets/02 Meter/Length Meter Overlay Steady_00031.png" id="37_0ibdt"]
+[ext_resource type="Texture2D" uid="uid://dfs6eyghab4au" path="res://Assets/02 Meter/Length Meter Overlay Steady_00032.png" id="38_1xyp5"]
+[ext_resource type="Texture2D" uid="uid://cqgmlholaqdex" path="res://Assets/02 Meter/Length Meter Overlay Steady_00033.png" id="39_r0scg"]
+[ext_resource type="Texture2D" uid="uid://b2eht7s2y2q8e" path="res://Assets/02 Meter/Length Meter Overlay Steady_00034.png" id="40_22fpr"]
+[ext_resource type="Texture2D" uid="uid://bf3t8b1vcawq7" path="res://Assets/02 Meter/Length Meter Overlay Steady_00035.png" id="41_ih2lr"]
+[ext_resource type="Texture2D" uid="uid://27mbw5hrovhp" path="res://Assets/02 Meter/Length Meter Overlay Steady_00036.png" id="42_qhsc5"]
+[ext_resource type="Texture2D" uid="uid://c6t62ru4huga5" path="res://Assets/02 Meter/Length Meter Overlay Steady_00037.png" id="43_tr70c"]
+[ext_resource type="Texture2D" uid="uid://byrm8r326w2u8" path="res://Assets/02 Meter/Length Meter Overlay Steady_00038.png" id="44_i2csi"]
+[ext_resource type="Texture2D" uid="uid://dkstlid0qchgi" path="res://Assets/02 Meter/Length Meter Overlay Steady_00039.png" id="45_o8t81"]
+[ext_resource type="Texture2D" uid="uid://cf6w0ri60osvn" path="res://Assets/02 Meter/Length Meter Overlay Steady_00040.png" id="46_cvska"]
+[ext_resource type="Texture2D" uid="uid://bbsicg4051k2u" path="res://Assets/Length Meter Background/Length Meter Background_00000.png" id="48_e1dq7"]
+[ext_resource type="Texture2D" uid="uid://cvpocv6shcitw" path="res://Assets/Length Meter Background/Length Meter Background_00001.png" id="49_gw81e"]
+[ext_resource type="Texture2D" uid="uid://cnw3p50sxlkpc" path="res://Assets/Length Meter Background/Length Meter Background_00002.png" id="50_q17im"]
+[ext_resource type="Texture2D" uid="uid://clxbkk2c6lcen" path="res://Assets/Length Meter Background/Length Meter Background_00003.png" id="51_6cv5e"]
+[ext_resource type="Texture2D" uid="uid://c1vmoimm56pwl" path="res://Assets/Length Meter Background/Length Meter Background_00004.png" id="52_vl8yg"]
+[ext_resource type="Texture2D" uid="uid://brxqxd4qcg3pb" path="res://Assets/Length Meter Background/Length Meter Background_00005.png" id="53_gln44"]
+[ext_resource type="Texture2D" uid="uid://cfb5drvhvmryo" path="res://Assets/Length Meter Background/Length Meter Background_00006.png" id="54_edxve"]
+[ext_resource type="Texture2D" uid="uid://bhnivgkv8c0wv" path="res://Assets/Length Meter Background/Length Meter Background_00007.png" id="55_aag4m"]
+[ext_resource type="Texture2D" uid="uid://dekwjftucrnjb" path="res://Assets/Length Meter Background/Length Meter Background_00008.png" id="56_nm0g3"]
+[ext_resource type="Texture2D" uid="uid://cfm70g4hge8du" path="res://Assets/Length Meter Background/Length Meter Background_00009.png" id="57_nsxt8"]
+[ext_resource type="Texture2D" uid="uid://1bnwv04qfh4l" path="res://Assets/Length Meter Background/Length Meter Background_00010.png" id="58_so6cl"]
+[ext_resource type="Texture2D" uid="uid://blyhmc2h1up2l" path="res://Assets/Length Meter Background/Length Meter Background_00011.png" id="59_xdb7x"]
+[ext_resource type="Texture2D" uid="uid://bhf1ur003y717" path="res://Assets/Length Meter Background/Length Meter Background_00012.png" id="60_rthdj"]
+[ext_resource type="Texture2D" uid="uid://dighj5tg3pjcc" path="res://Assets/Length Meter Background/Length Meter Background_00013.png" id="61_juqia"]
+[ext_resource type="Texture2D" uid="uid://t10heiul1uul" path="res://Assets/Length Meter Background/Length Meter Background_00014.png" id="62_2buwf"]
+[ext_resource type="Texture2D" uid="uid://8t8n7413h807" path="res://Assets/Length Meter Background/Length Meter Background_00015.png" id="63_fdn23"]
+[ext_resource type="Texture2D" uid="uid://dwrliagicg4ov" path="res://Assets/Length Meter Background/Length Meter Background_00016.png" id="64_sevy7"]
+[ext_resource type="Texture2D" uid="uid://dd8c7oxeknuex" path="res://Assets/Length Meter Background/Length Meter Background_00017.png" id="65_0hd6p"]
+[ext_resource type="Texture2D" uid="uid://crcvswq0q33le" path="res://Assets/Length Meter Background/Length Meter Background_00018.png" id="66_i1xd2"]
+[ext_resource type="Texture2D" uid="uid://312ttrnpkcg6" path="res://Assets/Length Meter Background/Length Meter Background_00019.png" id="67_t3w33"]
+[ext_resource type="Texture2D" uid="uid://bvdypwj5d5kfj" path="res://Assets/Length Meter Background/Length Meter Background_00020.png" id="68_pplcs"]
+[ext_resource type="Texture2D" uid="uid://tsipt3p58aha" path="res://Assets/Length Meter Background/Length Meter Background_00021.png" id="69_o3is8"]
+[ext_resource type="Texture2D" uid="uid://cppc6bq2jh563" path="res://Assets/Length Meter Background/Length Meter Background_00022.png" id="70_j1qac"]
+[ext_resource type="Texture2D" uid="uid://c75fclg5bidon" path="res://Assets/Length Meter Background/Length Meter Background_00023.png" id="71_6d61b"]
+[ext_resource type="Texture2D" uid="uid://d3hpdp11irerr" path="res://Assets/Length Meter Background/Length Meter Background_00024.png" id="72_x1btn"]
+[ext_resource type="Texture2D" uid="uid://cn3kp67h4gv3y" path="res://Assets/Length Meter Background/Length Meter Background_00025.png" id="73_ol8ye"]
+[ext_resource type="Texture2D" uid="uid://rsegsva00m00" path="res://Assets/Length Meter Background/Length Meter Background_00026.png" id="74_5snij"]
+[ext_resource type="Texture2D" uid="uid://i4qepe46xls" path="res://Assets/Length Meter Background/Length Meter Background_00027.png" id="75_w8p8u"]
+[ext_resource type="Texture2D" uid="uid://c5u6y6dm3wja3" path="res://Assets/Length Meter Background/Length Meter Background_00028.png" id="76_81qfv"]
+[ext_resource type="Texture2D" uid="uid://d3gc1soykc245" path="res://Assets/Length Meter Background/Length Meter Background_00029.png" id="77_yeqol"]
+[ext_resource type="Texture2D" uid="uid://cltxtc4m517fr" path="res://Assets/Length Meter Background/Length Meter Background_00030.png" id="78_74tfs"]
+[ext_resource type="Texture2D" uid="uid://dpmvicmsrihbc" path="res://Assets/Length Meter Background/Length Meter Background_00031.png" id="79_e1xwy"]
+[ext_resource type="Texture2D" uid="uid://cm3t5gtv48nbl" path="res://Assets/Length Meter Background/Length Meter Background_00032.png" id="80_sqxc0"]
+[ext_resource type="Texture2D" uid="uid://b7uaj3xqiry8a" path="res://Assets/Length Meter Background/Length Meter Background_00033.png" id="81_5qkb7"]
+[ext_resource type="Texture2D" uid="uid://mqfcfr33ntfh" path="res://Assets/Length Meter Background/Length Meter Background_00034.png" id="82_0w1f0"]
+[ext_resource type="Texture2D" uid="uid://dlevv3inqtwuq" path="res://Assets/Length Meter Background/Length Meter Background_00035.png" id="83_7e85l"]
+[ext_resource type="Texture2D" uid="uid://batdav28lbbqh" path="res://Assets/Length Meter Background/Length Meter Background_00036.png" id="84_i8q07"]
+[ext_resource type="Texture2D" uid="uid://dg2nseduqkoxt" path="res://Assets/Length Meter Background/Length Meter Background_00037.png" id="85_bwtkx"]
+[ext_resource type="Texture2D" uid="uid://j8206yo0mqm3" path="res://Assets/Length Meter Background/Length Meter Background_00038.png" id="86_gw3es"]
+[ext_resource type="Texture2D" uid="uid://kvs0x0gc5nam" path="res://Assets/Length Meter Background/Length Meter Background_00039.png" id="87_kkv5f"]
+[ext_resource type="Texture2D" uid="uid://di8ecgqnghnk8" path="res://Assets/Length Meter Background/Length Meter Background_00040.png" id="88_jp4cg"]
+[ext_resource type="Texture2D" uid="uid://bloh8cdpiq3c2" path="res://Assets/Length Meter Background/Length Meter Background_00041.png" id="89_4xhw3"]
+[ext_resource type="Texture2D" uid="uid://hfxucdlw8orb" path="res://Assets/Length Meter Background/Length Meter Background_00042.png" id="90_jlcn1"]
+[ext_resource type="Texture2D" uid="uid://o5s1vo78weuh" path="res://Assets/Length Meter Background/Length Meter Background_00043.png" id="91_ylnc5"]
+[ext_resource type="Texture2D" uid="uid://cqsb45tyy8fgw" path="res://Assets/Length Meter Background/Length Meter Background_00044.png" id="92_suvy0"]
+[ext_resource type="Texture2D" uid="uid://b5rmk4evey8lj" path="res://Assets/Length Meter Background/Length Meter Background_00045.png" id="93_3djnr"]
+[ext_resource type="Texture2D" uid="uid://x3yoox77o5mu" path="res://Assets/Length Meter Background/Length Meter Background_00046.png" id="94_g03pj"]
+[ext_resource type="Texture2D" uid="uid://fl1rw08o5dwm" path="res://Assets/Length Meter Background/Length Meter Background_00047.png" id="95_wv5wy"]
+[ext_resource type="Texture2D" uid="uid://cghpqo3to0g76" path="res://Assets/Length Meter Background/Length Meter Background_00048.png" id="96_dm2gw"]
+[ext_resource type="Texture2D" uid="uid://b0vv10tyl4idt" path="res://Assets/Length Meter Background/Length Meter Background_00049.png" id="97_rt1c5"]
+[ext_resource type="Texture2D" uid="uid://dgxhyepe6xkit" path="res://Assets/Length Meter Background/Length Meter Background_00050.png" id="98_bn64u"]
+[ext_resource type="Texture2D" uid="uid://bw13k23sajg41" path="res://Assets/Length Meter Background/Length Meter Background_00051.png" id="99_uor31"]
+[ext_resource type="Texture2D" uid="uid://cwl2jxaotxge3" path="res://Assets/Length Meter Background/Length Meter Background_00052.png" id="100_7qgac"]
+[ext_resource type="Texture2D" uid="uid://b47g38wwvd65e" path="res://Assets/Length Meter Background/Length Meter Background_00053.png" id="101_53sxp"]
+[ext_resource type="Texture2D" uid="uid://hkwy4edfs2b8" path="res://Assets/Length Meter Background/Length Meter Background_00054.png" id="102_iuolx"]
+[ext_resource type="Texture2D" uid="uid://brnvuanc104lw" path="res://Assets/Length Meter Background/Length Meter Background_00055.png" id="103_3c13h"]
+[ext_resource type="Texture2D" uid="uid://cjbqvq7rwf3w5" path="res://Assets/Length Meter Background/Length Meter Background_00056.png" id="104_4end5"]
+[ext_resource type="Texture2D" uid="uid://dkswc4v271k54" path="res://Assets/Length Meter Background/Length Meter Background_00057.png" id="105_irak8"]
+[ext_resource type="Texture2D" uid="uid://djmunsbqexup2" path="res://Assets/Length Meter Background/Length Meter Background_00058.png" id="106_wtw0l"]
+[ext_resource type="Texture2D" uid="uid://dj1lwn4m07dpw" path="res://Assets/Length Meter Background/Length Meter Background_00059.png" id="107_5t1pn"]
+[ext_resource type="Texture2D" uid="uid://sswnq36gcw5x" path="res://Assets/Length Meter Background/Length Meter Background_00060.png" id="108_xhrak"]
+[ext_resource type="Texture2D" uid="uid://daq58pfmnr3o5" path="res://Assets/Length Meter Background/Length Meter Background_00061.png" id="109_ogu0q"]
+[ext_resource type="Texture2D" uid="uid://dkcmo38qyo8my" path="res://Assets/Length Meter Background/Length Meter Background_00062.png" id="110_msq2m"]
+[ext_resource type="Texture2D" uid="uid://hmrl0rncecl3" path="res://Assets/Length Meter Background/Length Meter Background_00063.png" id="111_6sjjc"]
+[ext_resource type="Texture2D" uid="uid://dcqxyorx0xogx" path="res://Assets/Length Meter Background/Length Meter Background_00064.png" id="112_peu0u"]
+[ext_resource type="Texture2D" uid="uid://biikew0a711iy" path="res://Assets/Length Meter Background/Length Meter Background_00065.png" id="113_6ho1p"]
+[ext_resource type="Texture2D" uid="uid://bm20qn274gs38" path="res://Assets/Length Meter Background/Length Meter Background_00066.png" id="114_nietg"]
+[ext_resource type="Texture2D" uid="uid://d2t687qkkxop2" path="res://Assets/Length Meter Background/Length Meter Background_00067.png" id="115_x7kre"]
+[ext_resource type="Texture2D" uid="uid://de71v7og0vj1f" path="res://Assets/Length Meter Background/Length Meter Background_00068.png" id="116_0lp46"]
+[ext_resource type="Texture2D" uid="uid://b6rmp75nso101" path="res://Assets/Length Meter Background/Length Meter Background_00069.png" id="117_j3src"]
+[ext_resource type="Texture2D" uid="uid://qyc4g183wpiq" path="res://Assets/Length Meter Background/Length Meter Background_00070.png" id="118_m6asb"]
+[ext_resource type="Texture2D" uid="uid://d30po8ojsfj" path="res://Assets/Length Meter Background/Length Meter Background_00071.png" id="119_wrpft"]
+[ext_resource type="Texture2D" uid="uid://c4oul201kq243" path="res://Assets/Length Meter Background/Length Meter Background_00072.png" id="120_ufjrg"]
+[ext_resource type="Texture2D" uid="uid://btpjvwu5ngid1" path="res://Assets/Length Meter Background/Length Meter Background_00073.png" id="121_r6rcg"]
+[ext_resource type="Texture2D" uid="uid://bkddrkk8mjcns" path="res://Assets/Length Meter Background/Length Meter Background_00074.png" id="122_jcwhd"]
+[ext_resource type="Texture2D" uid="uid://dgqv1mlh4si42" path="res://Assets/Length Meter Background/Length Meter Background_00075.png" id="123_t68d4"]
+[ext_resource type="Texture2D" uid="uid://coyqjgux5cs07" path="res://Assets/Length Meter Background/Length Meter Background_00076.png" id="124_vqpo2"]
+[ext_resource type="Texture2D" uid="uid://d1o5pm8kmdraa" path="res://Assets/Length Meter Background/Length Meter Background_00077.png" id="125_lila7"]
+[ext_resource type="Texture2D" uid="uid://cc2dbho7q66bt" path="res://Assets/Length Meter Background/Length Meter Background_00078.png" id="126_o6ob8"]
+[ext_resource type="Texture2D" uid="uid://qo61x6oxs83y" path="res://Assets/Length Meter Background/Length Meter Background_00079.png" id="127_ptegm"]
+[ext_resource type="Texture2D" uid="uid://bic6k25cudrp6" path="res://Assets/Length Meter Background/Length Meter Background_00080.png" id="128_0dgr5"]
+[ext_resource type="Texture2D" uid="uid://chpb2yl7ugiy4" path="res://Assets/Length Meter Background/Length Meter Background_00081.png" id="129_ohcdw"]
+[ext_resource type="Texture2D" uid="uid://dwgud8r3bkonn" path="res://Assets/Length Meter Background/Length Meter Background_00082.png" id="130_2nqsk"]
+[ext_resource type="Texture2D" uid="uid://de7viu7yyl476" path="res://Assets/Length Meter Background/Length Meter Background_00083.png" id="131_yj02c"]
+[ext_resource type="Texture2D" uid="uid://v86x27xfmphj" path="res://Assets/Length Meter Background/Length Meter Background_00084.png" id="132_umch0"]
+[ext_resource type="Texture2D" uid="uid://dr2h6x3p6vkoh" path="res://Assets/Length Meter Background/Length Meter Background_00085.png" id="133_1qy13"]
+[ext_resource type="Texture2D" uid="uid://fo0hownxun0x" path="res://Assets/Length Meter Background/Length Meter Background_00086.png" id="134_xnfy0"]
+[ext_resource type="Texture2D" uid="uid://bcvvou67l7x3e" path="res://Assets/Length Meter Background/Length Meter Background_00087.png" id="135_ugywj"]
+[ext_resource type="Texture2D" uid="uid://dn3rspq27vohs" path="res://Assets/Length Meter Background/Length Meter Background_00088.png" id="136_tpmbp"]
+[ext_resource type="Texture2D" uid="uid://bvb37ae1xnnvq" path="res://Assets/Length Meter Background/Length Meter Background_00089.png" id="137_ucbsq"]
+[ext_resource type="Texture2D" uid="uid://b7cl1d060vjt3" path="res://Assets/Length Meter Background/Length Meter Background_00090.png" id="138_af058"]
+[ext_resource type="Texture2D" uid="uid://x0gbj5cec0q2" path="res://Assets/Length Meter Background/Length Meter Background_00091.png" id="139_xmyq5"]
+[ext_resource type="Texture2D" uid="uid://c5xb1xyrjcj1l" path="res://Assets/Length Meter Background/Length Meter Background_00092.png" id="140_ypw3m"]
+[ext_resource type="Texture2D" uid="uid://cnsj3fh4p3up0" path="res://Assets/Length Meter Background/Length Meter Background_00093.png" id="141_3ot0v"]
+[ext_resource type="Texture2D" uid="uid://2ggf6evfij21" path="res://Assets/Length Meter Background/Length Meter Background_00094.png" id="142_va7ba"]
+[ext_resource type="Texture2D" uid="uid://bvprhv66fd413" path="res://Assets/Length Meter Background/Length Meter Background_00095.png" id="143_8ijgl"]
+[ext_resource type="Texture2D" uid="uid://l8see6om301g" path="res://Assets/Length Meter Background/Length Meter Background_00096.png" id="144_bpk2y"]
+[ext_resource type="Texture2D" uid="uid://dt77n24s0y6jh" path="res://Assets/Length Meter Background/Length Meter Background_00097.png" id="145_05ies"]
+[ext_resource type="Texture2D" uid="uid://cuovf1wnbwnfp" path="res://Assets/Length Meter Background/Length Meter Background_00098.png" id="146_hkbgv"]
+[ext_resource type="Texture2D" uid="uid://ckoug8tv4u8l2" path="res://Assets/Length Meter Background/Length Meter Background_00099.png" id="147_7x3u2"]
+[ext_resource type="Texture2D" uid="uid://c4fx2sxc11r8f" path="res://Assets/Length Meter Background/Length Meter Background_00100.png" id="148_v63s3"]
+[ext_resource type="Texture2D" uid="uid://deotf3b3psjoq" path="res://Assets/Length Meter Background/Length Meter Background_00101.png" id="149_g0bc4"]
+[ext_resource type="Texture2D" uid="uid://digcuagidfsg8" path="res://Assets/Length Meter Background/Length Meter Background_00102.png" id="150_b83xy"]
+[ext_resource type="Texture2D" uid="uid://c8kplge3anvqk" path="res://Assets/Length Meter Background/Length Meter Background_00103.png" id="151_h1mea"]
+[ext_resource type="Texture2D" uid="uid://tkc6csvur8in" path="res://Assets/Length Meter Background/Length Meter Background_00104.png" id="152_cxnfp"]
+[ext_resource type="Texture2D" uid="uid://bhlkhwnng76m0" path="res://Assets/Length Meter Background/Length Meter Background_00105.png" id="153_2u8g5"]
+[ext_resource type="Texture2D" uid="uid://nq3g3lnp8bc0" path="res://Assets/Length Meter Background/Length Meter Background_00106.png" id="154_ft0sn"]
+[ext_resource type="Texture2D" uid="uid://ctmmvvajwr20m" path="res://Assets/Length Meter Background/Length Meter Background_00107.png" id="155_7s46t"]
+[ext_resource type="Texture2D" uid="uid://cub86me37lvp8" path="res://Assets/Length Meter Background/Length Meter Background_00108.png" id="156_8toh6"]
+[ext_resource type="Texture2D" uid="uid://mvpinn42avuc" path="res://Assets/Length Meter Background/Length Meter Background_00109.png" id="157_wf15l"]
+[ext_resource type="Texture2D" uid="uid://bskdemmapjms0" path="res://Assets/Length Meter Background/Length Meter Background_00110.png" id="158_4avxh"]
+[ext_resource type="Texture2D" uid="uid://dqg4ip38t2jsn" path="res://Assets/Length Meter Background/Length Meter Background_00111.png" id="159_4w7c4"]
+[ext_resource type="Texture2D" uid="uid://camumylpnuamp" path="res://Assets/Length Meter Background/Length Meter Background_00112.png" id="160_ea1g7"]
+[ext_resource type="Texture2D" uid="uid://bovrp56exrmdc" path="res://Assets/Length Meter Background/Length Meter Background_00113.png" id="161_ynhj8"]
+[ext_resource type="Texture2D" uid="uid://2d1ntw67flna" path="res://Assets/Length Meter Background/Length Meter Background_00114.png" id="162_lkm3m"]
+[ext_resource type="Texture2D" uid="uid://b2gmqtk7dwpod" path="res://Assets/Length Meter Background/Length Meter Background_00115.png" id="163_c1cde"]
+[ext_resource type="Texture2D" uid="uid://cs557s6r8hu1h" path="res://Assets/Length Meter Background/Length Meter Background_00116.png" id="164_q8jxi"]
+[ext_resource type="Texture2D" uid="uid://brnuppqpwovhm" path="res://Assets/Length Meter Background/Length Meter Background_00117.png" id="165_3doim"]
+[ext_resource type="Texture2D" uid="uid://bwhr4fhce5t5r" path="res://Assets/Length Meter Background/Length Meter Background_00118.png" id="166_cov0r"]
+[ext_resource type="Texture2D" uid="uid://g4k4jxcvqtog" path="res://Assets/Length Meter Background/Length Meter Background_00119.png" id="167_1c4rj"]
+[ext_resource type="Texture2D" uid="uid://dmfshj066crue" path="res://Assets/Length Meter Background/Length Meter Background_00120.png" id="168_vmykx"]
+[ext_resource type="Texture2D" uid="uid://c4wutt1tuji5n" path="res://Assets/Length Meter Background/Length Meter Background_00121.png" id="169_3jwab"]
+[ext_resource type="Texture2D" uid="uid://cbc13y7tk8w6y" path="res://Assets/Length Meter Background/Length Meter Background_00122.png" id="170_0o3gy"]
+[ext_resource type="Texture2D" uid="uid://ju680wbgxgk5" path="res://Assets/Length Meter Background/Length Meter Background_00123.png" id="171_c5fxp"]
+[ext_resource type="Texture2D" uid="uid://c0tif30ii7bgt" path="res://Assets/Length Meter Background/Length Meter Background_00124.png" id="172_ttyfq"]
+[ext_resource type="Texture2D" uid="uid://cn13g4e6imb5f" path="res://Assets/Length Meter Background/Length Meter Background_00125.png" id="173_87uqw"]
+[ext_resource type="Texture2D" uid="uid://d4gi08efbuyq" path="res://Assets/Length Meter Background/Length Meter Background_00126.png" id="174_cw5m6"]
+[ext_resource type="Script" uid="uid://mab0gsyovvil" path="res://Scenes/radial_meter.gd" id="174_ge7dj"]
+[ext_resource type="Texture2D" uid="uid://bvpkg38dljx6g" path="res://Assets/Length Meter Background/Length Meter Background_00127.png" id="175_ycql0"]
+[ext_resource type="Texture2D" uid="uid://3dsa6gmav7qa" path="res://Assets/Length Meter Background/Length Meter Background_00128.png" id="176_b0org"]
+[ext_resource type="Texture2D" uid="uid://dk2g5t2tqc6sa" path="res://Assets/Length Meter Background/Length Meter Background_00129.png" id="177_hktkk"]
+[ext_resource type="Texture2D" uid="uid://dux8favdit2it" path="res://Assets/Length Meter Background/Length Meter Background_00130.png" id="178_owv7e"]
+[ext_resource type="Texture2D" uid="uid://8uir18e25wqg" path="res://Assets/Length Meter Background/Length Meter Background_00131.png" id="179_1vdhr"]
+[ext_resource type="Texture2D" uid="uid://bjt21m20n8t70" path="res://Assets/Length Meter Background/Length Meter Background_00132.png" id="180_i1cv7"]
+[ext_resource type="Texture2D" uid="uid://tvchqhms0ml1" path="res://Assets/Length Meter Background/Length Meter Background_00133.png" id="181_3oy2l"]
+[ext_resource type="Texture2D" uid="uid://dc112414gnc1s" path="res://Assets/Length Meter Background/Length Meter Background_00134.png" id="182_1ybin"]
+[ext_resource type="Texture2D" uid="uid://cpmlx8yqdhcca" path="res://Assets/Length Meter Background/Length Meter Background_00135.png" id="183_vj4wv"]
+[ext_resource type="Texture2D" uid="uid://cii3mktjlrfkm" path="res://Assets/Length Meter Background/Length Meter Background_00136.png" id="184_wdvs1"]
+[ext_resource type="Texture2D" uid="uid://la3ow6qcyqcs" path="res://Assets/Length Meter Background/Length Meter Background_00137.png" id="185_m6tnn"]
+[ext_resource type="Texture2D" uid="uid://cbiuor8flvpap" path="res://Assets/Length Meter Background/Length Meter Background_00138.png" id="186_q4q8a"]
+[ext_resource type="Texture2D" uid="uid://c6hh8u1hdr82m" path="res://Assets/Length Meter Background/Length Meter Background_00139.png" id="187_2s5o5"]
+[ext_resource type="Texture2D" uid="uid://85snj3f6affq" path="res://Assets/Length Meter Background/Length Meter Background_00140.png" id="188_hf2ei"]
+[ext_resource type="Texture2D" uid="uid://dn3kgmlnjxygo" path="res://Assets/Length Meter Background/Length Meter Background_00141.png" id="189_xmpqc"]
+[ext_resource type="Texture2D" uid="uid://bb3srwtcrg2fc" path="res://Assets/Length Meter Background/Length Meter Background_00142.png" id="190_kylo8"]
+[ext_resource type="Texture2D" uid="uid://joe2rqqp4srf" path="res://Assets/Length Meter Background/Length Meter Background_00143.png" id="191_kmm3l"]
+[ext_resource type="Texture2D" uid="uid://dt55st37foj5i" path="res://Assets/Length Meter Background/Length Meter Background_00144.png" id="192_vyl4q"]
+[ext_resource type="Texture2D" uid="uid://ck3id2cy01j5y" path="res://Assets/Length Meter Background/Length Meter Background_00145.png" id="193_n5d1e"]
+[ext_resource type="Texture2D" uid="uid://dslhb2rhlmwy6" path="res://Assets/Length Meter Background/Length Meter Background_00146.png" id="194_h0jkc"]
+[ext_resource type="Texture2D" uid="uid://c5wr5aqxgwngh" path="res://Assets/Length Meter Background/Length Meter Background_00147.png" id="195_108x0"]
+[ext_resource type="Texture2D" uid="uid://cbfuphs4gr7q8" path="res://Assets/Length Meter Background/Length Meter Background_00148.png" id="196_hdo6x"]
+[ext_resource type="Texture2D" uid="uid://cy1qdbjcagmm0" path="res://Assets/Length Meter Background/Length Meter Background_00149.png" id="197_okiot"]
+[ext_resource type="Texture2D" uid="uid://b76g6w3wo2pww" path="res://Assets/Length Meter Background/Length Meter Background_00150.png" id="198_tn0c3"]
+[ext_resource type="Texture2D" uid="uid://byxebldar307j" path="res://Assets/Length Meter Background/Length Meter Background_00151.png" id="199_r8i2y"]
+[ext_resource type="Texture2D" uid="uid://f4fohtpxyvl8" path="res://Assets/Length Meter Background/Length Meter Background_00152.png" id="200_rlnd3"]
+[ext_resource type="Texture2D" uid="uid://b7m2mwpiuj5u" path="res://Assets/Length Meter Background/Length Meter Background_00153.png" id="201_85ndi"]
+[ext_resource type="Texture2D" uid="uid://dw00rh7tkk5sc" path="res://Assets/Length Meter Background/Length Meter Background_00154.png" id="202_p81w2"]
+[ext_resource type="Texture2D" uid="uid://07f55dd1yc0l" path="res://Assets/Length Meter Background/Length Meter Background_00155.png" id="203_t0iox"]
+[ext_resource type="Texture2D" uid="uid://cl5d0llujy7pi" path="res://Assets/Length Meter Background/Length Meter Background_00156.png" id="204_bgegu"]
+[ext_resource type="Texture2D" uid="uid://cpd4sfstmiave" path="res://Assets/Length Meter Background/Length Meter Background_00157.png" id="205_7j8gb"]
+[ext_resource type="Texture2D" uid="uid://cbpnbe8rvfodd" path="res://Assets/Length Meter Background/Length Meter Background_00158.png" id="206_60hu6"]
+[ext_resource type="Texture2D" uid="uid://fiaf2t2vim66" path="res://Assets/Length Meter Background/Length Meter Background_00159.png" id="207_q3anb"]
+[ext_resource type="Texture2D" uid="uid://bulx0uva00vtk" path="res://Assets/Length Meter Background/Length Meter Background_00160.png" id="208_lelu3"]
+[ext_resource type="Texture2D" uid="uid://dov5ndpac3glb" path="res://Assets/Length Meter Background/Length Meter Background_00161.png" id="209_0exkg"]
+[ext_resource type="Texture2D" uid="uid://cgrhoptfmx1q8" path="res://Assets/Length Meter Background/Length Meter Background_00162.png" id="210_1g303"]
+[ext_resource type="Texture2D" uid="uid://d0sidmqqmiyro" path="res://Assets/Length Meter Background/Length Meter Background_00163.png" id="211_img3a"]
+[ext_resource type="Texture2D" uid="uid://7ha2dvlm4gyk" path="res://Assets/Length Meter Background/Length Meter Background_00164.png" id="212_q0qfq"]
+[ext_resource type="Texture2D" uid="uid://o2hpxdu26ppg" path="res://Assets/Length Meter Background/Length Meter Background_00165.png" id="213_rqq6x"]
+[ext_resource type="Texture2D" uid="uid://cg2pwsp3a5clq" path="res://Assets/Length Meter Background/Length Meter Background_00166.png" id="214_ag6tx"]
+[ext_resource type="Texture2D" uid="uid://bnajxxmnkuwik" path="res://Assets/Length Meter Background/Length Meter Background_00167.png" id="215_fpyxv"]
+[ext_resource type="Texture2D" uid="uid://dankewqwnnk6u" path="res://Assets/Length Meter Background/Length Meter Background_00168.png" id="216_eomek"]
+[ext_resource type="Texture2D" uid="uid://dhleykm86mffk" path="res://Assets/Length Meter Background/Length Meter Background_00169.png" id="217_53ivg"]
+[ext_resource type="Texture2D" uid="uid://d3kd6ah2314i6" path="res://Assets/Length Meter Background/Length Meter Background_00170.png" id="218_fmt4c"]
+[ext_resource type="Texture2D" uid="uid://brerxlcunyrgx" path="res://Assets/Length Meter Background/Length Meter Background_00171.png" id="219_tahim"]
+[ext_resource type="Texture2D" uid="uid://vow5snqp5w4j" path="res://Assets/Length Meter Background/Length Meter Background_00172.png" id="220_dvayd"]
+[ext_resource type="Texture2D" uid="uid://bwwtb4i2gp1v4" path="res://Assets/Length Meter Background/Length Meter Background_00173.png" id="221_flf3i"]
+[ext_resource type="Texture2D" uid="uid://dcvp7m3w654pc" path="res://Assets/Length Meter Background/Length Meter Background_00174.png" id="222_a26lu"]
+[ext_resource type="Texture2D" uid="uid://dyvmtspk4mtxp" path="res://Assets/Length Meter Background/Length Meter Background_00175.png" id="223_omeua"]
+[ext_resource type="Texture2D" uid="uid://i4yskleghtia" path="res://Assets/Length Meter Background/Length Meter Background_00176.png" id="224_hahux"]
+[ext_resource type="Texture2D" uid="uid://dsglvmki4b1x5" path="res://Assets/Length Meter Background/Length Meter Background_00177.png" id="225_m0knm"]
+[ext_resource type="Texture2D" uid="uid://ddvqahitjuyww" path="res://Assets/Length Meter Background/Length Meter Background_00178.png" id="226_xw6dj"]
+[ext_resource type="Texture2D" uid="uid://ps5thovmw001" path="res://Assets/Length Meter Background/Length Meter Background_00179.png" id="227_pbg8a"]
+[ext_resource type="Texture2D" uid="uid://v803m5p7n8pb" path="res://Assets/Length Meter Background/Length Meter Background_00180.png" id="228_01q3m"]
+[ext_resource type="Texture2D" uid="uid://dh3qk5rbjjj7i" path="res://Assets/Length Meter Background/Length Meter Background_00181.png" id="229_y8qlv"]
+[ext_resource type="Texture2D" uid="uid://bkh7pj0psxiks" path="res://Assets/Length Meter Background/Length Meter Background_00182.png" id="230_gdk37"]
+[ext_resource type="Texture2D" uid="uid://po85thunyiui" path="res://Assets/Length Meter Background/Length Meter Background_00183.png" id="231_ilwd2"]
+[ext_resource type="Texture2D" uid="uid://optxoxkqbl6c" path="res://Assets/Length Meter Background/Length Meter Background_00184.png" id="232_dmudv"]
+[ext_resource type="Texture2D" uid="uid://ljip1kv1cx5c" path="res://Assets/Length Meter Background/Length Meter Background_00185.png" id="233_8vjj2"]
+[ext_resource type="Texture2D" uid="uid://df1m3bej6ikbb" path="res://Assets/Length Meter Background/Length Meter Background_00186.png" id="234_nffcr"]
+[ext_resource type="Texture2D" uid="uid://caqw3rpew0xyq" path="res://Assets/Length Meter Background/Length Meter Background_00187.png" id="235_gskpi"]
+[ext_resource type="Texture2D" uid="uid://cj3prxop4yk0v" path="res://Assets/Length Meter Background/Length Meter Background_00188.png" id="236_74w6a"]
+[ext_resource type="Texture2D" uid="uid://b4qljystq72vb" path="res://Assets/Length Meter Background/Length Meter Background_00189.png" id="237_hdag0"]
+[ext_resource type="Texture2D" uid="uid://bmx6d6droe664" path="res://Assets/Length Meter Background/Length Meter Background_00190.png" id="238_rs8q5"]
+[ext_resource type="Texture2D" uid="uid://bjceql61ohejv" path="res://Assets/Length Meter Background/Length Meter Background_00191.png" id="239_3mvpv"]
+[ext_resource type="Texture2D" uid="uid://dvjqr5i04o52g" path="res://Assets/Length Meter Background/Length Meter Background_00192.png" id="240_wovk3"]
+[ext_resource type="Texture2D" uid="uid://bhuj4gjgitb55" path="res://Assets/Length Meter Background/Length Meter Background_00193.png" id="241_5c7k1"]
+[ext_resource type="Texture2D" uid="uid://comkth6tpexmm" path="res://Assets/Length Meter Background/Length Meter Background_00194.png" id="242_mk7fp"]
+[ext_resource type="Texture2D" uid="uid://djrd4bfbnd3al" path="res://Assets/Length Meter Background/Length Meter Background_00195.png" id="243_df056"]
+[ext_resource type="Texture2D" uid="uid://17l57holvq8w" path="res://Assets/Length Meter Background/Length Meter Background_00196.png" id="244_15eko"]
+[ext_resource type="Texture2D" uid="uid://e2vl2b8wewtc" path="res://Assets/Length Meter Background/Length Meter Background_00197.png" id="245_rb5qu"]
+[ext_resource type="Texture2D" uid="uid://dvxviu2c5trtl" path="res://Assets/Length Meter Background/Length Meter Background_00198.png" id="246_0iw2e"]
+[ext_resource type="Texture2D" uid="uid://ck71obrowlqaq" path="res://Assets/Length Meter Background/Length Meter Background_00199.png" id="247_2knqx"]
+[ext_resource type="Texture2D" uid="uid://cj6ka5neu54iw" path="res://Assets/Length Meter Background/Length Meter Background_00200.png" id="248_miufa"]
+[ext_resource type="Texture2D" uid="uid://ctptwyi545t62" path="res://Assets/Length Meter Background/Length Meter Background_00201.png" id="249_f6aj8"]
+[ext_resource type="Texture2D" uid="uid://dnuu87cfa41rx" path="res://Assets/Length Meter Background/Length Meter Background_00202.png" id="250_oe5pm"]
+[ext_resource type="Texture2D" uid="uid://ia8igq4eijmi" path="res://Assets/Length Meter Background/Length Meter Background_00203.png" id="251_uw7f3"]
+[ext_resource type="Texture2D" uid="uid://cw3ol042c7302" path="res://Assets/Length Meter Background/Length Meter Background_00204.png" id="252_oc2oy"]
+[ext_resource type="Texture2D" uid="uid://cwknrtj12cv4s" path="res://Assets/Length Meter Background/Length Meter Background_00205.png" id="253_8fkjj"]
+[ext_resource type="Texture2D" uid="uid://bt0ah8uvgxx4t" path="res://Assets/Length Meter Background/Length Meter Background_00206.png" id="254_8x578"]
+[ext_resource type="Texture2D" uid="uid://dddqwvuihpygc" path="res://Assets/Length Meter Background/Length Meter Background_00207.png" id="255_0cu2b"]
+[ext_resource type="Texture2D" uid="uid://b4ccdbrindote" path="res://Assets/Length Meter Background/Length Meter Background_00208.png" id="256_7ayvf"]
+[ext_resource type="Texture2D" uid="uid://blbsdecipqoux" path="res://Assets/Length Meter Background/Length Meter Background_00209.png" id="257_1onud"]
+[ext_resource type="Texture2D" uid="uid://dmew4pb07j334" path="res://Assets/Length Meter Background/Length Meter Background_00210.png" id="258_tvcht"]
+[ext_resource type="Texture2D" uid="uid://beiwjiye8mrcc" path="res://Assets/Length Meter Background/Length Meter Background_00211.png" id="259_evvin"]
+[ext_resource type="Texture2D" uid="uid://b52b37ddctj4t" path="res://Assets/Length Meter Background/Length Meter Background_00212.png" id="260_n5mds"]
+[ext_resource type="Texture2D" uid="uid://bskvnxlybqpct" path="res://Assets/Length Meter Background/Length Meter Background_00213.png" id="261_2vi2o"]
+[ext_resource type="Texture2D" uid="uid://d0gfxdpa7cmxu" path="res://Assets/Length Meter Background/Length Meter Background_00214.png" id="262_dpuv7"]
+[ext_resource type="Texture2D" uid="uid://cnfu0emccfo6n" path="res://Assets/Length Meter Background/Length Meter Background_00215.png" id="263_wsgca"]
+[ext_resource type="Texture2D" uid="uid://0q1dt1krnrwh" path="res://Assets/Length Meter Background/Length Meter Background_00216.png" id="264_umdep"]
+[ext_resource type="Texture2D" uid="uid://bydu22rem47no" path="res://Assets/Length Meter Background/Length Meter Background_00217.png" id="265_vunln"]
+[ext_resource type="Texture2D" uid="uid://llev8xlonrsd" path="res://Assets/Length Meter Background/Length Meter Background_00218.png" id="266_xpobc"]
+[ext_resource type="Texture2D" uid="uid://be5ef2lpx74r8" path="res://Assets/Length Meter Background/Length Meter Background_00219.png" id="267_3ai80"]
+[ext_resource type="Texture2D" uid="uid://coktfoeggme6s" path="res://Assets/Length Meter Background/Length Meter Background_00220.png" id="268_2rm5x"]
+[ext_resource type="Texture2D" uid="uid://cgk474k6x0mbc" path="res://Assets/Length Meter Background/Length Meter Background_00221.png" id="269_6jmex"]
+[ext_resource type="Texture2D" uid="uid://b1sckt4s1tpgh" path="res://Assets/Length Meter Background/Length Meter Background_00222.png" id="270_6m8la"]
+[ext_resource type="Texture2D" uid="uid://cftlnn04xmqsn" path="res://Assets/Length Meter Background/Length Meter Background_00223.png" id="271_3hy1w"]
+[ext_resource type="Texture2D" uid="uid://cg8sh1j0chsyr" path="res://Assets/Length Meter Background/Length Meter Background_00224.png" id="272_tiys4"]
+[ext_resource type="Texture2D" uid="uid://bylfx11iarbqt" path="res://Assets/Length Meter Background/Length Meter Background_00225.png" id="273_yha0r"]
+[ext_resource type="Texture2D" uid="uid://bo4nb05kuhnfg" path="res://Assets/Length Meter Background/Length Meter Background_00226.png" id="274_aab6b"]
+[ext_resource type="Texture2D" uid="uid://b77ugvv0mqcoe" path="res://Assets/Length Meter Background/Length Meter Background_00227.png" id="275_cmqoj"]
+[ext_resource type="Texture2D" uid="uid://doaw16y2oq1ht" path="res://Assets/Length Meter Background/Length Meter Background_00228.png" id="276_h1kmq"]
+[ext_resource type="Texture2D" uid="uid://dm6cd3es5kmrn" path="res://Assets/Length Meter Background/Length Meter Background_00229.png" id="277_e4mcg"]
+[ext_resource type="Texture2D" uid="uid://cl34rrdnnlma2" path="res://Assets/Length Meter Background/Length Meter Background_00230.png" id="278_jlfvt"]
+[ext_resource type="Texture2D" uid="uid://b5pyq7xwly817" path="res://Assets/Length Meter Background/Length Meter Background_00231.png" id="279_t83vq"]
+[ext_resource type="Texture2D" uid="uid://cfesbewmupr17" path="res://Assets/Length Meter Background/Length Meter Background_00232.png" id="280_uh1aj"]
+[ext_resource type="Texture2D" uid="uid://4cpa0w1wxnof" path="res://Assets/Length Meter Background/Length Meter Background_00233.png" id="281_fkb3e"]
+[ext_resource type="Texture2D" uid="uid://c5avf208vy5xb" path="res://Assets/Length Meter Background/Length Meter Background_00234.png" id="282_msgty"]
+[ext_resource type="Texture2D" uid="uid://brdxqaaa5kb01" path="res://Assets/Length Meter Background/Length Meter Background_00235.png" id="283_k4ics"]
+[ext_resource type="Texture2D" uid="uid://c8fb2lyfcvqeq" path="res://Assets/Length Meter Background/Length Meter Background_00236.png" id="284_4a6ha"]
+[ext_resource type="Texture2D" uid="uid://dcvb0hvrbaygm" path="res://Assets/Length Meter Background/Length Meter Background_00237.png" id="285_dxseo"]
+[ext_resource type="Texture2D" uid="uid://poaj0cuo133g" path="res://Assets/Length Meter Background/Length Meter Background_00238.png" id="286_1vv6b"]
+[ext_resource type="Texture2D" uid="uid://cjaocifld314a" path="res://Assets/Length Meter Background/Length Meter Background_00239.png" id="287_wp6c3"]
+[ext_resource type="Texture2D" uid="uid://0de83gvyr7jo" path="res://Assets/Length Meter Background/Length Meter Background_00240.png" id="288_jqfxe"]
 
 [sub_resource type="Curve3D" id="Curve3D_r5l72"]
 _data = {
@@ -10,10 +296,8 @@ _data = {
 }
 point_count = 1
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ihkm3"]
-albedo_color = Color(0, 0.392157, 0, 1)
-
 [sub_resource type="SphereShape3D" id="SphereShape3D_i67k4"]
+resource_local_to_scene = true
 radius = 0.15
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i67k4"]
@@ -23,12 +307,895 @@ material = SubResource("StandardMaterial3D_i67k4")
 radius = 0.2
 height = 0.4
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dhnt0"]
+transparency = 1
+blend_mode = 1
+shading_mode = 0
+albedo_texture = ExtResource("4_0s387")
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_ng5d8"]
+material = SubResource("StandardMaterial3D_dhnt0")
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_53sxp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": null
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_pikyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_ge7dj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_vxtaq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_iar52")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_ulaiv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_guh1y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_0hohb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_660ud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_pifao")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_7oqa3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_nhype")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_apa68")
+}, {
+"duration": 1.0,
+"texture": ExtResource("18_vmvq0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_rg2uw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("20_4ps51")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_hysrc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("22_1jvtw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_tfpo2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("24_hnrlj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("25_qftl0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("26_k316v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("27_mlrb5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("28_wneoq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("29_0ufb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("30_hxtyq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("31_hqus0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("32_8yvar")
+}, {
+"duration": 1.0,
+"texture": ExtResource("33_ryrtn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("34_36w1k")
+}, {
+"duration": 1.0,
+"texture": ExtResource("35_n8qs0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("36_80ypv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("37_0ibdt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("38_1xyp5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("39_r0scg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_22fpr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("41_ih2lr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("42_qhsc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("43_tr70c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("44_i2csi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("45_o8t81")
+}, {
+"duration": 1.0,
+"texture": ExtResource("46_cvska")
+}],
+"loop": true,
+"name": &"meter_42",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_luhip"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("48_e1dq7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("49_gw81e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("50_q17im")
+}, {
+"duration": 1.0,
+"texture": ExtResource("51_6cv5e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("52_vl8yg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("53_gln44")
+}, {
+"duration": 1.0,
+"texture": ExtResource("54_edxve")
+}, {
+"duration": 1.0,
+"texture": ExtResource("55_aag4m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("56_nm0g3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("57_nsxt8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("58_so6cl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("59_xdb7x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("60_rthdj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("61_juqia")
+}, {
+"duration": 1.0,
+"texture": ExtResource("62_2buwf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("63_fdn23")
+}, {
+"duration": 1.0,
+"texture": ExtResource("64_sevy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("65_0hd6p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("66_i1xd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("67_t3w33")
+}, {
+"duration": 1.0,
+"texture": ExtResource("68_pplcs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("69_o3is8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("70_j1qac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("71_6d61b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("72_x1btn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("73_ol8ye")
+}, {
+"duration": 1.0,
+"texture": ExtResource("74_5snij")
+}, {
+"duration": 1.0,
+"texture": ExtResource("75_w8p8u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("76_81qfv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("77_yeqol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("78_74tfs")
+}, {
+"duration": 1.0,
+"texture": ExtResource("79_e1xwy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("80_sqxc0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("81_5qkb7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("82_0w1f0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("83_7e85l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("84_i8q07")
+}, {
+"duration": 1.0,
+"texture": ExtResource("85_bwtkx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("86_gw3es")
+}, {
+"duration": 1.0,
+"texture": ExtResource("87_kkv5f")
+}, {
+"duration": 1.0,
+"texture": ExtResource("88_jp4cg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("89_4xhw3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("90_jlcn1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("91_ylnc5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("92_suvy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("93_3djnr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("94_g03pj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("95_wv5wy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("96_dm2gw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("97_rt1c5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("98_bn64u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("99_uor31")
+}, {
+"duration": 1.0,
+"texture": ExtResource("100_7qgac")
+}, {
+"duration": 1.0,
+"texture": ExtResource("101_53sxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("102_iuolx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("103_3c13h")
+}, {
+"duration": 1.0,
+"texture": ExtResource("104_4end5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("105_irak8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("106_wtw0l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("107_5t1pn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("108_xhrak")
+}, {
+"duration": 1.0,
+"texture": ExtResource("109_ogu0q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("110_msq2m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("111_6sjjc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("112_peu0u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("113_6ho1p")
+}, {
+"duration": 1.0,
+"texture": ExtResource("114_nietg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("115_x7kre")
+}, {
+"duration": 1.0,
+"texture": ExtResource("116_0lp46")
+}, {
+"duration": 1.0,
+"texture": ExtResource("117_j3src")
+}, {
+"duration": 1.0,
+"texture": ExtResource("118_m6asb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("119_wrpft")
+}, {
+"duration": 1.0,
+"texture": ExtResource("120_ufjrg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("121_r6rcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("122_jcwhd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("123_t68d4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("124_vqpo2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("125_lila7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("126_o6ob8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("127_ptegm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("128_0dgr5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("129_ohcdw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("130_2nqsk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("131_yj02c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("132_umch0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("133_1qy13")
+}, {
+"duration": 1.0,
+"texture": ExtResource("134_xnfy0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("135_ugywj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("136_tpmbp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("137_ucbsq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("138_af058")
+}, {
+"duration": 1.0,
+"texture": ExtResource("139_xmyq5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("140_ypw3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("141_3ot0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("142_va7ba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("143_8ijgl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("144_bpk2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("145_05ies")
+}, {
+"duration": 1.0,
+"texture": ExtResource("146_hkbgv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("147_7x3u2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("148_v63s3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("149_g0bc4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("150_b83xy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("151_h1mea")
+}, {
+"duration": 1.0,
+"texture": ExtResource("152_cxnfp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("153_2u8g5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("154_ft0sn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("155_7s46t")
+}, {
+"duration": 1.0,
+"texture": ExtResource("156_8toh6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("157_wf15l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("158_4avxh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("159_4w7c4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("160_ea1g7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("161_ynhj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("162_lkm3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("163_c1cde")
+}, {
+"duration": 1.0,
+"texture": ExtResource("164_q8jxi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("165_3doim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("166_cov0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("167_1c4rj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("168_vmykx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("169_3jwab")
+}, {
+"duration": 1.0,
+"texture": ExtResource("170_0o3gy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("171_c5fxp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("172_ttyfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("173_87uqw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("174_cw5m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("175_ycql0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("176_b0org")
+}, {
+"duration": 1.0,
+"texture": ExtResource("177_hktkk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("178_owv7e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("179_1vdhr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("180_i1cv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("181_3oy2l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("182_1ybin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("183_vj4wv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("184_wdvs1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("185_m6tnn")
+}, {
+"duration": 1.0,
+"texture": ExtResource("186_q4q8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("187_2s5o5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("188_hf2ei")
+}, {
+"duration": 1.0,
+"texture": ExtResource("189_xmpqc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("190_kylo8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("191_kmm3l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("192_vyl4q")
+}, {
+"duration": 1.0,
+"texture": ExtResource("193_n5d1e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("194_h0jkc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("195_108x0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("196_hdo6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("197_okiot")
+}, {
+"duration": 1.0,
+"texture": ExtResource("198_tn0c3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("199_r8i2y")
+}, {
+"duration": 1.0,
+"texture": ExtResource("200_rlnd3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("201_85ndi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("202_p81w2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("203_t0iox")
+}, {
+"duration": 1.0,
+"texture": ExtResource("204_bgegu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("205_7j8gb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("206_60hu6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("207_q3anb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("208_lelu3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("209_0exkg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("210_1g303")
+}, {
+"duration": 1.0,
+"texture": ExtResource("211_img3a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("212_q0qfq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("213_rqq6x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("214_ag6tx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("215_fpyxv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("216_eomek")
+}, {
+"duration": 1.0,
+"texture": ExtResource("217_53ivg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("218_fmt4c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("219_tahim")
+}, {
+"duration": 1.0,
+"texture": ExtResource("220_dvayd")
+}, {
+"duration": 1.0,
+"texture": ExtResource("221_flf3i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("222_a26lu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("223_omeua")
+}, {
+"duration": 1.0,
+"texture": ExtResource("224_hahux")
+}, {
+"duration": 1.0,
+"texture": ExtResource("225_m0knm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("226_xw6dj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("227_pbg8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("228_01q3m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("229_y8qlv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("230_gdk37")
+}, {
+"duration": 1.0,
+"texture": ExtResource("231_ilwd2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("232_dmudv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("233_8vjj2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("234_nffcr")
+}, {
+"duration": 1.0,
+"texture": ExtResource("235_gskpi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("236_74w6a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("237_hdag0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("238_rs8q5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("239_3mvpv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("240_wovk3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("241_5c7k1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("242_mk7fp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("243_df056")
+}, {
+"duration": 1.0,
+"texture": ExtResource("244_15eko")
+}, {
+"duration": 1.0,
+"texture": ExtResource("245_rb5qu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("246_0iw2e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("247_2knqx")
+}, {
+"duration": 1.0,
+"texture": ExtResource("248_miufa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("249_f6aj8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("250_oe5pm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("251_uw7f3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("252_oc2oy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("253_8fkjj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("254_8x578")
+}, {
+"duration": 1.0,
+"texture": ExtResource("255_0cu2b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("256_7ayvf")
+}, {
+"duration": 1.0,
+"texture": ExtResource("257_1onud")
+}, {
+"duration": 1.0,
+"texture": ExtResource("258_tvcht")
+}, {
+"duration": 1.0,
+"texture": ExtResource("259_evvin")
+}, {
+"duration": 1.0,
+"texture": ExtResource("260_n5mds")
+}, {
+"duration": 1.0,
+"texture": ExtResource("261_2vi2o")
+}, {
+"duration": 1.0,
+"texture": ExtResource("262_dpuv7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("263_wsgca")
+}, {
+"duration": 1.0,
+"texture": ExtResource("264_umdep")
+}, {
+"duration": 1.0,
+"texture": ExtResource("265_vunln")
+}, {
+"duration": 1.0,
+"texture": ExtResource("266_xpobc")
+}, {
+"duration": 1.0,
+"texture": ExtResource("267_3ai80")
+}, {
+"duration": 1.0,
+"texture": ExtResource("268_2rm5x")
+}, {
+"duration": 1.0,
+"texture": ExtResource("269_6jmex")
+}, {
+"duration": 1.0,
+"texture": ExtResource("270_6m8la")
+}, {
+"duration": 1.0,
+"texture": ExtResource("271_3hy1w")
+}, {
+"duration": 1.0,
+"texture": ExtResource("272_tiys4")
+}, {
+"duration": 1.0,
+"texture": ExtResource("273_yha0r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("274_aab6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("275_cmqoj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("276_h1kmq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("277_e4mcg")
+}, {
+"duration": 1.0,
+"texture": ExtResource("278_jlfvt")
+}, {
+"duration": 1.0,
+"texture": ExtResource("279_t83vq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("280_uh1aj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("281_fkb3e")
+}, {
+"duration": 1.0,
+"texture": ExtResource("282_msgty")
+}, {
+"duration": 1.0,
+"texture": ExtResource("283_k4ics")
+}, {
+"duration": 1.0,
+"texture": ExtResource("284_4a6ha")
+}, {
+"duration": 1.0,
+"texture": ExtResource("285_dxseo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("286_1vv6b")
+}, {
+"duration": 1.0,
+"texture": ExtResource("287_wp6c3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("288_jqfxe")
+}],
+"loop": true,
+"name": &"default",
+"speed": 30.0
+}]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i67k4"]
+friction = 0.2
+bounce = 0.06
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ihkm3"]
+radius = 0.17
+
 [node name="VinePath" type="Path3D"]
 curve = SubResource("Curve3D_r5l72")
 script = ExtResource("1_i67k4")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
-material_override = SubResource("StandardMaterial3D_ihkm3")
+top_level = true
+material_override = ExtResource("2_dhnt0")
 polygon = PackedVector2Array(-0.00301002, 0.151506, 0.137278, 0.0598402, 0.0953864, -0.119483, -0.0894327, -0.125608, -0.137412, 0.0598965)
 mode = 2
 path_node = NodePath("..")
@@ -44,7 +1211,6 @@ path_joined = false
 smooth_faces = true
 
 [node name="VineController" type="CharacterBody3D" parent="."]
-collision_layer = 2
 collision_mask = 2
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="VineController"]
@@ -52,6 +1218,7 @@ shape = SubResource("SphereShape3D_i67k4")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="VineController"]
+visible = false
 mesh = SubResource("SphereMesh_i67k4")
 
 [node name="ThirdPersonCamera" parent="VineController" instance=ExtResource("2_ihkm3")]
@@ -63,8 +1230,78 @@ follow_target = 1
 spring_arm_collision_mask = 3
 far = 200.0
 
+[node name="GPUParticlesAttractorSphere3D" type="GPUParticlesAttractorSphere3D" parent="VineController"]
+strength = 20.0
+attenuation = 2.0
+radius = 5.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="VineController"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.753033, 0.682224, 0)
+visible = false
+mesh = SubResource("QuadMesh_ng5d8")
+skeleton = NodePath("../..")
+
+[node name="TransformToPendulum" type="RemoteTransform3D" parent="VineController"]
+unique_name_in_owner = true
+remote_path = NodePath("../../Pendulum")
+update_scale = false
+
+[node name="VineTip" parent="VineController" instance=ExtResource("3_ihkm3")]
+unique_name_in_owner = true
+transform = Transform3D(0.15, 0, 0, 0, 0.15, 0, 0, 0, 0.15, 0, 0, 0)
+
+[node name="RemoteTransform3D" type="RemoteTransform3D" parent="VineController"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.10439, 0.457294, 0)
+remote_path = NodePath("../RadialMeter")
+
+[node name="RadialMeter" type="AnimatedSprite3D" parent="VineController"]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.10439, 0.457294, 0)
+top_level = true
+billboard = 1
+no_depth_test = true
+sprite_frames = SubResource("SpriteFrames_53sxp")
+animation = &"meter_42"
+script = ExtResource("174_ge7dj")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="VineController/RadialMeter"]
+billboard = 1
+no_depth_test = true
+sprite_frames = SubResource("SpriteFrames_luhip")
+autoplay = "default"
+frame_progress = 0.272182
+
+[node name="MeterTimer" type="Timer" parent="VineController/RadialMeter"]
+wait_time = 0.5
+one_shot = true
+
 [node name="ContactTimer" type="Timer" parent="."]
 wait_time = 0.25
 one_shot = true
 
+[node name="Pendulum" type="RigidBody3D" parent="."]
+collision_layer = 4
+collision_mask = 10
+mass = 13.0
+physics_material_override = SubResource("PhysicsMaterial_i67k4")
+can_sleep = false
+freeze = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pendulum"]
+shape = SubResource("SphereShape3D_i67k4")
+debug_color = Color(0, 0.6, 0.701961, 1)
+
+[node name="TransformToController" type="RemoteTransform3D" parent="Pendulum"]
+unique_name_in_owner = true
+remote_path = NodePath("../../VineController")
+update_position = false
+update_rotation = false
+update_scale = false
+
+[node name="Area3D" type="Area3D" parent="Pendulum"]
+collision_mask = 10
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pendulum/Area3D"]
+shape = SubResource("SphereShape3D_ihkm3")
+
 [connection signal="timeout" from="ContactTimer" to="." method="_on_contact_timer_timeout"]
+[connection signal="body_shape_entered" from="Pendulum/Area3D" to="." method="_on_area_3d_body_shape_entered"]
