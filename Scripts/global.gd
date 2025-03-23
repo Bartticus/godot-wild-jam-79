@@ -8,7 +8,7 @@ var recharge_rate: float = 2.0
 var flaccid_meter: TextureProgressBar
 var contact_timer: Timer
 var contact_meter: TextureProgressBar
-var vine_path: Path3D
+var vine_path: Vine
 
 func _physics_process(_delta: float) -> void:
 	if power_is_charged() && flaccid_meter:

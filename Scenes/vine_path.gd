@@ -30,6 +30,7 @@ var last_contact_pos: Vector3
 var last_collision_object
 var vine_length: float
 var vine_in_contact: bool = false
+var nutrients: int = 0
 var in_freefall: bool = false:
 	set(value):
 		if in_freefall:
@@ -309,3 +310,6 @@ func increase_max_length(increase_amount):
 func update_max_length(new_max):
 	max_length = new_max
 	Global.update_max_plant_power(new_max)
+
+func increase_nutrients():
+	nutrients += 1

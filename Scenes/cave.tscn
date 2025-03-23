@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=40 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
@@ -22,6 +22,7 @@
 [ext_resource type="PackedScene" path="res://Scenes/CaveModels/stalag_medium_1.tscn" id="14_k6l6x"]
 [ext_resource type="PackedScene" path="res://Scenes/CaveModels/cave_obelisk_7.tscn" id="15_mceht"]
 [ext_resource type="PackedScene" uid="uid://cx2jwyq3aqoqa" path="res://Scenes/CaveModels/stalag_short_3.tscn" id="16_s2jap"]
+[ext_resource type="PackedScene" uid="uid://dysllvvq41bot" path="res://Scenes/nutrient.tscn" id="23_yo02b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfbkh"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -57,24 +58,24 @@ size = Vector3(200, 2, 200)
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.492647, 0.674157), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_gcsno"]
+[sub_resource type="CurveTexture" id="CurveTexture_7wtyv"]
 curve = SubResource("Curve_ehcl6")
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_ehcl6"]
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_yo02b"]
 
 [sub_resource type="Curve" id="Curve_826tw"]
 _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_ehcl6"]
+[sub_resource type="CurveTexture" id="CurveTexture_5bd7j"]
 curve = SubResource("Curve_826tw")
 
 [sub_resource type="Curve" id="Curve_gcsno"]
 _data = [Vector2(0, 0.494382), 0.0, 0.0, 0, 0, Vector2(0.492647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.494382), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_k6l6x"]
+[sub_resource type="CurveTexture" id="CurveTexture_wlsau"]
 curve = SubResource("Curve_gcsno")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mceht"]
@@ -83,18 +84,18 @@ emission_shape = 3
 emission_box_extents = Vector3(50, 50, 50)
 directional_velocity_min = -1.00002
 directional_velocity_max = 0.999984
-directional_velocity_curve = SubResource("CurveXYZTexture_ehcl6")
+directional_velocity_curve = SubResource("CurveXYZTexture_yo02b")
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -2.0
 radial_accel_max = 0.999998
 damping_min = 1.0
 damping_max = 2.0
 scale_max = 2.0
-scale_curve = SubResource("CurveTexture_k6l6x")
-alpha_curve = SubResource("CurveTexture_gcsno")
+scale_curve = SubResource("CurveTexture_wlsau")
+alpha_curve = SubResource("CurveTexture_7wtyv")
 hue_variation_min = -0.1
 hue_variation_max = 0.1
-hue_variation_curve = SubResource("CurveTexture_ehcl6")
+hue_variation_curve = SubResource("CurveTexture_5bd7j")
 turbulence_enabled = true
 turbulence_noise_scale = 2.933
 turbulence_noise_speed = Vector3(1, 1, 1)
@@ -103,7 +104,7 @@ turbulence_influence_max = 1.0
 turbulence_initial_displacement_min = 1.49012e-06
 turbulence_initial_displacement_max = 1.49012e-06
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2jap"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7r48e"]
 transparency = 1
 blend_mode = 1
 shading_mode = 0
@@ -113,7 +114,7 @@ billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_wuac0"]
-material = SubResource("StandardMaterial3D_s2jap")
+material = SubResource("StandardMaterial3D_7r48e")
 
 [node name="Cave" type="Node3D"]
 
@@ -241,8 +242,11 @@ transform = Transform3D(0.0973838, -0.515055, 0.463934, -0.685784, -0.00327012, 
 [node name="Sunlight2" parent="World/Powerups" instance=ExtResource("10_rfl45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7338, 20.477, -1.3219)
 
+[node name="Nutrient" parent="World/Powerups" instance=ExtResource("23_yo02b")]
+transform = Transform3D(-0.712332, 0, -0.701842, 0, 1, 0, 0.701842, 0, -0.712332, -2.0148, 2.48341, -2.78542)
+
 [node name="VinePath" parent="." instance=ExtResource("2_3usej")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157652, 0.56607, -0.617125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157652, 0.122573, 1.83384)
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_t82ut")
