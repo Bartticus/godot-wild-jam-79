@@ -2,7 +2,7 @@ class_name Rope
 extends Path3D
 # Script by Elijah Martin/Palin_drome
 @export_range(3,200,1) var number_of_segments = 10
-@export_range(3,50,1) var mesh_sides = 6
+@export_range(3,50,1) var mesh_sides = 5
 @export var cable_thickness = 0.1
 @export var fixed_start_point = true
 @export var fixed_end_point = true

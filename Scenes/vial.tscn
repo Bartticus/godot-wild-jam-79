@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bepc7v1esejn"]
+
+[ext_resource type="Texture2D" uid="uid://bd84b4bx0uulq" path="res://Textures/Vial/vial_01.PNG" id="1_2lqjt"]
+[ext_resource type="Script" uid="uid://dmj2e0xu2u5kp" path="res://Scripts/vial.gd" id="2_lod7y"]
+
+[node name="Vial" type="TextureRect"]
+custom_minimum_size = Vector2(200, 100)
+texture = ExtResource("1_2lqjt")
+expand_mode = 3
+script = ExtResource("2_lod7y")

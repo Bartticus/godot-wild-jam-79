@@ -36,6 +36,7 @@ var last_collision_object
 var vine_length: float
 var vine_in_contact: bool = false
 var nutrients: int = 0
+var sunlight: int = 0
 var in_freefall: bool = false:
 	set(value):
 		if in_freefall:
@@ -73,9 +74,17 @@ func _physics_process(delta: float) -> void:
 func handle_inputs(delta):
 	handle_bend_down(delta)
 	handle_retract(delta)
+	dev_keys(delta)
 	for input in influence_dictionary.keys():
 		var is_greatest_influence = influence_dictionary.find_key(get_greatest_influence()) == input
 		iterate_directional_influence(input, delta, is_greatest_influence)
+
+func dev_keys(_delta):
+	if Input.is_action_pressed('increase_time_scale'):
+		Engine.time_scale = [Engine.time_scale + 0.1, 3.0].min()
+	if Input.is_action_pressed('decrease_time_scale'):
+		Engine.time_scale = [Engine.time_scale - 0.1, 0.1].max()
+
 
 func get_greatest_influence():
 	var sorted_influences = influence_dictionary.values()
@@ -125,7 +134,7 @@ func handle_bend_down(delta):
 	if (get_greatest_influence() == 0 && (bend_down || influence_y <= 0.0)):
 		increase_directional_influence('move_forward', delta)
 
-func handle_retract(delta):
+func handle_retract(_delta):
 	if in_freefall:
 		retract = Input.is_action_pressed('retract')
 		if retract:
@@ -133,27 +142,7 @@ func handle_retract(delta):
 			vine_controller.velocity = vine_controller.global_position.direction_to(last_contact_pos) * 2
 			vine_controller.move_and_slide()
 		else:
-			activate_freefall()
-
-
-
-			# if retract:
-			# 	if rope.scale.y > 0.1:
-			# 		rope.scale *= 0.999
-			# if rope.joints.size() > 2:
-			# 	var joint = rope.joints[rope.joints.size() - 2]
-			# 	pendulum.global_position = get_node(joint.node_b).global_position	
-			# 	joint.node_b = pendulum.get_path()
-			# 	rope.joints[-1].queue_free()
-			# 	rope.joints.pop_back()
-			# for segment in rope.segments:
-			# 	if segment.get_child(0).shape.height > 0.3:
-			# 		segment.scale.y -= 0.9
-			# 		# segment.get_child(0).shape.height -= 0.1
-			# for joint in rope.joints:
-			# 	joint.position += global_position
-
-				
+			activate_freefall()			
 
 
 func iterate_directional_influence(input, delta, is_greatest_influence):
