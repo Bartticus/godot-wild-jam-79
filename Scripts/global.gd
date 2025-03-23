@@ -10,6 +10,7 @@ var contact_timer: Timer
 var contact_meter: TextureProgressBar
 var vine_path: Vine
 var vial: TextureRect
+var game_started: bool = false
 
 func _physics_process(_delta: float) -> void:
 	if power_is_charged() && flaccid_meter:

@@ -1,6 +1,7 @@
 extends Node3D
-#
-#@export var audio_files: Array = []
-#
-#func _ready() -> void:
-	#$AudioStreamPlayer3D.play()
+
+
+func _ready() -> void:
+	randomize()
+	$AudioStreamPlayer3D.pitch_scale = randf_range(0.8, 1.2)
+	$AudioStreamPlayer3D.play()

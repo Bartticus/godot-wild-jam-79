@@ -9,6 +9,7 @@ extends Path3D
 @export var rope: Rope
 @export var mesh_sides = 6
 @export var cable_thickness = 0.1
+@export var camera: ThirdPersonCamera
 
 @export_category("Vine Properties")
 @export var max_length: float = 5
@@ -63,6 +64,8 @@ func _ready():
 	mesh.polygon = myShape
 
 func _physics_process(delta: float) -> void:
+	if !Global.game_started: return
+	
 	handle_inputs(delta)
 	add_next_point(delta)
 	limit_vine_length()
@@ -72,6 +75,8 @@ func _physics_process(delta: float) -> void:
 	handle_collision()
 
 func handle_inputs(delta):
+	if !Global.game_started: return
+	
 	handle_bend_down(delta)
 	handle_retract(delta)
 	dev_keys(delta)

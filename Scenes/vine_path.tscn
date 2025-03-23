@@ -173,7 +173,7 @@
 [ext_resource type="Texture2D" uid="uid://c0tif30ii7bgt" path="res://Assets/Length Meter Background/Length Meter Background_00124.png" id="172_ttyfq"]
 [ext_resource type="Texture2D" uid="uid://cn13g4e6imb5f" path="res://Assets/Length Meter Background/Length Meter Background_00125.png" id="173_87uqw"]
 [ext_resource type="Texture2D" uid="uid://d4gi08efbuyq" path="res://Assets/Length Meter Background/Length Meter Background_00126.png" id="174_cw5m6"]
-[ext_resource type="Script" path="res://Scenes/radial_meter.gd" id="174_ge7dj"]
+[ext_resource type="Script" uid="uid://mab0gsyovvil" path="res://Scenes/radial_meter.gd" id="174_ge7dj"]
 [ext_resource type="Texture2D" uid="uid://bvpkg38dljx6g" path="res://Assets/Length Meter Background/Length Meter Background_00127.png" id="175_ycql0"]
 [ext_resource type="Texture2D" uid="uid://3dsa6gmav7qa" path="res://Assets/Length Meter Background/Length Meter Background_00128.png" id="176_b0org"]
 [ext_resource type="Texture2D" uid="uid://dk2g5t2tqc6sa" path="res://Assets/Length Meter Background/Length Meter Background_00129.png" id="177_hktkk"]
@@ -1189,9 +1189,10 @@ bounce = 0.06
 [sub_resource type="SphereShape3D" id="SphereShape3D_ihkm3"]
 radius = 0.17
 
-[node name="VinePath" type="Path3D"]
+[node name="VinePath" type="Path3D" node_paths=PackedStringArray("camera")]
 curve = SubResource("Curve3D_r5l72")
 script = ExtResource("1_i67k4")
+camera = NodePath("VineController/ThirdPersonCamera")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 top_level = true
@@ -1268,7 +1269,7 @@ billboard = 1
 no_depth_test = true
 sprite_frames = SubResource("SpriteFrames_luhip")
 autoplay = "default"
-frame_progress = 0.272182
+frame_progress = 0.221432
 
 [node name="MeterTimer" type="Timer" parent="VineController/RadialMeter"]
 wait_time = 0.5

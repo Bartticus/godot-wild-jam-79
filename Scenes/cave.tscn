@@ -1,6 +1,7 @@
-[gd_scene load_steps=52 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=74 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
+[ext_resource type="Script" path="res://Scenes/cave.gd" id="1_ikctj"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
 [ext_resource type="Texture2D" uid="uid://185t565vb5js" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Height.png" id="2_rfl45"]
 [ext_resource type="PackedScene" uid="uid://w347s4jd0hb8" path="res://Scenes/CaveModels/large_cave_rock_tower.tscn" id="2_yfbkh"]
@@ -16,7 +17,6 @@
 [ext_resource type="PackedScene" uid="uid://h66ptsygp5wf" path="res://Scenes/CaveModels/dirt_mound.tscn" id="9_yo02b"]
 [ext_resource type="PackedScene" uid="uid://c5q222u5ch5lt" path="res://Scenes/CaveModels/rock_flat_long_4.tscn" id="10_llyib"]
 [ext_resource type="PackedScene" uid="uid://bem2ix6vkddgi" path="res://Scenes/sunlight.tscn" id="10_rfl45"]
-[ext_resource type="AudioStream" uid="uid://cu85wp0n2myjx" path="res://Audio/01 Lower Cave 01.wav" id="11_t82ut"]
 [ext_resource type="PackedScene" uid="uid://073e74duya5i" path="res://Scenes/standing_water.tscn" id="12_826tw"]
 [ext_resource type="AudioStream" uid="uid://blfe78ikqp8dr" path="res://Audio/Ambience_03_Cave-Wind-Water.wav" id="12_i8nqp"]
 [ext_resource type="Texture2D" uid="uid://clwljwbodeigm" path="res://Textures/star_05.png" id="13_826tw"]
@@ -34,7 +34,10 @@
 [ext_resource type="PackedScene" uid="uid://dt6qaltiwvjyc" path="res://Scenes/CaveModels/stalag_tall_2.tscn" id="26_8l2r0"]
 [ext_resource type="PackedScene" uid="uid://b04j5i61444d" path="res://Scenes/CaveModels/stalag_tall_1.tscn" id="27_xlkfr"]
 [ext_resource type="PackedScene" uid="uid://ek3i2bw1fsma" path="res://Scenes/CaveModels/stalag_tall_3.tscn" id="28_xlkfr"]
+[ext_resource type="Script" path="res://Scenes/label_3d.gd" id="31_vtgbb"]
 [ext_resource type="PackedScene" uid="uid://3a6mb0pjjp7w" path="res://Scenes/finish_area.tscn" id="31_vucr0"]
+[ext_resource type="AudioStream" uid="uid://n22nmwsrxyyc" path="res://Audio/02 Upper Cave 01.wav" id="36_vtgbb"]
+[ext_resource type="FontFile" uid="uid://ci6kl0kxv0r3s" path="res://Assets/Flavors-Regular.ttf" id="37_1op6p"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfbkh"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -47,6 +50,14 @@ sky_material = SubResource("ProceduralSkyMaterial_yfbkh")
 background_mode = 2
 sky = SubResource("Sky_50ct6")
 tonemap_mode = 2
+fog_enabled = true
+fog_mode = 1
+fog_light_color = Color(0.380142, 0.553096, 0.81833, 1)
+fog_light_energy = 0.36
+fog_density = 1.0
+fog_height = 1.0
+fog_height_density = 0.3216
+fog_depth_begin = 1.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_mp6fm"]
 size = Vector3(200, 2, 200)
@@ -65,6 +76,93 @@ uv1_triplanar = true
 [sub_resource type="BoxMesh" id="BoxMesh_yxobr"]
 material = SubResource("StandardMaterial3D_ak5v8")
 size = Vector3(200, 2, 200)
+
+[sub_resource type="Curve" id="Curve_ikctj"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.492647, 0.674157), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_gcsno"]
+curve = SubResource("Curve_ikctj")
+
+[sub_resource type="Curve" id="Curve_1op6p"]
+_limits = [-1.0, 1.0, 0.0, 1.0]
+_data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_ehcl6"]
+curve = SubResource("Curve_1op6p")
+
+[sub_resource type="Curve" id="Curve_vtgbb"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_05aww"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Curve" id="Curve_wy1nh"]
+_limits = [-2.0, 2.0, 0.0, 1.0]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_bfkb6"]
+curve_x = SubResource("Curve_vtgbb")
+curve_y = SubResource("Curve_05aww")
+curve_z = SubResource("Curve_wy1nh")
+
+[sub_resource type="Curve" id="Curve_qxu8q"]
+_data = [Vector2(0, 0.494382), 0.0, 0.0, 0, 0, Vector2(0.492647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.494382), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_k6l6x"]
+curve = SubResource("Curve_qxu8q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xp7hx"]
+resource_local_to_scene = true
+lifetime_randomness = 0.5
+direction = Vector3(0, 1, 0)
+spread = 180.0
+initial_velocity_min = 2.0
+initial_velocity_max = 2.0
+orbit_velocity_min = -0.2
+orbit_velocity_max = 0.2
+orbit_velocity_curve = SubResource("CurveXYZTexture_bfkb6")
+gravity = Vector3(0, 0, 0)
+radial_accel_min = -2.0
+radial_accel_max = 2.0
+attractor_interaction_enabled = false
+scale_min = 0.1
+scale_max = 0.3
+scale_curve = SubResource("CurveTexture_k6l6x")
+alpha_curve = SubResource("CurveTexture_gcsno")
+hue_variation_min = -0.1
+hue_variation_max = 0.1
+hue_variation_curve = SubResource("CurveTexture_ehcl6")
+turbulence_enabled = true
+turbulence_noise_scale = 0.461
+turbulence_noise_speed = Vector3(1, 1, 1)
+turbulence_noise_speed_random = 0.02
+turbulence_influence_min = 0.0
+turbulence_influence_max = 0.099
+turbulence_initial_displacement_min = 1.49012e-06
+turbulence_initial_displacement_max = 1.49012e-06
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ikctj"]
+transparency = 1
+blend_mode = 1
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.428695, 0.692914, 0, 1)
+albedo_texture = ExtResource("13_826tw")
+backlight_enabled = true
+backlight = Color(0.964742, 0.964742, 0.964742, 1)
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_vqpv5"]
+material = SubResource("StandardMaterial3D_ikctj")
+size = Vector2(2, 2)
 
 [sub_resource type="Curve" id="Curve_ehcl6"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.492647, 0.674157), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -128,7 +226,89 @@ billboard_keep_scale = true
 [sub_resource type="QuadMesh" id="QuadMesh_wuac0"]
 material = SubResource("StandardMaterial3D_7r48e")
 
+[sub_resource type="Animation" id="Animation_1op6p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(25.6299, 19.8735, 4.63711)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.310405, 0.590722, -0.0300454)]
+}
+
+[sub_resource type="Animation" id="Animation_ikctj"]
+resource_name = "start_zoom"
+length = 6.0
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.02, 3, 4.5, 6),
+"transitions": PackedFloat32Array(0.812252, 1.31951, 1.31951, 0.812252, 1),
+"update": 0,
+"values": [Vector3(25.6299, 19.8735, 4.63711), Vector3(4.12594, 2.69606, 1.46724), Vector3(3.17971, 2.06765, 2.97709), Vector3(0.810694, 0.494326, 6.75724), Vector3(0.0210212, -0.0301144, 8.01729)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.98, 3, 4.5, 6),
+"transitions": PackedFloat32Array(0.812252, 1.41421, 1.31951, 0.812252, 1),
+"update": 0,
+"values": [Vector3(-0.310405, 0.590722, -0.0300454), Vector3(-0.663618, 1.25819, -0.0320019), Vector3(-0.412865, 0.782774, -0.0199098), Vector3(-0.103216, 0.195693, -0.00497744), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vtgbb"]
+_data = {
+&"RESET": SubResource("Animation_1op6p"),
+&"start_zoom": SubResource("Animation_ikctj")
+}
+
+[sub_resource type="LabelSettings" id="LabelSettings_vtgbb"]
+font = ExtResource("37_1op6p")
+font_size = 96
+font_color = Color(0.490196, 1, 0.470588, 1)
+outline_size = 40
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1op6p"]
+font = ExtResource("37_1op6p")
+font_size = 226
+font_color = Color(1.54018e-06, 0.778504, 0.0324417, 1)
+outline_size = 45
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_05aww"]
+font_size = 24
+outline_size = 20
+outline_color = Color(0, 0, 0, 1)
+
 [node name="Cave" type="Node3D"]
+script = ExtResource("1_ikctj")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_g4geh")
@@ -401,11 +581,25 @@ transform = Transform3D(0.463468, 0.183299, 0.03998, 0.186937, -0.442194, -0.139
 [node name="Sunlight2" parent="World/Powerups" instance=ExtResource("10_rfl45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6138, 20.7094, 0.811227)
 
+[node name="Label3D" type="Label3D" parent="World/Powerups/Sunlight2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.954372, 0)
+billboard = 1
+text = "Gather sunlight to
+increase your max length"
+script = ExtResource("31_vtgbb")
+
 [node name="Nutrient" parent="World/Powerups" instance=ExtResource("23_yo02b")]
 transform = Transform3D(0.365378, -0.798528, 0.478383, 0.244199, 0.578143, 0.778535, -0.898257, -0.167639, 0.406241, 32.2068, 23.6533, -6.30612)
 
 [node name="NutrientRock" parent="World/Powerups" instance=ExtResource("23_yo02b")]
 transform = Transform3D(-0.781896, 0.599157, -0.172192, -0.193521, -0.495842, -0.846576, -0.592611, -0.628611, 0.503647, -5.24575, 25.1153, 0.254312)
+
+[node name="Label3D" type="Label3D" parent="World/Powerups/NutrientRock"]
+transform = Transform3D(1, 0, 1.49012e-07, 0, 1, -1.19209e-07, 0, -1.19209e-07, 1, -0.126187, 2.15291, -0.673149)
+billboard = 1
+text = "Nutrients increase
+your final score"
+script = ExtResource("31_vtgbb")
 
 [node name="Sunlight" parent="World/Powerups" instance=ExtResource("10_rfl45")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.8396, 22.3308, -3.91424)
@@ -443,18 +637,25 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.42, 80.3114, -82.9578)
 [node name="VinePath" parent="." instance=ExtResource("2_3usej")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.518568, 0.0275542, 0)
 
+[node name="Circles" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.112269, -0.00135847)
+amount = 200
+speed_scale = 0.5
+randomness = 1.0
+process_material = SubResource("ParticleProcessMaterial_xp7hx")
+draw_pass_1 = SubResource("QuadMesh_vqpv5")
+
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("11_t82ut")
-volume_db = -20.0
+stream = ExtResource("36_vtgbb")
+volume_db = -15.0
 autoplay = true
 
 [node name="BGSFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("12_i8nqp")
-volume_db = -5.0
 autoplay = true
 bus = &"SFX"
 
-[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+[node name="DustMotes" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.63351, -20.5232)
 amount = 500
 lifetime = 5.0
@@ -462,3 +663,48 @@ speed_scale = 0.4
 visibility_aabb = AABB(-40, -40, -40, 80, 80, 80)
 process_material = SubResource("ParticleProcessMaterial_mceht")
 draw_pass_1 = SubResource("QuadMesh_wuac0")
+
+[node name="IntroCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.835275, -0.145094, 0.530343, -0.0286052, 0.95178, 0.305444, -0.549089, -0.2703, 0.790847, 25.6299, 19.8735, 4.63711)
+current = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="IntroCamera"]
+libraries = {
+&"": SubResource("AnimationLibrary_vtgbb")
+}
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 409.0
+offset_top = 629.0
+offset_right = 1530.0
+offset_bottom = 801.0
+text = "-Space- or -Click- to start"
+label_settings = SubResource("LabelSettings_vtgbb")
+
+[node name="Label2" type="Label" parent="Control/Label"]
+layout_mode = 0
+offset_left = 183.0
+offset_top = -310.0
+offset_right = 998.0
+offset_bottom = 20.0
+text = "VINALLY"
+label_settings = SubResource("LabelSettings_1op6p")
+
+[node name="Label2" type="Label" parent="Control"]
+layout_mode = 0
+offset_left = 1410.0
+offset_top = 954.0
+offset_right = 1909.0
+offset_bottom = 1110.0
+text = "WASD to move
+Shift to grow downward
+Space to recover after falling"
+label_settings = SubResource("LabelSettings_05aww")
+horizontal_alignment = 2
