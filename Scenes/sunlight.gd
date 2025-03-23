@@ -1,6 +1,6 @@
 extends Area3D
 
-@export var max_length_boost: int = 5
+@export var max_length_boost: int = 3
 
 func _on_body_entered(body: Node3D) -> void:
 	if body.get_parent() is Vine:

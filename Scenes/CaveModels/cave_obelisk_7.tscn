@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://c41bkif30usa2"]
 
-[ext_resource type="Material" uid="uid://cl40kjwnemj0u" path="res://Scenes/CaveModels/obelisk.tres" id="1_jfra5"]
+[ext_resource type="Material" path="res://Scenes/CaveModels/light_moss_stalag.tres" id="1_jfra5"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_sto8r"]
 _surfaces = [{

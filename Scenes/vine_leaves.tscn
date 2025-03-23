@@ -1,14 +1,22 @@
-[gd_scene load_steps=8 format=4 uid="uid://c43u8hsggdpvs"]
+[gd_scene load_steps=10 format=4 uid="uid://c43u8hsggdpvs"]
 
 [ext_resource type="PackedScene" uid="uid://des26a4wki47g" path="res://Assets/vine_leaves.blend" id="1_efjr8"]
-[ext_resource type="Script" uid="uid://dkvo0bj63msqn" path="res://Scenes/vine_leaves.gd" id="2_dvwa3"]
+[ext_resource type="Script" path="res://Scenes/vine_leaves.gd" id="2_dvwa3"]
 [ext_resource type="Texture2D" uid="uid://b2pc81tmpfhyw" path="res://Textures/Green_Texture_03.jpeg" id="2_tvryo"]
 [ext_resource type="AudioStream" uid="uid://blcuxqmwkhyun" path="res://Audio/Wall Touch/Wall_Touch_01.wav" id="4_fbfxb"]
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fbfxb"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tmjyk"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_fbfxb")
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_efjr8"]
 resource_name = "Material.001"
-albedo_color = Color(0.737193, 0.737193, 0.737193, 1)
+albedo_color = Color(0.621524, 0.621524, 0.621524, 1)
 albedo_texture = ExtResource("2_tvryo")
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_tmjyk")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_nv6qv"]
 _surfaces = [{

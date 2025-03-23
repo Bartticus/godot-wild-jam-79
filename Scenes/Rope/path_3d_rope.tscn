@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://x4xnc85khpl5"]
+[gd_scene load_steps=4 format=3 uid="uid://x4xnc85khpl5"]
 
 [ext_resource type="Script" uid="uid://dpa64cyucj7it" path="res://Scenes/Rope/path_3d_rope.gd" id="1_fykgp"]
-[ext_resource type="Texture2D" uid="uid://b2pc81tmpfhyw" path="res://Textures/Green_Texture_03.jpeg" id="2_4ob8m"]
+[ext_resource type="Material" path="res://Scenes/vine.tres" id="2_4ob8m"]
 
 [sub_resource type="Curve3D" id="Curve3D_rsokh"]
 resource_local_to_scene = true
@@ -12,15 +12,10 @@ _data = {
 }
 point_count = 2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0hb6"]
-albedo_color = Color(0, 0.788235, 0, 1)
-albedo_texture = ExtResource("2_4ob8m")
-uv1_triplanar = true
-
 [node name="Path3DRope" type="Path3D"]
 curve = SubResource("Curve3D_rsokh")
 script = ExtResource("1_fykgp")
-material = SubResource("StandardMaterial3D_j0hb6")
+material = ExtResource("2_4ob8m")
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 calculate_tangents = false

@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=40 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
@@ -10,17 +10,18 @@
 [ext_resource type="PackedScene" uid="uid://df00vyu3leo40" path="res://Scenes/CaveModels/cave_walls_tall.tscn" id="4_g4geh"]
 [ext_resource type="PackedScene" uid="uid://bedi7m2g77svs" path="res://Scenes/CaveModels/rock_flat_long_1.tscn" id="5_mp6fm"]
 [ext_resource type="PackedScene" uid="uid://ddc4xulsj2koy" path="res://Scenes/CaveModels/rock_flat_long_2.tscn" id="6_yxobr"]
-[ext_resource type="PackedScene" path="res://Scenes/CaveModels/stalag_short_1.tscn" id="7_nchf3"]
-[ext_resource type="PackedScene" path="res://Scenes/CaveModels/cave_walls_3.tscn" id="7_wuac0"]
-[ext_resource type="PackedScene" path="res://Scenes/CaveModels/stalag_short_2.tscn" id="8_h3csq"]
+[ext_resource type="PackedScene" uid="uid://bjcbdiscv1qjh" path="res://Scenes/CaveModels/stalag_short_1.tscn" id="7_nchf3"]
+[ext_resource type="PackedScene" uid="uid://btu8soe4ii7qe" path="res://Scenes/CaveModels/cave_walls_3.tscn" id="7_wuac0"]
+[ext_resource type="PackedScene" uid="uid://b3nyecty5inwy" path="res://Scenes/CaveModels/stalag_short_2.tscn" id="8_h3csq"]
+[ext_resource type="PackedScene" uid="uid://h66ptsygp5wf" path="res://Scenes/CaveModels/dirt_mound.tscn" id="9_yo02b"]
 [ext_resource type="PackedScene" uid="uid://bem2ix6vkddgi" path="res://Scenes/sunlight.tscn" id="10_rfl45"]
 [ext_resource type="AudioStream" uid="uid://cu85wp0n2myjx" path="res://Audio/01 Lower Cave 01.wav" id="11_t82ut"]
-[ext_resource type="PackedScene" path="res://Scenes/standing_water.tscn" id="12_826tw"]
+[ext_resource type="PackedScene" uid="uid://073e74duya5i" path="res://Scenes/standing_water.tscn" id="12_826tw"]
 [ext_resource type="AudioStream" uid="uid://blfe78ikqp8dr" path="res://Audio/Ambience_03_Cave-Wind-Water.wav" id="12_i8nqp"]
 [ext_resource type="Texture2D" uid="uid://clwljwbodeigm" path="res://Textures/star_05.png" id="13_826tw"]
-[ext_resource type="PackedScene" path="res://Scenes/CaveModels/cave_walls_2.tscn" id="13_ehcl6"]
-[ext_resource type="PackedScene" path="res://Scenes/CaveModels/stalag_medium_1.tscn" id="14_k6l6x"]
-[ext_resource type="PackedScene" path="res://Scenes/CaveModels/cave_obelisk_7.tscn" id="15_mceht"]
+[ext_resource type="PackedScene" uid="uid://cnntxl1s6mb4n" path="res://Scenes/CaveModels/cave_walls_2.tscn" id="13_ehcl6"]
+[ext_resource type="PackedScene" uid="uid://jigbrgch1yyg" path="res://Scenes/CaveModels/stalag_medium_1.tscn" id="14_k6l6x"]
+[ext_resource type="PackedScene" uid="uid://c41bkif30usa2" path="res://Scenes/CaveModels/cave_obelisk_7.tscn" id="15_mceht"]
 [ext_resource type="PackedScene" uid="uid://cx2jwyq3aqoqa" path="res://Scenes/CaveModels/stalag_short_3.tscn" id="16_s2jap"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfbkh"]
@@ -164,6 +165,9 @@ transform = Transform3D(0.96257, 0.020679, 0.270242, -0.0848792, 0.969929, 0.228
 [node name="CaveObelisk7" parent="World/FloorCeiling" instance=ExtResource("15_mceht")]
 transform = Transform3D(0.357729, 0.929702, 0.0876598, 0.005678, -0.0960355, 0.995362, 0.933808, -0.355572, -0.0396336, 9.10289, 34.6622, -0.934232)
 
+[node name="DirtMound" parent="World/FloorCeiling" instance=ExtResource("9_yo02b")]
+transform = Transform3D(0.303052, 0, 0.952974, 0, 1, 0, -0.952974, 0, 0.303052, 2.26436, -5.40286, -2.64089)
+
 [node name="Walls" type="Node3D" parent="World"]
 
 [node name="CaveWallsTall" parent="World/Walls" instance=ExtResource("4_g4geh")]
@@ -219,7 +223,7 @@ transform = Transform3D(-0.825301, -0.564694, 2.46836e-08, -1.86623e-16, -4.3711
 transform = Transform3D(-0.579256, 0, 0.156404, 0, 0.6, 0, -0.156404, 0, -0.579256, -4.67064, 5.20753, 1.70822)
 
 [node name="StalagtiteShort2" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("8_h3csq")]
-transform = Transform3D(-0.0192966, 0, -0.59969, 0, 0.6, 0, 0.59969, 0, -0.0192966, -4.68111, 24.1405, -11.9084)
+transform = Transform3D(-0.0192966, 0, -0.59969, 0, 0.6, 0, 0.59969, 0, -0.0192966, -4.68111, 24.1405, -10.709)
 
 [node name="StalagMedium1" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("14_k6l6x")]
 transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -4.81917, 26.8082, 1.6546)
@@ -242,7 +246,7 @@ transform = Transform3D(0.0973838, -0.515055, 0.463934, -0.685784, -0.00327012, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.7338, 20.477, -1.3219)
 
 [node name="VinePath" parent="." instance=ExtResource("2_3usej")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157652, 0.56607, -0.617125)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817331, -0.045496, -0.211098)
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_t82ut")

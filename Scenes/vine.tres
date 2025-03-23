@@ -1,0 +1,19 @@
+[gd_resource type="StandardMaterial3D" load_steps=4 format=3 uid="uid://dn7xi6lb6pnmf"]
+
+[ext_resource type="Texture2D" uid="uid://b2pc81tmpfhyw" path="res://Textures/Green_Texture_03.jpeg" id="1_t11bi"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_t11bi"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vtmbn"]
+as_normal_map = true
+noise = SubResource("FastNoiseLite_t11bi")
+
+[resource]
+albedo_color = Color(6.73831e-07, 0.78852, 0, 1)
+albedo_texture = ExtResource("1_t11bi")
+metallic = 0.1
+roughness = 0.8
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_vtmbn")
+uv1_triplanar = true
+grow_amount = -0.04

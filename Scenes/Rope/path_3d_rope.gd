@@ -150,7 +150,7 @@ func _physics_process(_delta: float) -> void:
 	
 	# update curve positions
 	for p in (curve.point_count):
-		if curve.get_baked_points()[p].distance_to(vine_controller.global_position) > max_dist_to_player:
+		if curve.get_baked_points()[p].distance_to(vine_controller.global_position) > max_dist_to_player && rigidbody_attached_to_end != Global.vine_path.pendulum:
 			return #Don't do this if it's far from player
 		
 		if  p < (number_of_segments):
