@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dviq1c6clt7ui" path="res://Scenes/vine_path.gd" id="1_i67k4"]
 [ext_resource type="Texture2D" uid="uid://b2pc81tmpfhyw" path="res://Textures/Green_Texture_03.jpeg" id="2_0s387"]
 [ext_resource type="PackedScene" uid="uid://wmf2eu0uuhrg" path="res://addons/third-person-camera/third_person_camera/ThirdPersonCamera.tscn" id="2_ihkm3"]
-[ext_resource type="PackedScene" uid="uid://jo7qawmclont" path="res://Scenes/vine_tip.tscn" id="3_ihkm3"]
+[ext_resource type="PackedScene" path="res://Scenes/vine_tip.tscn" id="3_ihkm3"]
 [ext_resource type="Texture2D" uid="uid://cb2ng0u1odaeu" path="res://Assets/Length Meter Overlay Decreasing/Length Meter Overlay Decreasing_00000.png" id="4_0s387"]
 
 [sub_resource type="Curve3D" id="Curve3D_r5l72"]
@@ -52,6 +52,7 @@ script = ExtResource("1_i67k4")
 max_length = 3.0
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
+top_level = true
 material_override = SubResource("StandardMaterial3D_ihkm3")
 polygon = PackedVector2Array(-0.00301002, 0.151506, 0.137278, 0.0598402, 0.0953864, -0.119483, -0.0894327, -0.125608, -0.137412, 0.0598965)
 mode = 2
@@ -94,6 +95,7 @@ radius = 5.0
 
 [node name="MeshInstance3D2" type="MeshInstance3D" parent="VineController"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.753033, 0.682224, 0)
+visible = false
 mesh = SubResource("QuadMesh_ng5d8")
 skeleton = NodePath("../..")
 

@@ -26,7 +26,7 @@ func _ready() -> void:
 	var rotation_buffer = rotation
 	rotation = Vector3(0,0,0)
 	var position_buffer = position
-	position = Vector3(0,0,0)
+	position -= global_position
 	
 	# Duplicate the curve to ensure its unique and resets properly on reloads, avoiding drift due to re-adding the position_buffer
 	var cloned_curve = curve.duplicate()  # Duplicate curve
