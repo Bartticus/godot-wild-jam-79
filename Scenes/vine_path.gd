@@ -90,7 +90,7 @@ func add_next_point(delta):
 			if not curve.get_baked_points().has(vine_controller.position):
 				curve.add_point(vine_controller.position)
 
-func handle_freefall(target_pos, delta):
+func handle_freefall(target_pos, _delta):
 	target_pos.y = 0.0
 	pendulum.apply_impulse(target_pos * 450)
 
@@ -228,8 +228,8 @@ func free_attachment(existing_rope: Rope): #Replaces the rope from freefall with
 	#Not exactly duplicated from replace_segment func, couldn't make it work in a single func
 	for i in existing_rope.curve.get_baked_points().size() - 1:
 		rope.curve.add_point(existing_rope.curve.get_baked_points()[i])
-	if not rope.curve.get_baked_points().has(vine_controller.position):
-		rope.curve.add_point(vine_controller.position) #Final point where controller is
+	if not rope.curve.get_baked_points().has(vine_controller.global_position):
+		rope.curve.add_point(vine_controller.global_position) #Final point where controller is
 	
 	rope.linear_damp = existing_rope.linear_damp
 	rope.collision_mask = existing_rope.collision_mask
