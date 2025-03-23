@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://cx2jwyq3aqoqa"]
 
-[ext_resource type="Material" path="res://Scenes/CaveModels/light_moss_stalag.tres" id="1_s083i"]
+[ext_resource type="Material" uid="uid://cve6v3hsoi1bu" path="res://Scenes/CaveModels/light_moss_stalag.tres" id="1_s083i"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_e1uyh"]
 _surfaces = [{

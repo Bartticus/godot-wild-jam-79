@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=41 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
@@ -23,7 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://jigbrgch1yyg" path="res://Scenes/CaveModels/stalag_medium_1.tscn" id="14_k6l6x"]
 [ext_resource type="PackedScene" uid="uid://c41bkif30usa2" path="res://Scenes/CaveModels/cave_obelisk_7.tscn" id="15_mceht"]
 [ext_resource type="PackedScene" uid="uid://cx2jwyq3aqoqa" path="res://Scenes/CaveModels/stalag_short_3.tscn" id="16_s2jap"]
-[ext_resource type="PackedScene" uid="uid://dysllvvq41bot" path="res://Scenes/nutrient.tscn" id="23_yo02b"]
+[ext_resource type="PackedScene" path="res://Scenes/nutrient.tscn" id="23_yo02b"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfbkh"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
