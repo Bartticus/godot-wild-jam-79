@@ -135,10 +135,12 @@ func freeze_shape(dist: int): #Freezes far shapes to reduce collision count
 		else:
 			segment.freeze = false
 
+var segments_frozen: bool = false
 func _on_freeze_timer_timeout() -> void:
 	if rigidbody_attached_to_end != Global.vine_path.pendulum:
 		for segment: Node3D in segments:
 			segment.freeze = true
+		segments_frozen = true
 	else:
 		freeze_timer.start()
 
@@ -152,6 +154,8 @@ func _physics_process(_delta: float) -> void:
 	for p in (curve.point_count):
 		if curve.get_baked_points()[p].distance_to(vine_controller.global_position) > max_dist_to_player && rigidbody_attached_to_end != Global.vine_path.pendulum:
 			return #Don't do this if it's far from player
+		if segments_frozen == true:
+			return #Don't do this if already determined to be frozen
 		
 		if  p < (number_of_segments):
 			# get the first segment and subtract it's basis * distance to point at the endpoint 
