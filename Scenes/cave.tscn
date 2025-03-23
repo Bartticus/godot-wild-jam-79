@@ -635,7 +635,6 @@ transform = Transform3D(-0.700046, -0.404583, 0.588429, -0.0992568, 0.871147, 0.
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.42, 80.3114, -82.9578)
 
 [node name="VinePath" parent="." instance=ExtResource("2_3usej")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.518568, 0.0275542, 0)
 
 [node name="Circles" type="GPUParticles3D" parent="."]
 transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.112269, -0.00135847)

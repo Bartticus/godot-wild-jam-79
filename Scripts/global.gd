@@ -9,7 +9,8 @@ var flaccid_meter: FlaccidMeter
 var contact_timer: Timer
 var contact_meter: TextureProgressBar
 var vine_path: Vine
-var vial: TextureRect
+var vial: Panel
+var end_screen: Control
 var game_started: bool = false
 
 func _physics_process(_delta: float) -> void:

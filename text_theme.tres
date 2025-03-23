@@ -1,0 +1,8 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dvx8mo3vjs1u7"]
+
+[ext_resource type="FontFile" uid="uid://ci6kl0kxv0r3s" path="res://Assets/Flavors-Regular.ttf" id="1_3x0lr"]
+
+[resource]
+resource_local_to_scene = true
+default_font = ExtResource("1_3x0lr")
+default_font_size = 60
