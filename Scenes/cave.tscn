@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=52 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
@@ -33,6 +33,8 @@
 [ext_resource type="PackedScene" uid="uid://kpejxmbwuqia" path="res://Scenes/CaveModels/stalag_medium_3.tscn" id="24_ldqtn"]
 [ext_resource type="PackedScene" uid="uid://dt6qaltiwvjyc" path="res://Scenes/CaveModels/stalag_tall_2.tscn" id="26_8l2r0"]
 [ext_resource type="PackedScene" uid="uid://b04j5i61444d" path="res://Scenes/CaveModels/stalag_tall_1.tscn" id="27_xlkfr"]
+[ext_resource type="PackedScene" uid="uid://ek3i2bw1fsma" path="res://Scenes/CaveModels/stalag_tall_3.tscn" id="28_xlkfr"]
+[ext_resource type="PackedScene" uid="uid://3a6mb0pjjp7w" path="res://Scenes/finish_area.tscn" id="31_vucr0"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yfbkh"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -211,7 +213,7 @@ transform = Transform3D(-0.977556, 0, -0.210677, 0, 1, 0, 0.210677, 0, -0.977556
 transform = Transform3D(0.865029, 0, 0.501722, 0, 1, 0, -0.501722, 0, 0.865029, 33.8306, 41.5779, -90.5881)
 
 [node name="CaveWallsTall3" parent="World/Walls" instance=ExtResource("4_g4geh")]
-transform = Transform3D(0.0060695, 0.259473, 0.965731, -0.999727, 0.0233853, 0, -0.0225839, -0.965467, 0.259544, -28.6694, 53.2533, -72.6666)
+transform = Transform3D(0.00134614, 0.0575484, 0.998342, -0.999727, 0.0233853, 0, -0.0233465, -0.998069, 0.0575642, -28.6694, 53.2533, -72.2019)
 
 [node name="CaveWallsTall5" parent="World/Walls" instance=ExtResource("4_g4geh")]
 transform = Transform3D(0.017589, 0.751933, 0.659005, -0.999727, 0.0233853, 4.34809e-10, -0.015411, -0.658825, 0.752139, -12.6784, 53.2533, -96.8417)
@@ -226,7 +228,7 @@ transform = Transform3D(0.0202567, 0.865981, -0.499667, -0.999727, 0.0233853, 2.
 transform = Transform3D(-0.0069542, -0.297294, 0.954761, -0.999727, 0.0233853, 1.14257e-09, -0.0223273, -0.9545, -0.297375, 54.6381, 86.0878, -89.6859)
 
 [node name="CaveWallsTall6" parent="World/Walls" instance=ExtResource("4_g4geh")]
-transform = Transform3D(0.0233823, 0.999599, 0.0159867, -0.999727, 0.0233853, 4.34809e-10, -0.000373853, -0.0159822, 0.999872, -10.2058, 100.298, -56.7364)
+transform = Transform3D(0.0229392, 0.980656, 0.194389, -0.999727, 0.0233853, 4.62216e-10, -0.00454583, -0.194335, 0.980925, -10.2058, 100.298, -55.973)
 
 [node name="CaveWallsTall7" parent="World/Walls" instance=ExtResource("4_g4geh")]
 transform = Transform3D(-0.0233792, -0.999468, -0.0227399, -0.999727, 0.0233853, 4.34809e-10, 0.000531778, 0.0227336, -0.999742, 21.5196, 100.298, -55.5528)
@@ -259,6 +261,9 @@ transform = Transform3D(0.274312, 0, 0.961641, 0, 1, 0, -0.961641, 0, 0.274312, 
 
 [node name="CaveWalls9" parent="World/Rocks" instance=ExtResource("3_yfbkh")]
 transform = Transform3D(0.956586, 0.170513, -0.236368, -0.186939, 0.981161, -0.0487461, 0.223603, 0.0908162, 0.97044, 52.1358, 35.9114, -31.3857)
+
+[node name="CaveWalls10" parent="World/Rocks" instance=ExtResource("3_yfbkh")]
+transform = Transform3D(0.865388, -0.209601, -0.455161, 0.168187, 0.977119, -0.130194, 0.472036, 0.0361162, 0.880839, 52.1802, 13.8361, -12.8281)
 
 [node name="CaveWalls8" parent="World/Rocks" instance=ExtResource("3_yfbkh")]
 transform = Transform3D(0.422481, 0.169361, 0.890408, 0.900861, 0.0297011, -0.433091, -0.0997947, 0.985107, -0.140022, 67.2398, 19.7434, -75.3224)
@@ -322,14 +327,23 @@ transform = Transform3D(-0.24656, -0.546908, -0.00996886, 0.546984, -0.246594, -
 [node name="CaveObelisk10" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("15_mceht")]
 transform = Transform3D(-0.0878837, 0.476583, 0.123064, -0.489487, -0.0714767, -0.0727539, -0.0517541, -0.133265, 0.479126, -14.7492, 23.7936, 2.01096)
 
+[node name="CaveObelisk11" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("15_mceht")]
+transform = Transform3D(0.077505, -0.0288459, -0.493113, -0.489487, -0.0714767, -0.0727539, -0.0662949, 0.494023, -0.039319, -16.8455, 22.2995, 4.2761)
+
 [node name="CaveObelisk4" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("21_7ilon")]
 transform = Transform3D(0.0240354, 0.674445, -0.185866, 0.699556, -0.0249302, -5.3788e-09, -0.00661955, -0.185748, -0.674873, -34.2099, 20.2688, -2.15019)
 
 [node name="CaveObelisk6" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("21_7ilon")]
+transform = Transform3D(-0.530141, -0.456596, -0.0216854, 0.0295139, -0.0010518, -0.699377, 0.456157, -0.530583, 0.0200479, -18.5569, 62.3286, -89.7542)
+
+[node name="CaveObelisk15" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("21_7ilon")]
+transform = Transform3D(0.432365, 0.550234, 0.0174184, 0.0295139, -0.0010518, -0.699377, -0.549718, 0.432714, -0.023849, -9.09083, 62.3286, -86.0864)
+
+[node name="CaveObelisk14" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("21_7ilon")]
 transform = Transform3D(0.0477488, 0.698369, 0.000964735, 0.0295139, -0.0010518, -0.699377, -0.697746, 0.0477469, -0.0295169, 39.3251, 23.2419, -6.00848)
 
 [node name="CaveObelisk1" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("23_li3gq")]
-transform = Transform3D(0.157719, 0.474455, -0.0041484, 0.0119394, 0.000401571, 0.499857, 0.474323, -0.157773, -0.0112027, -19.3211, 19.8803, 15.0591)
+transform = Transform3D(0.157719, 0.474455, -0.0041484, 0.0119394, 0.000401571, 0.499857, 0.474323, -0.157773, -0.0112027, -19.3211, 19.8803, 16.5377)
 
 [node name="StalagMedium3" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("24_ldqtn")]
 transform = Transform3D(0.572616, 0.177603, 0.0238298, -8.06868e-09, -0.0797896, 0.594671, 0.179195, -0.56753, -0.076148, -26.8864, 19.063, 16.1319)
@@ -340,11 +354,47 @@ transform = Transform3D(0.322299, 0, -0.946638, 0, 1, 0, 0.946638, 0, 0.322299, 
 [node name="StalagTall2" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("26_8l2r0")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 31.0503, 7.64805, -30.8711)
 
+[node name="CaveObelisk17" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("20_7r48e")]
+transform = Transform3D(-0.0543115, 0.156038, -0.986257, 0.00857976, 0.987751, 0.155802, 0.998487, -1.66879e-09, -0.054985, 38.4042, 6.51453, -23.3492)
+
 [node name="StalagTall1" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("27_xlkfr")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -4.06301, 31.5094, -37.539)
+transform = Transform3D(0.498991, -0.0305234, -0.0087484, 0.0317523, 0.479678, 0.137482, 0, -0.13776, 0.480648, -4.06301, 31.5094, -33.9584)
+
+[node name="CaveObelisk2" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("23_li3gq")]
+transform = Transform3D(0.5, 0, 0, 0, 0.252844, -0.431358, 0, 0.431358, 0.252844, -27.5437, 21.3137, -33.9827)
+
+[node name="CaveObelisk13" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("15_mceht")]
+transform = Transform3D(-0.277406, 0.749445, 0.601148, 0.860995, -0.0837124, 0.501677, 0.426303, 0.656753, -0.622046, -26.9581, 19.4044, -33.9827)
+
+[node name="CaveObelisk12" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("20_7r48e")]
+transform = Transform3D(0.123206, 0.470291, -0.11682, -0.483998, 0.113512, -0.0534843, -0.0237854, 0.12626, 0.483211, -25.1499, 19.319, -33.9827)
+
+[node name="StalagTall4" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("28_xlkfr")]
+transform = Transform3D(0.390796, -0.218605, -0.222464, -0.18998, -0.44968, 0.108147, -0.247358, 9.49007e-09, -0.434528, -13.2388, 25.6706, -33.9827)
+
+[node name="StalagTall3" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("27_xlkfr")]
+transform = Transform3D(-0.172739, -0.458794, 0.0983327, -0.398717, 0.198766, 0.226973, -0.247358, 1.02503e-08, -0.434527, -3.33672, 29.3974, -36.0629)
 
 [node name="StalagShort2" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("8_h3csq")]
-transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, 1.73141, 31.5065, -23.1727)
+transform = Transform3D(0.6, 0, 0, 0, 0.6, 0, 0, 0, 0.6, -0.911359, 31.5065, -22.5799)
+
+[node name="CaveObelisk16" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("15_mceht")]
+transform = Transform3D(-0.080195, 0.126644, 0.683762, -0.691415, -0.0880222, -0.0647894, 0.0742587, -0.682798, 0.135175, -5.99998, 64.605, -65.4242)
+
+[node name="StalagTall6" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("28_xlkfr")]
+transform = Transform3D(0.80262, -0.00493457, -0.596471, -0.445328, -0.67023, -0.593696, -0.396843, 0.742137, -0.540137, 5.83964, 87.467, -89.0129)
+
+[node name="StalagTall5" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("26_8l2r0")]
+transform = Transform3D(-0.798051, -0.0499483, 0.0249064, -0.0472824, 0.794712, 0.0787227, -0.0296569, 0.0770587, -0.795728, 5.83964, 40.9983, -78.7812)
+
+[node name="StalagMedium5" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("24_ldqtn")]
+transform = Transform3D(-0.595131, 0.36215, 0.393277, 0.514335, 0.548415, 0.273314, -0.145872, 0.456167, -0.640806, 12.0292, 16.6352, -60.7459)
+
+[node name="StalagShort1" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("7_nchf3")]
+transform = Transform3D(-0.162347, 0.113895, 0.458989, -0.0792041, 0.471879, -0.145109, -0.46623, -0.119824, -0.135175, 17.5748, 18.0028, -40.3801)
+
+[node name="StalagMedium4" parent="World/Climbable" groups=["Climbable"] instance=ExtResource("19_wlsau")]
+transform = Transform3D(0.463468, 0.183299, 0.03998, 0.186937, -0.442194, -0.139711, -0.01586, 0.144451, -0.478417, 28.8546, 6.65013, -35.3757)
 
 [node name="Powerups" type="Node3D" parent="World"]
 
@@ -369,8 +419,30 @@ transform = Transform3D(-0.906113, -0.352698, 0.233589, -0.176413, -0.186833, -0
 [node name="NutrientRock3" parent="World/Powerups" instance=ExtResource("23_yo02b")]
 transform = Transform3D(-0.155949, -0.943374, -0.292787, 0.872587, -0.270482, 0.406732, -0.462895, -0.192053, 0.865358, 4.37365, 13.0849, 9.90306)
 
+[node name="NutrientRock4" parent="World/Powerups" instance=ExtResource("23_yo02b")]
+transform = Transform3D(-0.590887, -0.0136996, 0.806638, -0.806754, 0.010034, -0.590802, 0, -0.999856, -0.0169812, -12.7947, 23.1663, 16.6527)
+
+[node name="NutrientRock6" parent="World/Powerups" instance=ExtResource("23_yo02b")]
+transform = Transform3D(0.100163, 0.117992, 0.98795, -0.969499, 0.234816, 0.0702479, -0.223697, -0.964852, 0.137913, 38.8896, 13.0066, -23.8116)
+
+[node name="NutrientRock5" parent="World/Powerups" instance=ExtResource("23_yo02b")]
+transform = Transform3D(-0.0289684, 0.99958, 0, -0.650528, -0.0188526, -0.759249, -0.75893, -0.0219942, 0.650801, -26.6185, 24.3721, -28.0224)
+
+[node name="NutrientRock8" parent="World/Powerups" instance=ExtResource("23_yo02b")]
+transform = Transform3D(-0.370245, 0.400038, -0.838384, -0.919809, -0.0316864, 0.391085, 0.129883, 0.915951, 0.379691, -14.2219, 62.5519, -84.3382)
+
+[node name="NutrientRock7" parent="World/Powerups" instance=ExtResource("23_yo02b")]
+transform = Transform3D(-0.976366, -0.213978, -0.0303665, 0.0395071, -0.0385706, -0.998475, 0.21248, -0.976077, 0.0461127, -5.98872, 66.3223, -63.1196)
+
+[node name="NutrientRock9" parent="World/Powerups" instance=ExtResource("23_yo02b")]
+transform = Transform3D(-0.700046, -0.404583, 0.588429, -0.0992568, 0.871147, 0.480886, -0.707166, 0.278236, -0.65, 29.9986, 5.98623, -33.4754)
+
+[node name="FinishArea" parent="World" instance=ExtResource("31_vucr0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 22.42, 80.3114, -82.9578)
+
 [node name="VinePath" parent="." instance=ExtResource("2_3usej")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.817331, -0.045496, -0.211098)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0436211, 0)
+max_length = 14.0
 
 [node name="BGMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("11_t82ut")
