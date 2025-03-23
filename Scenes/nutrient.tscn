@@ -89,7 +89,7 @@ material = SubResource("StandardMaterial3D_eciwq")
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.492647, 0.674157), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_gcsno"]
+[sub_resource type="CurveTexture" id="CurveTexture_7s8th"]
 curve = SubResource("Curve_7s8th")
 
 [sub_resource type="Curve" id="Curve_eciwq"]
@@ -97,7 +97,7 @@ _limits = [-1.0, 1.0, 0.0, 1.0]
 _data = [Vector2(0, -1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveTexture" id="CurveTexture_ehcl6"]
+[sub_resource type="CurveTexture" id="CurveTexture_eciwq"]
 curve = SubResource("Curve_eciwq")
 
 [sub_resource type="Curve" id="Curve_atwbo"]
@@ -115,7 +115,7 @@ _limits = [-2.0, 2.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
 point_count = 2
 
-[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_bfkb6"]
+[sub_resource type="CurveXYZTexture" id="CurveXYZTexture_m3ucq"]
 curve_x = SubResource("Curve_atwbo")
 curve_y = SubResource("Curve_vwl7r")
 curve_z = SubResource("Curve_keqhm")
@@ -124,7 +124,7 @@ curve_z = SubResource("Curve_keqhm")
 _data = [Vector2(0, 0.494382), 0.0, 0.0, 0, 0, Vector2(0.492647, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.494382), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="CurveTexture_k6l6x"]
+[sub_resource type="CurveTexture" id="CurveTexture_vwl7r"]
 curve = SubResource("Curve_m3ucq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vwl7r"]
@@ -136,18 +136,18 @@ initial_velocity_min = 2.0
 initial_velocity_max = 2.0
 orbit_velocity_min = -0.2
 orbit_velocity_max = 0.2
-orbit_velocity_curve = SubResource("CurveXYZTexture_bfkb6")
+orbit_velocity_curve = SubResource("CurveXYZTexture_m3ucq")
 gravity = Vector3(0, 0, 0)
 radial_accel_min = -2.0
 radial_accel_max = 2.0
 attractor_interaction_enabled = false
 scale_min = 0.1
 scale_max = 0.3
-scale_curve = SubResource("CurveTexture_k6l6x")
-alpha_curve = SubResource("CurveTexture_gcsno")
+scale_curve = SubResource("CurveTexture_vwl7r")
+alpha_curve = SubResource("CurveTexture_7s8th")
 hue_variation_min = -0.1
 hue_variation_max = 0.1
-hue_variation_curve = SubResource("CurveTexture_ehcl6")
+hue_variation_curve = SubResource("CurveTexture_eciwq")
 turbulence_enabled = true
 turbulence_noise_scale = 0.461
 turbulence_noise_speed = Vector3(1, 1, 1)
@@ -157,7 +157,7 @@ turbulence_influence_max = 0.099
 turbulence_initial_displacement_min = 1.49012e-06
 turbulence_initial_displacement_max = 1.49012e-06
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s2jap"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_keqhm"]
 transparency = 1
 blend_mode = 1
 vertex_color_use_as_albedo = true
@@ -169,7 +169,7 @@ billboard_mode = 1
 billboard_keep_scale = true
 
 [sub_resource type="QuadMesh" id="QuadMesh_atwbo"]
-material = SubResource("StandardMaterial3D_s2jap")
+material = SubResource("StandardMaterial3D_keqhm")
 size = Vector2(2, 2)
 
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_7s8th"]

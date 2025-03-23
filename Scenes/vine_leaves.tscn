@@ -60,4 +60,3 @@ mesh = SubResource("ArrayMesh_tvryo")
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." index="1"]
 stream = ExtResource("4_fbfxb")
-autoplay = true
