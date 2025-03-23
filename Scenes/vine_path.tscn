@@ -114,9 +114,8 @@ one_shot = true
 [node name="Pendulum" type="RigidBody3D" parent="."]
 collision_layer = 4
 collision_mask = 2
-mass = 10.0
+mass = 15.0
 physics_material_override = SubResource("PhysicsMaterial_i67k4")
-gravity_scale = 0.6
 can_sleep = false
 freeze = true
 
