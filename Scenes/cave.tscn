@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bjcbdiscv1qjh" path="res://Scenes/CaveModels/stalag_short_1.tscn" id="7_nchf3"]
 [ext_resource type="PackedScene" uid="uid://btu8soe4ii7qe" path="res://Scenes/CaveModels/cave_walls_3.tscn" id="7_wuac0"]
 [ext_resource type="PackedScene" uid="uid://b3nyecty5inwy" path="res://Scenes/CaveModels/stalag_short_2.tscn" id="8_h3csq"]
-[ext_resource type="PackedScene" uid="uid://cmkwnteofsmkt" path="res://Scenes/sunlight.tscn" id="10_rfl45"]
+[ext_resource type="PackedScene" uid="uid://bem2ix6vkddgi" path="res://Scenes/sunlight.tscn" id="10_rfl45"]
 [ext_resource type="AudioStream" uid="uid://cu85wp0n2myjx" path="res://Audio/01 Lower Cave 01.wav" id="11_t82ut"]
 [ext_resource type="PackedScene" uid="uid://073e74duya5i" path="res://Scenes/standing_water.tscn" id="12_826tw"]
 [ext_resource type="AudioStream" uid="uid://blfe78ikqp8dr" path="res://Audio/Ambience_03_Cave-Wind-Water.wav" id="12_i8nqp"]
