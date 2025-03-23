@@ -128,6 +128,7 @@ point_count = 3
 curve = SubResource("Curve_m3ucq")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_vwl7r"]
+resource_local_to_scene = true
 lifetime_randomness = 0.5
 direction = Vector3(0, 1, 0)
 spread = 180.0

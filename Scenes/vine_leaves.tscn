@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=4 uid="uid://c43u8hsggdpvs"]
 
 [ext_resource type="PackedScene" uid="uid://des26a4wki47g" path="res://Assets/vine_leaves.blend" id="1_efjr8"]
-[ext_resource type="Script" path="res://Scenes/vine_leaves.gd" id="2_dvwa3"]
+[ext_resource type="Script" uid="uid://dkvo0bj63msqn" path="res://Scenes/vine_leaves.gd" id="2_dvwa3"]
 [ext_resource type="Texture2D" uid="uid://b2pc81tmpfhyw" path="res://Textures/Green_Texture_03.jpeg" id="2_tvryo"]
 [ext_resource type="AudioStream" uid="uid://blcuxqmwkhyun" path="res://Audio/Wall Touch/Wall_Touch_01.wav" id="4_fbfxb"]
 
