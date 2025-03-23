@@ -1,4 +1,4 @@
-[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://dle32jfjlhv7t"]
+[gd_resource type="StandardMaterial3D" load_steps=6 format=3 uid="uid://bhtibs58ol3bh"]
 
 [ext_resource type="Texture2D" uid="uid://bi0jio1ptjssf" path="res://Assets/CaveAssets/Stalagmites/StalagmitesBase1_Diffuse.png" id="1_qnne1"]
 [ext_resource type="Texture2D" uid="uid://ccui5exohb0x" path="res://Assets/CaveAssets/Stalagmites/StalagmitesBase1_Height.png" id="2_p6v7p"]
