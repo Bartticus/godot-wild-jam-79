@@ -5,7 +5,7 @@ var current_plant_power: float = max_plant_power
 var current_vine_length: float = 0.0
 var recharge_amount: float = 0.0
 var recharge_rate: float = 2.0
-var flaccid_meter: TextureProgressBar
+var flaccid_meter: FlaccidMeter
 var contact_timer: Timer
 var contact_meter: TextureProgressBar
 var vine_path: Vine
@@ -37,7 +37,9 @@ func calculate_current_plant_power():
 	var possible_values = [0, new_plant_power, max_plant_power]
 	possible_values.sort()
 	current_plant_power = possible_values[1]
-	flaccid_meter.update_value(current_plant_power)
+	
+	var meter_ratio: float = current_plant_power / max_plant_power
+	flaccid_meter.update_value(meter_ratio)
 
 func reset_plant_power():
 	current_plant_power = max_plant_power
