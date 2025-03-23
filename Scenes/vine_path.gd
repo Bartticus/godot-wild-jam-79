@@ -93,7 +93,7 @@ func add_next_point(delta):
 
 func handle_freefall(target_pos, delta):
 	target_pos.y = 0.0
-	pendulum.apply_impulse(target_pos * 125)
+	pendulum.apply_impulse(target_pos * 175)
 
 	# var start_end_distance: float = vine_controller.global_position.distance_to(last_contact_pos)
 	# var magnitude: float = 10 * start_end_distance * start_end_distance * delta / max_length

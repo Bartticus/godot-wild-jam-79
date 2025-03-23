@@ -144,7 +144,8 @@ func _on_freeze_timer_timeout() -> void:
 
 func _physics_process(_delta: float) -> void:
 	var max_dist_to_player: int = 10
-	freeze_shape(max_dist_to_player)
+	if rigidbody_attached_to_end != Global.vine_path.pendulum:
+		freeze_shape(max_dist_to_player)
 	if skip_physics_frames(2): return
 	
 	# update curve positions

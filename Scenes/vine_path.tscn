@@ -17,6 +17,8 @@ point_count = 1
 albedo_color = Color(6.73831e-07, 0.78852, 0, 1)
 albedo_texture = ExtResource("2_0s387")
 uv1_triplanar = true
+grow = true
+grow_amount = -0.04
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_i67k4"]
 resource_local_to_scene = true
@@ -49,7 +51,6 @@ radius = 0.17
 [node name="VinePath" type="Path3D"]
 curve = SubResource("Curve3D_r5l72")
 script = ExtResource("1_i67k4")
-max_length = 3.0
 
 [node name="CSGPolygon3D" type="CSGPolygon3D" parent="."]
 material_override = SubResource("StandardMaterial3D_ihkm3")
@@ -115,7 +116,7 @@ collision_layer = 4
 collision_mask = 2
 mass = 10.0
 physics_material_override = SubResource("PhysicsMaterial_i67k4")
-gravity_scale = 0.7
+gravity_scale = 0.6
 can_sleep = false
 freeze = true
 

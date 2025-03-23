@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://jo7qawmclont"]
+[gd_scene load_steps=8 format=3 uid="uid://jo7qawmclont"]
 
 [ext_resource type="ArrayMesh" uid="uid://bqf22pbj01nre" path="res://Assets/11,2.obj" id="1_cwqi7"]
+[ext_resource type="Texture2D" uid="uid://b4sg042wiv38a" path="res://Assets/AdobeStock_222554896_Preview.jpeg" id="1_ot34n"]
 [ext_resource type="Script" uid="uid://wnommubu5o4v" path="res://Scenes/vine_tip.gd" id="2_wpupr"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_cwqi7"]
@@ -8,21 +9,24 @@
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_cwqi7"]
 seamless = true
 as_normal_map = true
-bump_strength = 100.0
+bump_strength = 10.0
 noise = SubResource("FastNoiseLite_cwqi7")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wpupr"]
 albedo_color = Color(0.391176, 0.25909, 1.44392e-07, 1)
-metallic = 0.5
-roughness = 0.7
-normal_enabled = true
+albedo_texture = ExtResource("1_ot34n")
+metallic = 0.15
+metallic_specular = 0.33
+roughness = 0.9
 normal_texture = SubResource("NoiseTexture2D_cwqi7")
+texture_filter = 1
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_wpupr"]
 
 [node name="VineTip" type="MeshInstance3D"]
 material_override = SubResource("StandardMaterial3D_wpupr")
 material_overlay = SubResource("ShaderMaterial_wpupr")
+mesh = ExtResource("1_cwqi7")
 script = ExtResource("2_wpupr")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
