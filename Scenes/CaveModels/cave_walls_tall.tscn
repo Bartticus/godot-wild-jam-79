@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=4 uid="uid://df00vyu3leo40"]
 
-[ext_resource type="Material" uid="uid://ci55uaxfnmos7" path="res://Scenes/CaveModels/cave_walls.tres" id="1_55bbw"]
+[ext_resource type="Material" path="res://Scenes/CaveModels/cave_walls.tres" id="1_55bbw"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_lar60"]
 _surfaces = [{
