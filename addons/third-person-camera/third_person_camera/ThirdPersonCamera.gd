@@ -130,6 +130,7 @@ func _physics_process(_delta):
 	if Engine.is_editor_hint() :
 		_camera_marker.global_position = Vector3(0., 0., 1.).rotated(Vector3(1., 0., 0.), deg_to_rad(initial_dive_angle_deg)).rotated(Vector3(0., 1., 0.), self.global_rotation.y) * _camera_spring_arm.spring_length + _camera_spring_arm.global_position
 		pass
+	#elif !Global.game_started: return
 	#_camera.global_position = _camera_marker.global_position
 	tweenCameraToMarker()
 	_camera_offset_pivot.global_position = _camera_offset_pivot.get_parent().to_global(Vector3(pivot_offset.x, pivot_offset.y, 0.0))
@@ -197,6 +198,8 @@ func apply_preset_shake(preset_number: int) :
 
 
 func _input(event):
+	if !Global.game_started: return
+	
 	if event.is_action_pressed("ui_cancel"):
 		Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 	
@@ -216,9 +219,13 @@ func _input(event):
 
 
 func _unhandled_input(event):
+	if !Global.game_started: return
+	
 	if follow_target == FOLLOW_TARGETS.MOUSE and event is InputEventMouseMotion:
 		camera_horizontal_rotation_deg += event.relative.x * 0.1 * mouse_x_sensitiveness
 		camera_tilt_deg -= event.relative.y * 0.07 * mouse_y_sensitiveness
+		camera_tilt_deg = clampf(camera_tilt_deg, tilt_lower_limit_deg, tilt_upper_limit_deg)
+		print(camera_tilt_deg)
 		return
 	if follow_target == FOLLOW_TARGETS.PARENT and event is InputEventMouseMotion:
 		camera_tilt_deg -= event.relative.y * 0.07 * mouse_y_sensitiveness

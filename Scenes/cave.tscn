@@ -1,9 +1,8 @@
-[gd_scene load_steps=74 format=3 uid="uid://b4b4imkar1fqy"]
+[gd_scene load_steps=73 format=3 uid="uid://b4b4imkar1fqy"]
 
 [ext_resource type="Texture2D" uid="uid://m48v46njfaxb" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Diffuse.png" id="1_3usej"]
 [ext_resource type="Script" uid="uid://bjxp4k3itr2r8" path="res://Scenes/cave.gd" id="1_ikctj"]
 [ext_resource type="PackedScene" uid="uid://ckllqa3h6ybt6" path="res://Scenes/vine_path.tscn" id="2_3usej"]
-[ext_resource type="Texture2D" uid="uid://185t565vb5js" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Height.png" id="2_rfl45"]
 [ext_resource type="PackedScene" uid="uid://w347s4jd0hb8" path="res://Scenes/CaveModels/large_cave_rock_tower.tscn" id="2_yfbkh"]
 [ext_resource type="Texture2D" uid="uid://dfo17jeb8l54" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Specular.png" id="3_i8nqp"]
 [ext_resource type="Texture2D" uid="uid://6od8kd0cj4gs" path="res://Assets/CaveAssets/LargeCaveRock_Floor-Base-Normal.png" id="3_t82ut"]
@@ -68,8 +67,6 @@ metallic = 1.0
 metallic_texture = ExtResource("3_i8nqp")
 normal_enabled = true
 normal_texture = ExtResource("3_t82ut")
-heightmap_enabled = true
-heightmap_texture = ExtResource("2_rfl45")
 uv1_scale = Vector3(0.1, 0.1, 0.1)
 uv1_triplanar = true
 

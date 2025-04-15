@@ -102,8 +102,8 @@ func add_next_point(delta):
 	var x_axis = calculate_x_axis(delta)
 	var z_axis = calculate_z_axis(delta)
 	var y_axis = calculate_y_axis(x_axis, z_axis, delta)
-	var camera = get_viewport().get_camera_3d()
-	var target_pos = Vector3(x_axis, y_axis, z_axis).rotated(Vector3.UP, camera.rotation.y)
+	var _camera = get_viewport().get_camera_3d()
+	var target_pos = Vector3(x_axis, y_axis, z_axis).rotated(Vector3.UP, _camera.rotation.y)
 	var new_point = vine_controller.global_position + target_pos
 	vine_controller.velocity = vine_controller.global_position.direction_to(new_point)
 	

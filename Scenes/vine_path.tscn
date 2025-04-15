@@ -1227,7 +1227,9 @@ distance_from_pivot = 8.0
 initial_dive_angle_deg = 0.0
 tilt_upper_limit_deg = 30.0
 tilt_lower_limit_deg = -30.0
+tilt_sensitiveness = 5.0
 follow_target = 1
+mouse_y_sensitiveness = 0.8
 spring_arm_collision_mask = 3
 far = 200.0
 
